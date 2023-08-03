@@ -1,0 +1,11 @@
+-----------------------
+Questions for Herman
+-----------------------
+
+   1. Are start/end of sentence symbols necessary?
+   2. Should diacritics be removed?
+   3. Is librosa the preferred library for dealing with WAV files?
+   4. Model and learn the probability of each sentence.
+      Use probabilities to create validation/test sets. (Overkill?)
+   5. Basically, I'm not entirely sure what a sensible method is for 
+      choosing a validation/test set. 

@@ -1,0 +1,6 @@
+# Ignore the directory that contains the WAV and transcripts data:
+src/data/
+# To download the required data, run the download_data.py file.
+
+# Ignore Python cache:
+__pycache__/
