@@ -4,3 +4,4 @@ src/data/
 
 # Ignore Python cache:
 __pycache__/
+.ipynb_checkpoints/
