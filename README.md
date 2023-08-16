@@ -28,7 +28,7 @@ Read through the ``src/main.ipynb`` notebook.
    4. **Question:** I'm not entirely sure what a sensible method is for 
       choosing a validation/test set. Right now I am splitting
       randomly.
-        - **Answer**: Choose test/validation set very carefully & don't split randomly.
+        - **Answer:** Choose test/validation set very carefully & don't split randomly.
    5. **Question:** Should I remove the English sentences from the Afrikaans and
       isiXhosa datasets?
         - **Answer:** No.
@@ -36,11 +36,19 @@ Read through the ``src/main.ipynb`` notebook.
         - **Answer:** Use isiXhosa for now.
 
 ## Progress (18/08/2023)
+   1. Data links:
+        - https://huggingface.co/datasets/google/fleurs
 
 ## Questions for Herman (18/08/2023)
 
-   1. **Question:** What ... ?
-        - **Answer:** ...
+   1. **Question:** *(More for myself)* Why are NNs > other ML algos for
+   automatic speech recognition?
+        - **ChatGPT answer:** In summary, neural networks are preferred for 
+        automatic speech recognition due to their capacity for automatic 
+        feature learning, end-to-end modeling, robustness to variability, 
+        utilization of large-scale data, and adaptability through transfer 
+        learning. These characteristics collectively contribute to their 
+        superior performance in ASR tasks. 
 
 ## References and Acknowledgements
 
@@ -51,6 +59,7 @@ to develop this project.
 
  - https://chat.openai.com/share/af4e27d1-3899-45b2-8917-bf3b5f6e669a
  - https://chat.openai.com/share/9da5e4fb-c90c-4050-aa62-045137ee0076
+ - https://chat.openai.com/share/4885c5b0-1465-4cc9-a74b-a1282bf8ccc1
 
 ### Tutorial/blog webpages:
 

@@ -5,11 +5,12 @@ import requests
 from tqdm import tqdm
 from os.path import join as p_join
 
-"""
-Downloads the file for the given ``url``, and names it 
-as the given ``file_name``.
-"""
+
 def download_file(url, file_name):
+    """
+    Downloads the file for the given ``url``, and names it 
+    as the given ``file_name``.
+    """
     response = requests.get(url, stream=True)
     file_size = int(response.headers.get("content-length", 0))
     block_size = 1024  # 1 KB
@@ -24,18 +25,24 @@ def download_file(url, file_name):
     progress_bar.close()
     print(f"File {os.path.basename(file_name)} downloaded successfully!\n")
 
-"""
-Uses the tarfile library to extract the downloaded data sets.
-"""
 def extract_tar_file(tar_path, extract_path):
+    """
+    Uses the tarfile library to extract the downloaded data sets.
+    """
     with tarfile.open(tar_path, "r:gz") as tar:
         tar.extractall(path=extract_path)
 
-
-"""
-Downloads the data required for this project. Also checks if data is already downloaded
-"""
 def download_data():
+    """
+    Downloads the data required for this project. 
+    Also checks if data is already downloaded
+    """
+    # Change the cwd to the script's directory
+    script_path = os.path.abspath(__file__)
+    script_directory = os.path.dirname(script_path)
+    os.chdir(script_directory)
+    
+    # Get data directory
     data_path = p_join("data", "high-quality-tts-data")
     
     # Check if data is already downloaded
@@ -44,7 +51,7 @@ def download_data():
     else:
         if (os.path.isdir(p_join(data_path, "af_za"))) and (os.path.isdir(p_join(data_path, "xh_za"))) :
             print("The data has already been downloaded.")
-            return False
+            return
 
     af_url = "https://repo.sadilar.org/bitstream/handle/20.500.12185/527/af_za.tar.gz"
     af_file_name = p_join(data_path, "af_za.tar.gz")
@@ -64,7 +71,6 @@ def download_data():
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
 
-    return True
 
 if __name__ == "__main__":
     download_data()

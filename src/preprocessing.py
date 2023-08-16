@@ -1,16 +1,19 @@
 import os
+import re
 import random
 import librosa
 import pandas as pd
 
 from tqdm import tqdm
 from datasets import Dataset
-from sklearn.model_selection import train_test_split
+from unidecode import unidecode
 
 # Paths for the directories of the data
 DATA_PATH = 'data/high-quality-tts-data'
 AF_PATH = 'af_za/za/afr'
 XH_PATH = 'xh_za/za/xho'
+
+CHARS_TO_REMOVE = '[\,\?\.\!\-\;\:\"\“\%\‘\”\�\']'
 
 SR = 16_000
 
@@ -19,34 +22,50 @@ class DataNotDownloadedError(Exception):
         self.message = message
         super().__init__(self.message)
 
-def get_data():
+def load_and_preprocess_data():
     if not os.path.isdir('data/high-quality-tts-data'):
         raise DataNotDownloadedError('Data is not downloaded. ' +
                                      'Please download the data first')
 
-    af_train, af_val, af_test, xh_train, xh_val, xh_test = get_datasets()
-
-    for data_set in [af_train, af_val, af_test, xh_train, xh_val, xh_test]:
-        data_set = preprocess_data(data_set)
+    print("Loading datasets ...", end="")
+    train_set, val_set, test_set, test_set_copy = get_datasets()
     
-    return af_train, af_val, af_test, xh_train, xh_val, xh_test
+    print("\rPre-processing datasets ...", end="")
+    train_set = preprocess_dataset(train_set)
+    val_set = preprocess_dataset(val_set)
+    test_set = preprocess_dataset(test_set)
+    test_set_copy = preprocess_dataset(test_set_copy)
+
+    print("\rDatasets loaded and pre-processed successfully.")
+    return train_set, val_set, test_set, test_set_copy
 
 def get_datasets():
     af_sentences = get_sentences(os.path.join(DATA_PATH, AF_PATH, 'line_index.tsv'))
-    af_train, af_val, af_test = create_custom_dataset(os.path.join(DATA_PATH, AF_PATH, 'wavs'), af_sentences)
+    af_data = get_data_entries(os.path.join(DATA_PATH, AF_PATH, 'wavs'), af_sentences)
 
     xh_sentences = get_sentences(os.path.join(DATA_PATH, XH_PATH, 'line_index.tsv'))
-    xh_train, xh_val, xh_test = create_custom_dataset(os.path.join(DATA_PATH, XH_PATH, 'wavs'), xh_sentences)
+    xh_data = get_data_entries(os.path.join(DATA_PATH, XH_PATH, 'wavs'), xh_sentences)
     
-    return af_train, af_val, af_test, xh_train, xh_val, xh_test
+    # TODO: Create validation and test set in a much better way
+    
+    combined_data = af_data + xh_data
+    random.Random(42).shuffle(combined_data)
 
-def create_custom_dataset(audio_dir, sentences):
-    train_set, val_set, test_set = [], [], []
+    train_idx = int(0.8*len(combined_data))
+    val_idx = int(0.9*len(combined_data))
 
-    count = 0.0
+    train_set = Dataset.from_list(combined_data[:train_idx])
+    val_set = Dataset.from_list(combined_data[train_idx:val_idx])
+    test_set = combined_data[val_idx:]
+    test_set_copy = Dataset.from_list(test_set.copy())
+    test_set = Dataset.from_list(test_set)
+
+    return train_set, val_set, test_set, test_set_copy
+
+def get_data_entries(audio_dir, sentences):
+    entries = []
+
     files = os.listdir(audio_dir)
-    random.Random(42).shuffle(files)
-    num_files = len(files)
     for file_path, audio_array in tqdm(get_speech_data(audio_dir, files)):
         sentence = sentences.get(os.path.basename(file_path).split(".")[0])
 
@@ -60,19 +79,9 @@ def create_custom_dataset(audio_dir, sentences):
                 'sentence': sentence,
                 'path': file_path
             }
+            entries.append(data_entry)
 
-        if count < 0.8*num_files:
-            train_set.append(data_entry)
-        elif (count > 0.8*num_files) and (count < 0.9*num_files):
-            val_set.append(data_entry)
-        else:
-            test_set.append(data_entry)
-        count += 1
-
-    train_set = Dataset.from_list(train_set)
-    val_set = Dataset.from_list(val_set)
-    test_set = Dataset.from_list(test_set)
-    return train_set, val_set, test_set
+    return entries
 
 def get_speech_data(audio_dir, files):
     for file_name in files:
@@ -84,10 +93,15 @@ def get_sentences(sentence_dir):
     sentences_df = pd.read_csv(sentence_dir, sep="\t", names=["id", "sentence"])
     return dict(zip(sentences_df['id'], sentences_df['sentence']))
 
-def preprocess_data(data_set):
-    # Do stuff ...
-    return data_set
 
-if __name__ == '__main__':
-    af_train, xh_train = get_data()
-    # Continue with your processing or training steps
+def preprocess_dataset(dataset):
+    """
+    Only remove punctuation and other special characters.
+    Diacritics (such as accents and umlauts) are not removed.
+    """
+    return dataset.map(remove_special_characters)
+
+def remove_special_characters(batch):
+    # batch["sentence"] = unidecode(batch["sentence"])
+    batch["sentence"] = re.sub(CHARS_TO_REMOVE, '', batch["sentence"]).lower()
+    return batch
