@@ -9,6 +9,32 @@ isiXhosa.
 
 Read through the ``src/main.ipynb`` notebook.
 
+## Datasets (Work in progress)
+| Webpage Link | Language | Number of data entries | Additional info |
+|--------------|----------|------------------------|-----------------|
+|**isiXhosa datasets**||||
+| [nchlt isixhosa](https://repo.sadilar.org/handle/20.500.12185/279)                 | xh      | 46651       | 107 different female speakers and 103 different male speakers. Xhosa speaker split: 103/99, 0/0, 4/4. There is also age information. |
+| [african speech tech](https://repo.sadilar.org/handle/20.500.12185/305)            | xh      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+| [lwazi 1 isixhosa tts](https://repo.sadilar.org/handle/20.500.12185/462)           | xh      | 339         | Nothing besides allignment info. |
+| [lwazi 2 isixhosa tts](https://repo.sadilar.org/handle/20.500.12185/440)           | xh      | 912         | Nothing besides allignment info. |
+| [lwazi 3 isixhosa tts **](https://repo.sadilar.org/handle/20.500.12185/268)        | xh      | Requested.  | Requested. |
+| [lwazi isixhosa asr](https://repo.sadilar.org/handle/20.500.12185/460)             | xh      | 6300        | 210 different speakers (30 sentences each): 107 female speakers and 101 male speakers (2 unknown).|
+|**Afrikaans datasets**||||
+| [nchlt afrikaans](https://repo.sadilar.org/handle/20.500.12185/280)                | af      | 66133       | 106 different female speakers and 103 different male speakers. Afrikaans speaker split: 102/99, 0/0, 4/4. There is also age information. |
+| [african speech tech](https://repo.sadilar.org/handle/20.500.12185/400)            | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+| [lwazi 1 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/436)       | af      | Requested.  | Requested. |
+| [lwazi 2 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/443)       | af      | Requested.  | Requested. |
+| [lwazi 3 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/266)       | af      | Requested.  | Requested. |
+| [lwazi afrikaans asr](https://repo.sadilar.org/handle/20.500.12185/434)            | af      | 6000        | 200 speakers (30 sentences each): 98 female speakers and 101 male speakers (1 unknown). |
+|**Weird Afrikaans datasets**||||
+| [tracking trajectory](https://repo.sadilar.org/handle/20.500.12185/442)            | af      | 11097       | 1 male speaker. Short and mostly half sentences (+- three words). |
+| [coloured afrikaans](https://repo.sadilar.org/handle/20.500.12185/444)             | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+| [black afrikaans](https://repo.sadilar.org/handle/20.500.12185/422)                | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+| [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. |
+|**Afrikaans + isiXhosa datasets**||||
+| [high quality tts](https://repo.sadilar.org/handle/20.500.12185/527)               | af + xh | 2927 + 2420 | Afrikaans: 9 different female speakers and 0 male speakers. Xhosa: 12 different female speakers and 0 male speakers. |
+| [hugging face fleurs](https://huggingface.co/datasets/google/fleurs)               | af + xh | 1494 + 4953 | Afrikaans amount split: 941/91, 0/198, 0/264. Xhosa amount split: 2471/995, 0/446, 0/1041. |
+
 ## Progress (11/08/2023)
 
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
@@ -36,19 +62,24 @@ Read through the ``src/main.ipynb`` notebook.
         - **Answer:** Use isiXhosa for now.
 
 ## Progress (18/08/2023)
-   1. Data links:
-        - https://huggingface.co/datasets/google/fleurs
+   1. Downloaded more datasets.
+   2. Familiarized with HuggingFace hub and can now load and store models.
+   3. Further research into how XLS-R works.
+   4. Research into how OpenAI's whisper works.
 
 ## Questions for Herman (18/08/2023)
 
-   1. **Question:** *(More for myself)* Why are NNs > other ML algos for
-   automatic speech recognition?
+   1. **Question:** *(More for myself)* Why are NNs preferred over other 
+    machine learning algorithms for the problem of speech recognition?
         - **ChatGPT answer:** In summary, neural networks are preferred for 
         automatic speech recognition due to their capacity for automatic 
         feature learning, end-to-end modeling, robustness to variability, 
         utilization of large-scale data, and adaptability through transfer 
         learning. These characteristics collectively contribute to their 
-        superior performance in ASR tasks. 
+        superior performance in ASR tasks.
+   2. Is the development set the same as the validation set? Why do people use
+   less data entries in their dev sets than in their test sets?
+   3. 
 
 ## References and Acknowledgements
 

@@ -3,6 +3,7 @@ import tarfile
 import requests
 
 from tqdm import tqdm
+from datasets import load_dataset
 from os.path import join as p_join
 
 
@@ -32,7 +33,7 @@ def extract_tar_file(tar_path, extract_path):
     with tarfile.open(tar_path, "r:gz") as tar:
         tar.extractall(path=extract_path)
 
-def download_data():
+def download_high_quality_tts():
     """
     Downloads the data required for this project. 
     Also checks if data is already downloaded
@@ -70,7 +71,3 @@ def download_data():
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
-
-
-if __name__ == "__main__":
-    download_data()
