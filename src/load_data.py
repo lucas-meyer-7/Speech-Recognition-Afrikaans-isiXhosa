@@ -20,6 +20,43 @@ class DataNotDownloadedError(Exception):
         self.message = message
         super().__init__(self.message)
 
+
+def load_and_preprocess_lwazi_asr():
+    AF_PATH = os.path.join('data', 'asr.lwazi.afr.1.0', 'ASR.Lwazi.Afr.1.0')
+    XH_PATH = os.path.join('data', 'asr.lwazi.xho.1.0', 'ASR.Lwazi.Xho.1.0')
+    if not os.path.isdir(AF_PATH):
+        raise DataNotDownloadedError('Lwazi ASR Afrikaans data is not downloaded. ' +
+                                     'Please download the data first')
+
+    if not os.path.isdir(XH_PATH):
+        raise DataNotDownloadedError('Lwazi ASR isiXhosa is not downloaded. ' +
+                                     'Please download the data first')
+
+    print("Loading Lwazi ASR dataset ...", end="")
+
+    train_set = []
+    val_set = []
+    test_set = []
+
+    print("\rLwazi ASR dataset loaded successfully.")
+    return train_set, val_set, test_set
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def load_and_preprocess_nchlt():
     AF_PATH = os.path.join('data', 'nchlt.speech.corpus.afr', 'nchlt_afr')
     XH_PATH = os.path.join('data', 'nchlt.speech.corpus.xho', 'nchlt_xho')
@@ -31,7 +68,7 @@ def load_and_preprocess_nchlt():
         raise DataNotDownloadedError('NCHLT isiXhosa data is not downloaded. ' +
                                      'Please download the data first')
 
-    print("Loading datasets ...", end="")
+    print("Loading NCHLT dataset ...", end="")
     def get_sentences_nchlt(sentence_file):
         tree = ET.parse(sentence_file)
         root = tree.getroot()
@@ -69,36 +106,19 @@ def load_and_preprocess_nchlt():
                     entries.append(data_entry)
         return entries
     
-    tree = ET.parse(os.path.join(XH_PATH, "transcriptions", "nchlt_xho.trn.xml"))
-    root = tree.getroot()
-    num_males = 0
-    num_females = 0
-    for i in range(len(root)):
-        if root[i].attrib["gender"] == "male":
-            num_males += 1
-        elif root[i].attrib["gender"] == "female":
-            num_females += 1
-    print(num_males)
-    print(num_females)
-    return
     af_train_sentences = get_sentences_nchlt(os.path.join(AF_PATH, "transcriptions", "nchlt_afr.trn.xml"))
     af_test_sentences = get_sentences_nchlt(os.path.join(AF_PATH, "transcriptions", "nchlt_afr.tst.xml"))
     xh_train_sentences = get_sentences_nchlt(os.path.join(XH_PATH, "transcriptions", "nchlt_xho.trn.xml"))
     xh_test_sentences = get_sentences_nchlt(os.path.join(XH_PATH, "transcriptions", "nchlt_xho.tst.xml"))
 
-    # af_train_set = get_data_entries_nchlt(AF_PATH, af_train_sentences)
-    # af_test_set = get_data_entries_nchlt(AF_PATH, af_test_sentences)
-    # xh_train_set = get_data_entries_nchlt(XH_PATH, xh_train_sentences)
-    # xh_test_set = get_data_entries_nchlt(XH_PATH, xh_test_sentences)
+    train_set, test_set = [], []
+    train_set += get_data_entries_nchlt(AF_PATH, af_train_sentences)
+    test_set += get_data_entries_nchlt(AF_PATH, af_test_sentences)
+    train_set += get_data_entries_nchlt(XH_PATH, xh_train_sentences)
+    test_set += get_data_entries_nchlt(XH_PATH, xh_test_sentences)
 
-    # print("\rPre-processing datasets ...", end="")
-    # train_set = preprocess_dataset(train_set)
-    # val_set = preprocess_dataset(val_set)
-    # test_set = preprocess_dataset(test_set)
-    # test_set_copy = preprocess_dataset(test_set_copy)
-
-    # print("\rDatasets loaded and pre-processed successfully.")
-    # return train_set, val_set, test_set, test_set_copy
+    print("\rNCHLT dataset loaded successfully.")
+    return train_set, None, test_set
 
 def load_and_preprocess_high_quality_tts():
     DATA_PATH = 'data/high-quality-tts-data'
@@ -131,7 +151,7 @@ def load_and_preprocess_high_quality_tts():
                 entries.append(data_entry)
         return entries
 
-    print("Loading datasets ...", end="")
+    print("Loading high-quality-tts dataset ...", end="")
     af_sentences = get_sentences_high_quality_tts(os.path.join(DATA_PATH, AF_PATH, 'line_index.tsv'))
     af_data = get_data_entries_high_quality_tts(os.path.join(DATA_PATH, AF_PATH, 'wavs'), af_sentences)
     xh_sentences = get_sentences_high_quality_tts(os.path.join(DATA_PATH, XH_PATH, 'line_index.tsv'))
@@ -142,20 +162,12 @@ def load_and_preprocess_high_quality_tts():
     random.Random(42).shuffle(combined_data)
     train_idx = int(0.8*len(combined_data))
     val_idx = int(0.9*len(combined_data))
-    train_set = Dataset.from_list(combined_data[:train_idx])
-    val_set = Dataset.from_list(combined_data[train_idx:val_idx])
+    train_set = combined_data[:train_idx]
+    val_set = combined_data[train_idx:val_idx]
     test_set = combined_data[val_idx:]
-    test_set_copy = Dataset.from_list(test_set.copy())
-    test_set = Dataset.from_list(test_set)
-    
-    print("\rPre-processing datasets ...", end="")
-    train_set = preprocess_dataset(train_set)
-    val_set = preprocess_dataset(val_set)
-    test_set = preprocess_dataset(test_set)
-    test_set_copy = preprocess_dataset(test_set_copy)
 
-    print("\rDatasets loaded and pre-processed successfully.")
-    return train_set, val_set, test_set, test_set_copy
+    print("\rhigh-quality-tts dataset loaded successfully.")
+    return train_set, val_set, test_set
 
 def get_speech_data(audio_dir, files):
     for file_name in files:

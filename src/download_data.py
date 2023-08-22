@@ -27,23 +27,22 @@ def download_file(url, file_name):
     print(f"File {os.path.basename(file_name)} downloaded successfully!\n")
 
 def extract_tar_file(tar_path, extract_path):
-    """
-    Uses the tarfile library to extract the downloaded data sets.
-    """
+    """Uses the tarfile library to extract the downloaded data sets."""
     with tarfile.open(tar_path, "r:gz") as tar:
         tar.extractall(path=extract_path)
+
+def change_pwd():
+    """Change the cwd to the script's directory"""
+    script_path = os.path.abspath(__file__)
+    script_directory = os.path.dirname(script_path)
+    os.chdir(script_directory)
 
 def download_high_quality_tts():
     """
     Downloads the data required for this project. 
     Also checks if data is already downloaded
     """
-    # Change the cwd to the script's directory
-    script_path = os.path.abspath(__file__)
-    script_directory = os.path.dirname(script_path)
-    os.chdir(script_directory)
-    
-    # Get data directory
+    change_pwd()
     data_path = p_join("data", "high-quality-tts-data")
     
     # Check if data is already downloaded
@@ -71,3 +70,9 @@ def download_high_quality_tts():
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
+
+if __name__ == "__main__":
+    change_pwd()
+    data_path = p_join("data", "high-quality-tts-data")
+    url = "http://www.demitasse.co.za/~demitasse/resources/xho_multispeaker_tts_corpus.tar"
+    download_file(url, p_join(data_path, "xho_multispeaker_tts_corpus.tar"))
