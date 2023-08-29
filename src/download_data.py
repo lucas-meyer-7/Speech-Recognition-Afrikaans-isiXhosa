@@ -3,6 +3,7 @@ import tarfile
 import requests
 
 from tqdm import tqdm
+from utils import change_pwd
 from datasets import load_dataset
 from os.path import join as p_join
 
@@ -31,11 +32,7 @@ def extract_tar_file(tar_path, extract_path):
     with tarfile.open(tar_path, "r:gz") as tar:
         tar.extractall(path=extract_path)
 
-def change_pwd():
-    """Change the cwd to the script's directory"""
-    script_path = os.path.abspath(__file__)
-    script_directory = os.path.dirname(script_path)
-    os.chdir(script_directory)
+
 
 def download_high_quality_tts():
     """
@@ -70,9 +67,3 @@ def download_high_quality_tts():
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
-
-if __name__ == "__main__":
-    change_pwd()
-    data_path = p_join("data", "high-quality-tts-data")
-    url = "http://www.demitasse.co.za/~demitasse/resources/xho_multispeaker_tts_corpus.tar"
-    download_file(url, p_join(data_path, "xho_multispeaker_tts_corpus.tar"))

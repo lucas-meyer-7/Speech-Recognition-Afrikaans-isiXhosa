@@ -7,31 +7,33 @@ isiXhosa.
 ## How to run
 Read through the ``src/main.ipynb`` notebook.
 
-## Datasets (Work in progress)
+## Datasets
+
+### Datasets I am using
 | Webpage Link | Language | Number of data entries | Additional info |
 |--------------|----------|------------------------|-----------------|
-|**isiXhosa datasets**||||
+|**NHCLT**||||
 | [nchlt isixhosa](https://repo.sadilar.org/handle/20.500.12185/279)                 | xh      | 46651       | 107 different female speakers and 103 different male speakers. Xhosa speaker split: 103/99, 0/0, 4/4. There is also age information. |
-| [african speech tech](https://repo.sadilar.org/handle/20.500.12185/305)            | xh      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
-| [lwazi 1 isixhosa tts](https://repo.sadilar.org/handle/20.500.12185/462)           | xh      | 339         | Nothing besides allignment info. |
-| [lwazi 2 isixhosa tts](https://repo.sadilar.org/handle/20.500.12185/440)           | xh      | 912         | Nothing besides allignment info. |
-| [lwazi 3 isixhosa tts **](https://repo.sadilar.org/handle/20.500.12185/268)        | xh      | Requested.  | Requested. |
-| [lwazi isixhosa asr](https://repo.sadilar.org/handle/20.500.12185/460)             | xh      | 6300        | 210 different speakers (30 sentences each): 107 female speakers and 101 male speakers (2 unknown). The examples for each speaker are not very long, and the transcritptions need to be preprocessed in their own way. The spoken sentences are the same for every speaker. There is also age information. Cellphone quality recordings. |
-|**Afrikaans datasets**||||
 | [nchlt afrikaans](https://repo.sadilar.org/handle/20.500.12185/280)                | af      | 66133       | 106 different female speakers and 103 different male speakers. Afrikaans speaker split: 102/99, 0/0, 4/4. There is also age information. |
-| [african speech tech](https://repo.sadilar.org/handle/20.500.12185/400)            | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
-| [lwazi 1 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/436)       | af      | Requested.  | Requested. |
-| [lwazi 2 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/443)       | af      | Requested.  | Requested. |
-| [lwazi 3 afrikaans tts **](https://repo.sadilar.org/handle/20.500.12185/266)       | af      | Requested.  | Requested. |
+|**Lwazi_ASR**||||
+| [lwazi isixhosa asr](https://repo.sadilar.org/handle/20.500.12185/460)             | xh      | 6300        | 210 different speakers (30 sentences each): 107 female speakers and 101 male speakers (2 unknown). The examples for each speaker are not very long, and the transcritptions need to be preprocessed in their own way. The spoken sentences are the same for every speaker. There is also age information. Cellphone quality recordings. |
 | [lwazi afrikaans asr](https://repo.sadilar.org/handle/20.500.12185/434)            | af      | 6000        | 200 different speakers (30 sentences each): 98 female speakers and 101 male speakers (1 unknown). The examples for each speaker are not very long, and the transcritptions need to be preprocessed in their own way. The spoken sentences are the same for every speaker. There is also age information. Cellphone quality recordings. |
-|**Weird Afrikaans datasets**||||
-| [tracking trajectory](https://repo.sadilar.org/handle/20.500.12185/442)            | af      | 11097       | 1 male speaker. Short and mostly half sentences (+- three words). |
+|**High_Quality_TTS**||||
+| [high quality tts](https://repo.sadilar.org/handle/20.500.12185/527)               | af + xh | 2927 + 2420 | Afrikaans: 9 different female speakers and 0 male speakers. Xhosa: 12 different female speakers and 0 male speakers. |
+|**Fleurs_ASR**||||
+| [hugging face fleurs](https://huggingface.co/datasets/google/fleurs)               | af + xh | 1494 + 4953 | Afrikaans amount split: 941/91, 0/198, 0/264. Xhosa amount split: 2471/995, 0/446, 0/1041. |
+
+### Datasets I am not using
+| Webpage Link | Language | Number of data entries | Additional info |
+|--------------|----------|------------------------|-----------------|
+|**African_Speech_Tech**||||
+| [african speech tech (xh)](https://repo.sadilar.org/handle/20.500.12185/305)       | xh      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+| [african speech tech (af)](https://repo.sadilar.org/handle/20.500.12185/400)       | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+|**Coloured/black Afrikaans**||||
 | [coloured afrikaans](https://repo.sadilar.org/handle/20.500.12185/444)             | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
 | [black afrikaans](https://repo.sadilar.org/handle/20.500.12185/422)                | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
+|**Multipron corpus**||||
 | [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. |
-|**Afrikaans + isiXhosa datasets**||||
-| [high quality tts](https://repo.sadilar.org/handle/20.500.12185/527)               | af + xh | 2927 + 2420 | Afrikaans: 9 different female speakers and 0 male speakers. Xhosa: 12 different female speakers and 0 male speakers. |
-| [hugging face fleurs](https://huggingface.co/datasets/google/fleurs)               | af + xh | 1494 + 4953 | Afrikaans amount split: 941/91, 0/198, 0/264. Xhosa amount split: 2471/995, 0/446, 0/1041. |
 
 ## Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
@@ -43,25 +45,22 @@ Read through the ``src/main.ipynb`` notebook.
 ## Questions for Herman (11/08/2023)
    1. **Question:** What's next? In what direction are we heading towards?
         - **Answer:** First clean up pipeline and sort out datasets.
-   2. **Question:** Do you expect me to implement and train a similar model from scratch?
-        - **Answer:** ...
-   3. **Question:** Should diacritics be removed? Other preprocessing tips?
+   2. **Question:** Should diacritics be removed? Other preprocessing tips?
         - **Answer:** No, keep it as simple as possible.
-   4. **Question:** I'm not entirely sure what a sensible method is for 
+   3. **Question:** I'm not entirely sure what a sensible method is for 
       choosing a validation/test set. Right now I am splitting
       randomly.
         - **Answer:** Choose test/validation set very carefully & don't split randomly.
-   5. **Question:** Should I remove the English sentences from the Afrikaans and
+   4. **Question:** Should I remove the English sentences from the Afrikaans and
       isiXhosa datasets?
         - **Answer:** No.
-   6. **Question:** Siswati or isiXhosa?
+   5. **Question:** Siswati or isiXhosa?
         - **Answer:** Use isiXhosa for now.
 
 ## Progress (18/08/2023)
    1. Downloaded more datasets.
    2. Familiarized with HuggingFace hub and can now load and store models.
    3. Further research into how XLS-R works.
-   4. Research into how OpenAI's whisper works.
 
 ## Questions for Herman (18/08/2023)
    1. **Question:** *(More for myself)* Why are NNs preferred over other 
@@ -74,39 +73,48 @@ Read through the ``src/main.ipynb`` notebook.
         superior performance in ASR tasks.
         - **Herman answer:** Over the years NNs started to perform much better
         than the goto models, which were HMMs at the time.
-   2. **Question:** Is the development set the same as the validation set? 
-   Why do people use less data entries in their dev sets than in their test sets?
-   	- **Answer:** Could be for many different reasons, but most likely it is
-   	small so that the training set can be as large as possible.
+   2. **Question:** Why do people use less data entries in their dev sets than in their test sets?
+        - **Answer:** Could be for many different reasons. Typically, the dev set
+        is small so that the training set can be as large as possible.
 
+## Progress (29/08/2023)
+   1. Completed dataset exploration. Unfortunately, more than half of the datasets
+   which I downloaded/requested are either (1) not available anymore, (2) impractical format,
+   or (3) are not useful for ASR tasks (eg. datasets that contain limited number of speakers).
+   2. Read through the literature of ASR, which includes research papers and textbook chapters.
+   I also made hand-written summaries of the resources which I thought were important. 
+   The table below provides a summary of the papers/resources which I either read or summarized.
 
+| Resource | Progress | Extra notes |
+|-|-|-|
+| Attention is all you need | Read and summarized. | Relatively straight forward. | 
+| wav2vec & vq-wav2vec | Skimmed over. | wav2vec 2.0 builds on this work.|
+| wav2vec 2.0 | Read and summarized. | I don't understand all the main parts yet, but went over everything at least once. |
+| Speech and Language processing (Ch. 16) | Read and summarized. | Provides a great introduction and background of the ASR field. Leaves out self-supervision techniques. |
+| XLS-R | Read and summarized. | I used this paper as a starting point to recurse through bibliographies. |
+| Layer Normalization | Skimmed over. | Relatively straight forward. |
+| Gaussian error linear units | Skimmed over. | Relatively straight forward. |
+| Whisper (OpenAI) | Skimmed over. | Does not rely on self-supervised pretraining. Relies on massive dataset and supervised techniques. | |
+| Speech SimCLR | Todo. | Todo. |
+| MAESTRO | Todo. | Todo. |
+| mSLAM | Todo. | Todo. |
+| Methods to Optimize Wav2Vec in Resource Constrained Environment | Todo. | Todo. |
+| Optimizing Wav2Vec for small datasets | Todo. | Todo. |
+| Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains| Todo. | Not really part of the literature, just want to read for interest sake. | 
 
-## TODO (25/08/2023)
-   1. Read through papers and make summaries.
-   2. Load datasets and finish scripts.
-   3. Start writing report.
-
-## Progress (25/08/2023)
-   1. 
-
-## Questions for Herman (18/08/2023)
-   1. **Question:**
-
+## Questions for Herman (29/08/2023)
+   1. **Discussion:** I can see two approaches of creating a train/val/test set.
+   The 1st approach is to use seperate datasets (NCHLT, Fleurs, high-quality-tts, etc.)
+   for each of the train/val/test sets. The 2nd approach is to create a train/val/test
+   set from each dataset (NCHLT, Fleurs, high-quality-tts, etc.) and then to combine
+   each training set to create the final training set, etc. ...
 
 
 ## References and Acknowledgements
-This following is a summary of the internet resources that were used
-to develop this project.
+The following is a rough summary of relevant resources.
 
-### Papers (read and summarized):
- - Attention is all you need.
- 
-### Papers (to finish)
- - XLS-R
- - ProphetNet (kinda)
- - Wav2Vec
- - Whisper
- - Fourier series approximation paper from YT
+### Papers and textbook chapters
+You can find papers and textbook chapters in the ``notes`` directory.
 
 ### ChatGPT chats:
  - https://chat.openai.com/share/af4e27d1-3899-45b2-8917-bf3b5f6e669a
@@ -114,9 +122,16 @@ to develop this project.
  - https://chat.openai.com/share/4885c5b0-1465-4cc9-a74b-a1282bf8ccc1
 
 ### Tutorial/blog webpages:
+ - HuggingFace website contains numerous tutorials on how to use 
+ the ``datasets`` and ``transformers`` library.
  - Fine-tuning tutorial: https://huggingface.co/blog/fine-tune-xlsr-wav2vec2
 
 ### YouTube videos:
  - Transformer Neural Networks explained: https://www.youtube.com/watch?v=TQQlZhbC5ps 
  - HuggingFace introduction: https://www.youtube.com/watch?v=QEaBAZQCtwE
+ - Layer normalization short: https://youtube.com/shorts/TKPowx9fb-A?feature=share
+ - Self-supervised learning explained: https://www.youtube.com/watch?v=iGJ1XSkCyU0
+ - Beam search: https://www.youtube.com/watch?v=RLWuzLLSIgw
+ - Refining beam search: https://www.youtube.com/watch?v=gb__z7LlN_4 
+ - Watching neural networks learn: https://www.youtube.com/watch?v=TkwXa7Cvfr8&list=LL&index=18
 
