@@ -23,7 +23,9 @@ Read through the ``src/main.ipynb`` notebook.
 |**Fleurs_ASR**||||
 | [hugging face fleurs](https://huggingface.co/datasets/google/fleurs)               | af + xh | 1494 + 4953 | Afrikaans amount split: 941/91, 0/198, 0/264. Xhosa amount split: 2471/995, 0/446, 0/1041. |
 
-### Datasets I am not using
+![](src/data_size.png)
+
+<!-- ### Datasets I am not using
 | Webpage Link | Language | Number of data entries | Additional info |
 |--------------|----------|------------------------|-----------------|
 |**African_Speech_Tech**||||
@@ -33,7 +35,7 @@ Read through the ``src/main.ipynb`` notebook.
 | [coloured afrikaans](https://repo.sadilar.org/handle/20.500.12185/444)             | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
 | [black afrikaans](https://repo.sadilar.org/handle/20.500.12185/422)                | af      | Not sure.   | Struggling with the format of the dataset. The audio files are in ``.alaw`` format and the full sentence transcriptions are not given (they provide ``.TextGrid`` files). |
 |**Multipron corpus**||||
-| [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. |
+| [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. | -->
 
 ## Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
