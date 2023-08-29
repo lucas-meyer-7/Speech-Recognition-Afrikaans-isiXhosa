@@ -37,7 +37,7 @@ Read through the ``src/main.ipynb`` notebook.
 |**Multipron corpus**||||
 | [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. | -->
 
-## Progress (11/08/2023)
+<!-- ## Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
    2. Performed preprocessing to convert data into Dataset format for huggingface.
    3. Created a train/validation/test set from the data.
@@ -77,7 +77,7 @@ Read through the ``src/main.ipynb`` notebook.
         than the goto models, which were HMMs at the time.
    2. **Question:** Why do people use less data entries in their dev sets than in their test sets?
         - **Answer:** Could be for many different reasons. Typically, the dev set
-        is small so that the training set can be as large as possible.
+        is small so that the training set can be as large as possible. -->
 
 ## Progress (29/08/2023)
    1. Completed dataset exploration. Unfortunately, more than half of the datasets
@@ -110,7 +110,6 @@ Read through the ``src/main.ipynb`` notebook.
    for each of the train/val/test sets. The 2nd approach is to create a train/val/test
    set from each dataset (NCHLT, Fleurs, high-quality-tts, etc.) and then to combine
    each training set to create the final training set, etc. ...
-
 
 ## References and Acknowledgements
 The following is a rough summary of relevant resources.
