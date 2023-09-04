@@ -133,8 +133,8 @@ Read through the Python notebook: ``src/main.ipynb``.
 
 ## 5. References and Acknowledgements
 
-### 5.1. Papers and textbook chapters
-You can find papers and textbook chapters in the ``notes`` directory.
+### 5.1. Research papers and textbooks
+Refer to Section 3 above.
 
 ### 5.2. ChatGPT chats:
  - https://chat.openai.com/share/af4e27d1-3899-45b2-8917-bf3b5f6e669a
