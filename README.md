@@ -42,7 +42,7 @@ Read through the Python notebook: ``src/main.ipynb``.
 | Layer Normalization | Skimmed over. | Relatively straight forward. |
 | Gaussian error linear units | Skimmed over. | Relatively straight forward. |
 | Whisper (OpenAI) | Skimmed over. | Does not rely on self-supervised pretraining. Relies on massive dataset and supervised techniques. | |
-| Speech SimCLR | Todo. | Todo. |
+| Speech SimCLR | Skimmed over. | Uses data augmentation, and relies on an objective that combines contrastive loss and reconstruction loss. |
 | MAESTRO | Todo. | Todo. |
 | mSLAM | Todo. | Todo. |
 | Methods to Optimize Wav2Vec in Resource Constrained Environment | Todo. | Todo. |
