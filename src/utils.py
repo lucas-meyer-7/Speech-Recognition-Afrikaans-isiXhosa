@@ -10,6 +10,9 @@ from tqdm import tqdm
 # this function.
 # ---------------------------------------
 
+SR = 16000
+WRITE_ACCESS_TOKEN = "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"
+
 def change_pwd():
     """Change the cwd to the script's directory"""
     script_path = os.path.abspath(__file__)
