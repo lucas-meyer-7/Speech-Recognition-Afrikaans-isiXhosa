@@ -38,7 +38,7 @@ def download_file(url, file_name):
     """
     response = requests.get(url, stream=True)
     file_size = int(response.headers.get("content-length", 0))
-    block_size = 1024  # 1 KB
+    block_size = 1024  # 128 KB
     print(f"Downloading {os.path.basename(file_name)} ...")
     progress_bar = tqdm(total=file_size, unit="iB", unit_scale=True)
 
@@ -80,7 +80,7 @@ def download_high_quality_tts():
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
 
-def download_nchlt():
+def download_nchlt(only_af = False, only_xh = False):
     """
     Downloads data required for this project. 
     Also checks if data is already downloaded
@@ -98,9 +98,10 @@ def download_nchlt():
     # Download and extract the datasets
     try:
         download_file(af_url, af_file_name)
-        download_file(xh_url, xh_file_name)
         extract_tar_file(af_file_name, AF_PATH)
-        extract_tar_file(xh_file_name, XH_PATH)
+        if only_xh or (only_af == False and only_xh == False):
+            download_file(xh_url, xh_file_name)
+            extract_tar_file(xh_file_name, XH_PATH)
     except requests.exceptions.RequestException as e:
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:

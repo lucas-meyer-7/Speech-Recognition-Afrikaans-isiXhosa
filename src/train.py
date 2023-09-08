@@ -25,7 +25,8 @@ from transformers import Wav2Vec2FeatureExtractor
 from transformers import Trainer, TrainingArguments
 
 class ASR_MODEL:
-    def __init__(self, dataset_name, load_from_hf, push_to_hub, write_audio):
+    def __init__(self, repo_name, dataset_name, load_from_hf, push_to_hub, write_audio):
+        self.repo_name = repo_name
         self.dataset_name = dataset_name
         self.load_from_hf = load_from_hf
         self.push_to_hub = push_to_hub
@@ -87,9 +88,6 @@ class ASR_MODEL:
         self.test_set = dataset["test"].cast_column("audio", Audio(sampling_rate=SR)).rename_column("transcription", "sentence")
         torch.cuda.empty_cache()
 
-    def repo_name(self):
-        return f"wav2vec2-xls-r-300m-{self.dataset_name}"
-
     def extract_all_chars(self, batch):
         all_text = " ".join(batch["sentence"])
         vocab = list(set(all_text))
@@ -124,15 +122,16 @@ class ASR_MODEL:
         vocab_dict["[PAD]"] = len(vocab_dict)
         
         # Save vocabulary file
-        with open('vocab.json', 'w') as vocab_file:
+        with open(os.path.join(self.repo_name, 'vocab.json'), 'w') as vocab_file:
             json.dump(vocab_dict, vocab_file)
 
-        self.tokenizer = Wav2Vec2CTCTokenizer("./vocab.json",
+        self.tokenizer = Wav2Vec2CTCTokenizer(os.path.join(self.repo_name, 'vocab.json'),
                                               unk_token="[UNK]",
                                               pad_token="[PAD]",
                                               word_delimiter_token="|")
 
-        self.tokenizer.push_to_hub(self.repo_name())
+        if self.push_to_hub:
+            self.tokenizer.push_to_hub(f"lucas-meyer/{self.repo_name}")
 
     def prepare_dataset(self, batch):
         audio = batch["audio"]
@@ -185,23 +184,27 @@ class ASR_MODEL:
         wer = wer_metric.compute(predictions=pred_str, references=label_str)
         return {"wer": wer}
 
-    def train(self, use_gpu):
+    def train(self):
         training_args = TrainingArguments(
-            output_dir=self.repo_name(),
-            group_by_length=True,
+            output_dir=self.repo_name,
+            overwrite_output_dir=True,
+            group_by_length=False,
+            #auto_find_batch_size=True,
             per_device_train_batch_size=1,
-            gradient_accumulation_steps=2,
+            per_device_eval_batch_size=1,
+            gradient_accumulation_steps=1,
+            eval_accumulation_steps=1,
             evaluation_strategy="steps",
-            num_train_epochs=30,
+            num_train_epochs=20,
             gradient_checkpointing=True,
-            fp16=use_gpu,
+            fp16=True,
             save_steps=400,
             eval_steps=400,
             logging_steps=400,
             learning_rate=3e-4,
             warmup_steps=500,
             save_total_limit=2,
-            push_to_hub=True,
+            push_to_hub=False,
         )
 
         self.trainer = Trainer(
@@ -260,28 +263,21 @@ class DataCollatorCTCWithPadding:
 def main():
     os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
     login(token=WRITE_ACCESS_TOKEN)
-    model = ASR_MODEL(dataset_name="asr_af", 
+
+    model_name = "wav2vec2-xls-r-300m"
+    dataset_name = "asr_af"
+    model = ASR_MODEL(repo_name=f"{model_name}-{dataset_name}",
+                      dataset_name=dataset_name, 
                       load_from_hf=False, 
                       push_to_hub=False,
-                      write_audio=False)
+                      write_audio=True)
 
     model.load_datasets()
-    torch.cuda.empty_cache()
-
     model.create_tokenizer()
-    torch.cuda.empty_cache()
-
     model.extract_features()
-    torch.cuda.empty_cache()
-
     model.create_data_collator()
-    torch.cuda.empty_cache()
-
-
     model.download_xlsr()
-    torch.cuda.empty_cache()
-
-    model.train(use_gpu=True)
+    model.train()
 
 if __name__ == "__main__":
     main()

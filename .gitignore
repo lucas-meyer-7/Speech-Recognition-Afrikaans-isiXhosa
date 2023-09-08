@@ -4,7 +4,6 @@ src/asr_af/
 src/asr_xh/
 src/asr_af_xh/
 notes/
-# To download the required data, run the download_data.py file.
 
 # Ignore Python cache:
 __pycache__/
@@ -14,3 +13,7 @@ __pycache__/
 report/*.aux
 report/*.log
 report/*.out
+
+# Ignore HPC output files
+src/output.err
+src/output.out

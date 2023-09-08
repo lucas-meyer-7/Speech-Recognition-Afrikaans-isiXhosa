@@ -16,7 +16,7 @@ def load_nchlt(only_af = False, only_xh = False, write_audio = False):
     if (not os.path.isdir(AF_PATH)) or (not os.path.isdir(XH_PATH)):
         os.makedirs(AF_PATH, exist_ok=True)
         os.makedirs(XH_PATH, exist_ok=True)
-        download_nchlt()
+        download_nchlt(only_af = False, only_xh = False)
     
     change_pwd()
 

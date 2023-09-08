@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -N train_asr_model
-#PBS -l select=1:ncpus=4:mem=128GB:ngpus=3:Qlist=ee
-#PBS -l walltime=10:00:00
+#PBS -l select=1:ncpus=4:mem=96GB:ngpus=3:Qlist=ee
+#PBS -l walltime=24:00:00
 #PBS -m ae
 #PBS -e output.err
 #PBS -o output.out
@@ -32,6 +32,7 @@ pip install -r requirements.txt
 # curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 
 # Run training script
+mkdir wav2vec2-xls-r-300m-asr_af
 python3 train.py
 
 # Job done, deactivate environment and copy everything back
