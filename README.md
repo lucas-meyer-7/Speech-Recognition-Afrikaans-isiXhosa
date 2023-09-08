@@ -43,20 +43,15 @@ Read through the Python notebook: ``src/main.ipynb``.
 | Gaussian error linear units | Skimmed over. | Relatively straight forward. |
 | Whisper (OpenAI) | Skimmed over. | Does not rely on self-supervised pretraining. Relies on massive dataset and supervised techniques. | |
 | Speech SimCLR | Skimmed over. | Uses data augmentation, and relies on an objective that combines contrastive loss and reconstruction loss. |
-| MAESTRO | Todo. | Todo. |
-| mSLAM | Todo. | Todo. |
-| Methods to Optimize Wav2Vec in Resource Constrained Environment | Todo. | Todo. |
-| Optimizing Wav2Vec for small datasets | Todo. | Todo. |
-| Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains| Todo. | Not really part of the literature, just want to read for interest sake. | 
 
-<!-- ## Progress (11/08/2023)
+<!-- ### Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
    2. Performed preprocessing to convert data into Dataset format for huggingface.
    3. Created a train/validation/test set from the data.
    4. Bare minimum text normalization for the label/sentences/transcripts.
    5. Imported large XLS-R model and fine-tuned with Afrikaans data + saved a model.
 
-## Questions for Herman (11/08/2023)
+### Questions for Herman (11/08/2023)
    1. **Question:** What's next? In what direction are we heading towards?
         - **Answer:** First clean up pipeline and sort out datasets.
    2. **Question:** Do you expect me to implement and train a similar model from scratch?
@@ -73,13 +68,13 @@ Read through the Python notebook: ``src/main.ipynb``.
    6. **Question:** Siswati or isiXhosa?
         - **Answer:** Use isiXhosa for now.
 
-## Progress (18/08/2023)
+### Progress (18/08/2023)
    1. Downloaded more datasets.
    2. Familiarized with HuggingFace hub and can now load and store models.
    3. Further research into how XLS-R works.
    4. Research into how OpenAI's whisper works.
 
-## Questions for Herman (18/08/2023)
+### Questions for Herman (18/08/2023)
    1. **Question:** *(More for myself)* Why are NNs preferred over other 
     machine learning algorithms for the problem of speech recognition?
    machine learning algorithms for the problem of speech recognition?
@@ -98,7 +93,7 @@ Read through the Python notebook: ``src/main.ipynb``.
          - **Answer:** Could be for many different reasons, but most likely it is
          small so that the training set can be as large as possible.
 
-## Progress (29/08/2023)
+### Progress (29/08/2023)
    1. Completed dataset exploration. Unfortunately, more than half of the datasets
    which I downloaded/requested are either (1) not available anymore, (2) impractical format,
    or (3) are not useful for ASR tasks (eg. datasets that contain limited number of speakers).
@@ -106,30 +101,37 @@ Read through the Python notebook: ``src/main.ipynb``.
    I also made hand-written summaries of the resources which I thought were important. 
    The table below provides a summary of the papers/resources which I either read or summarized.
 
-## Questions for Herman (29/08/2023)
+### Questions for Herman (29/08/2023)
    1. **Discussion:** I can see two approaches of creating a train/val/test set.
    The 1st approach is to use seperate datasets (NCHLT, Fleurs, high-quality-tts, etc.)
    for each of the train/val/test sets. The 2nd approach is to create a train/val/test
    set from each dataset (NCHLT, Fleurs, high-quality-tts, etc.) and then to combine
    each training set to create the final training set, etc.
-         - **Conclusion:** Go for the 2nd approach, makes result section better. -->
+         - **Conclusion:** Go for the 2nd approach, makes result section better.
 
-## 4. Progress Update & Questions
-
-### 4.1. Progress (02/09/2023)
+### Progress (02/09/2023)
    1. **Finished dataset (DS) splits** for Afrikaans-exclusive DS, isiXhosa-exclusive DS, 
    and Afrikaans-isiXhosa-combined DS.
    2. **Uploaded Afrikaans-exclusive** DS to the HuggingFace [hub](https://huggingface.co/datasets/lucas-meyer/asr_af).
    3. **Continued reading** through the literature of ASR.
 
-<!-- ### 4.2. Questions for Herman (02/09/2023)
+### Questions for Herman (02/09/2023)
    1. **Discussion:** If the data is already downloaded, then it takes
    about 3 minutes to load the Afrikaans-exclusive dataset from disk. 
    However, when using Google Colab it takes about 30 minutes to load 
    the Afrikaans-exclusive dataset from the HuggingFace hub. This is one
    of the reasons why I think using Google Colab will be a painful experience.
-   Are there any available *super*-computers that I can get access to?
-   2.  -->
+   Are there any available *super*-computers that I can get access to? -->
+
+## 4. Progress Update & Questions
+
+### 4.1. Progress (08/09/2023)
+   1. (Mon \& Tue) Familiarized myself with HPC1, and set SSH up with VPN.
+   2. (Wed, Thu \& Fr) Tried to train xls-r model (300M) with ~ 65K Afrikaans instances. It became clear to me that having a GPU does not necessarily solve my previous issues. The main issue: Running out of GPU memory. There are few more ways to optimize GPU memory usage that I haven't tried (e.g. using a fully sharded backend).
+
+### 4.2 Questions for Herman (08/09/2023)
+   1. **Discussion:** Should I continue trying to train the 300M xls-r model and/or the tiny/small whisper model using Huggingface? OR, should I try to implement the same models without using HuggingFace (i.e. only PyTorch.audio ...). My opinion is that HuggingFace is convenient, however there is less control. I would like to give HuggingFace one last chance over the weekend, since there are some things I can still try. However, I think that if Monday comes and I still don't have anything, I would like to try implementing it using the audio package from PyTorch (they have built-in support for CTC and Wav2Vec2).
+   2. **Discussion:** Would like to discuss potential research questions that we can answer. Would appreciate if you could give input and raise any potential concerns.
 
 ## 5. References and Acknowledgements
 
@@ -154,4 +156,3 @@ Refer to Section 3 above.
  - Beam search: https://www.youtube.com/watch?v=RLWuzLLSIgw
  - Refining beam search: https://www.youtube.com/watch?v=gb__z7LlN_4 
  - Watching neural networks learn: https://www.youtube.com/watch?v=TkwXa7Cvfr8&list=LL&index=18
-
