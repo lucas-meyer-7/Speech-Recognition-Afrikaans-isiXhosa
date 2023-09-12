@@ -121,17 +121,31 @@ Read through the Python notebook: ``src/main.ipynb``.
    However, when using Google Colab it takes about 30 minutes to load 
    the Afrikaans-exclusive dataset from the HuggingFace hub. This is one
    of the reasons why I think using Google Colab will be a painful experience.
-   Are there any available *super*-computers that I can get access to? -->
+   Are there any available *super*-computers that I can get access to?
 
-## 4. Progress Update & Questions
-
-### 4.1. Progress (08/09/2023)
+### Progress (08/09/2023)
    1. (Mon \& Tue) Familiarized myself with HPC1, and set SSH up with VPN.
    2. (Wed, Thu \& Fr) Tried to train xls-r model (300M) with ~ 65K Afrikaans instances. It became clear to me that having a GPU does not necessarily solve my previous issues. The main issue: Running out of GPU memory. There are few more ways to optimize GPU memory usage that I haven't tried (e.g. using a fully sharded backend).
 
-### 4.2 Questions for Herman (08/09/2023)
+### Questions for Herman (08/09/2023)
    1. **Discussion:** Should I continue trying to train the 300M xls-r model and/or the tiny/small whisper model using Huggingface? OR, should I try to implement the same models without using HuggingFace (i.e. only PyTorch.audio ...). My opinion is that HuggingFace is convenient, however there is less control. I would like to give HuggingFace one last chance over the weekend, since there are some things I can still try. However, I think that if Monday comes and I still don't have anything, I would like to try implementing it using the audio package from PyTorch (they have built-in support for CTC and Wav2Vec2).
+      - **Answer:** Try to fine-tune one model on HF if you can. Use ``fairseq`` for the rest.
    2. **Discussion:** Would like to discuss potential research questions that we can answer. Would appreciate if you could give input and raise any potential concerns.
+      - **Answer:** Three tiers of goals: (1) Fine-tune XLS-R to Afrikaans and isiXhosa. (2) Compare pretraining from scratch + finetuning VS. finetuning a pretrained model. (3) Pretraining on isiXhosa, finetuning on Zulu. -->
+
+## 4. Progress Update & Questions
+
+### Progress (15/09/2023)
+   1. **Monday:** Finished presentation and prepared speech. Established three tiers of end-goals: 
+      1. Fine-tune XLS-R to Afrikaans and isiXhosa.
+      2. Comparison: Pretraining wav2vec2 from scratch + finetuning VS. finetuning a pretrained XLS-R model.
+      3. Comparison: Pretraining on isiXhosa and finetuning on Zulu VS. pretraining on Afrikaans and finetuning on Zulu.
+   2. **Tuesday:** Researched wav2vec2 pretraining, tried to run fine-tuning script on Google Colab, and wrote a little bit.
+   3. **Wednesday:** 
+
+### Questions for Herman (15/09/2023)
+   1. **Question:** Can you comment on the three tiers of end-goals for the project. Is it too little/much? Is it over/under-ambitious?
+   2. **Question:** 
 
 ## 5. References and Acknowledgements
 
