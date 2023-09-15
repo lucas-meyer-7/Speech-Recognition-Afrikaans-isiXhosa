@@ -1,5 +1,7 @@
+import gc
 import os
 import re
+import torch
 import tarfile
 import requests
 from tqdm import tqdm
@@ -106,3 +108,7 @@ def download_nchlt(only_af = False, only_xh = False):
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
+
+def clear_cache():
+    gc.collect()
+    torch.cuda.empty_cache()

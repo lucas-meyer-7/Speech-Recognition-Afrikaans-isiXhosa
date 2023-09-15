@@ -58,7 +58,23 @@
 % ++++++++++++++++++++++++++++++++++++
 % Background
 % ++++++++++++++++++++++++++++++++++++
-\section{Background}\label{sec:background}
+\section{Background: Automatic Speech Recognition}\label{sec:background}
+Automatic speech recognition (ASR) is a task that is intuitive and easy to understand: given a speech
+recording of arbitrary length, predict the spoken words of the person in the recording. The difficulty
+of ASR tasks depends on the data used to train ASR models. As is the case with many other machine learning models,
+the quality of the data effects the robustness of the model.
+
+The quality of speech data depends on the following factors:
+\begin{itemize}
+    \item The amount of available training data.
+    \item The vocabulary size of the transcription text.
+    \item Who the speaker in the recording is speaking to. Does the data contain \emph{conversational} or \emph{read} speech.
+    \item Microphone position and Microphone quality.
+    \item The presence of background noise.
+    \item The accent of the speaker, which depends on the gender, age, and ethnicity of the speaker.
+\end{itemize}
+
+\section{Wav2Vec}
 
 
 
@@ -68,19 +84,17 @@
 \section{Methodology}\label{sec:methodology}
 
 \subsection{Data sets}
-\begin{itemize}
-    \item Sadilar TTS data: Afrikaans and isiXhosa
-\end{itemize}
-
-\subsection{Preprocessing}
+\subsubsection{Sadilar TTS data}
+\subsubsection{FLEURS dataset}
+\subsubsection{NCHLT dataset}
 
 \subsection{Evaluation metrics}
-\begin{itemize}
-    \item Word error rate (WER): The word error rate is equal to the number of character-level errors in the predicted transcript, 
-    divided by the number of words in the true transcript. One character-level error is corrected using one of three operations:
-    inserting a new character, deleting an existing character, or substituting an existing character for a new character.
-\end{itemize}
+\subsubsection{Word error rate}
+The word error rate (WER) is equal to the number of character-level errors in the predicted transcript, 
+divided by the number of words in the true transcript. One character-level error is corrected using one of three operations:
+inserting a new character, deleting an existing character, or substituting an existing character for a new character.
 
+\section{Emperical Procedure}
 
 
 % ++++++++++++++++++++++++++++++++++++

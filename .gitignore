@@ -3,6 +3,7 @@ src/downloaded/
 src/asr_af/
 src/asr_xh/
 src/asr_af_xh/
+src/nchlt_afr/
 notes/
 
 # Ignore Python cache:

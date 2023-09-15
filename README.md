@@ -140,12 +140,28 @@ Read through the Python notebook: ``src/main.ipynb``.
       1. Fine-tune XLS-R to Afrikaans and isiXhosa.
       2. Comparison: Pretraining wav2vec2 from scratch + finetuning VS. finetuning a pretrained XLS-R model.
       3. Comparison: Pretraining on isiXhosa and finetuning on Zulu VS. pretraining on Afrikaans and finetuning on Zulu.
-   2. **Tuesday:** Researched wav2vec2 pretraining, tried to run fine-tuning script on Google Colab, and wrote a little bit.
-   3. **Wednesday:** 
+   2. **Tuesday:** Researched wav2vec2 pretraining and ran fine-tuning script on Google Colab.
+   3. **Wednesday:** Started with report layout, continued struggling with HPC and eventually gave up.
+   4. **Thursday:** Bought GC compute unnits, fine-tuned XLS-R with AF data (excl. NCHLT data).
+   I also started pretraining a wav2vec model from scratch using HuggingFace and the AF NCHLT dataset.
+   5. **Friday:** Edited README and prepared for meeting, not much yet. I am looking at the following things at the moment:
+      - Continue to fine-tune XLS-R 300M model using different hyperparameter values. Since the model overfits,
+      I would like to decrease the learning rate and introduce callbacks like EarlyStopping.
+      - Try to train a wav2vec2 model from scratch using the NCHLT data. The issue right now is that I am getting NaN loss
+      and cosine similarity. According to some online users the issue arises from having a too large learning rate 
+      (or too small batch size).
+      - Write a little bit of the *background* and *related work* sections of the report.
+
+![](images/pretrain.png)
 
 ### Questions for Herman (15/09/2023)
    1. **Question:** Can you comment on the three tiers of end-goals for the project. Is it too little/much? Is it over/under-ambitious?
-   2. **Question:** 
+   2. **Question:** Can we talk about installing a computer in the Media Lab?
+   3. **Question:** Do you think it is fine to use NCHLT data for pretraining and the rest of the data for fine-tuning?
+   4. **Question:** (``if answer_q2 == "no"``) Where can I find unsupervised speech data?
+   5. **Question:** From your experience with ASR models, could you find a positive correlation between the learning rate and batch size?
+   6. **Question:** What should I focus on the most?
+   6. **Question:** Can you please help me with the layout of the report?
 
 ## 5. References and Acknowledgements
 
