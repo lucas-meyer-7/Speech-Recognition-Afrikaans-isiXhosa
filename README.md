@@ -166,12 +166,12 @@ Read through the Python notebook: ``src/main.ipynb``.
 ### 4.1 Progress (21/09/2023)
    1. **Monday:** Fine-tune XLS-R to Afrikaans and isiXhosa. Started coding LM boosting.
    2. **Tuesday:** Finished LM boosting notebook. Tried LM boosted model, but config and LM alphabet did not align.
-   3. **Wednesday:** Fixed config, LM boosted model works. Messed around for the rest of the day.
+   3. **Wednesday:** Fixed config, LM boosted model works.
 
 ### 4.2 Questions for Herman (21/09/2023)
    1. **Question:** Which data should I use for the LM? I don't think the Wiki data is enough.
    2. **Question:** Could you comment on my vocab and the characters which I am removing?
-   3. **Question:** I haven't really written anything specifically for my report, just taking notes. Is this concerning?
+   3. **Question:** What should I have written before our next meeting, and should I aim to finish the pretraining script as well?
 
 ## 5. References and Acknowledgements
 
