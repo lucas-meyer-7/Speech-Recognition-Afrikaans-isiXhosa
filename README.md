@@ -131,9 +131,7 @@ Read through the Python notebook: ``src/main.ipynb``.
    1. **Discussion:** Should I continue trying to train the 300M xls-r model and/or the tiny/small whisper model using Huggingface? OR, should I try to implement the same models without using HuggingFace (i.e. only PyTorch.audio ...). My opinion is that HuggingFace is convenient, however there is less control. I would like to give HuggingFace one last chance over the weekend, since there are some things I can still try. However, I think that if Monday comes and I still don't have anything, I would like to try implementing it using the audio package from PyTorch (they have built-in support for CTC and Wav2Vec2).
       - **Answer:** Try to fine-tune one model on HF if you can. Use ``fairseq`` for the rest.
    2. **Discussion:** Would like to discuss potential research questions that we can answer. Would appreciate if you could give input and raise any potential concerns.
-      - **Answer:** Three tiers of goals: (1) Fine-tune XLS-R to Afrikaans and isiXhosa. (2) Compare pretraining from scratch + finetuning VS. finetuning a pretrained model. (3) Pretraining on isiXhosa, finetuning on Zulu. -->
-
-## 4. Progress Update & Questions
+      - **Answer:** Three tiers of goals: (1) Fine-tune XLS-R to Afrikaans and isiXhosa. (2) Compare pretraining from scratch + finetuning VS. finetuning a pretrained model. (3) Pretraining on isiXhosa, finetuning on Zulu.
 
 ### Progress (15/09/2023)
    1. **Monday:** Finished presentation and prepared speech. Established three tiers of end-goals: 
@@ -161,7 +159,19 @@ Read through the Python notebook: ``src/main.ipynb``.
    4. **Question:** (``if answer_q2 == "no"``) Where can I find unsupervised speech data?
    5. **Question:** From your experience with ASR models, could you find a positive correlation between the learning rate and batch size?
    6. **Question:** What should I focus on the most?
-   6. **Question:** Can you please help me with the layout of the report?
+   6. **Question:** Can you please help me with the layout of the report? -->
+
+## 4. Progress Update & Questions
+
+### 4.1 Progress (21/09/2023)
+   1. **Monday:** Fine-tune XLS-R to Afrikaans and isiXhosa. Started coding LM boosting.
+   2. **Tuesday:** Finished LM boosting notebook. Tried LM boosted model, but config and LM alphabet did not align.
+   3. **Wednesday:** Fixed config, LM boosted model works. Messed around for the rest of the day.
+
+### 4.2 Questions for Herman (21/09/2023)
+   1. **Question:** Which data should I use for the LM? I don't think the Wiki data is enough.
+   2. **Question:** Could you comment on my vocab and the characters which I am removing?
+   3. **Question:** I haven't really written anything specifically for my report, just taking notes. Is this concerning?
 
 ## 5. References and Acknowledgements
 

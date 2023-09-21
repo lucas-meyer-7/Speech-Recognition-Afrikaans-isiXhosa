@@ -4,6 +4,7 @@ import re
 import torch
 import tarfile
 import requests
+
 from tqdm import tqdm
 
 # ---------------------------------------
@@ -25,10 +26,30 @@ def change_pwd():
 # Preprocess transcript data
 # ---------------------------------------
 
-chars_to_remove_regex = '[\,\?\.\!\-\;\:\"\“\%\‘\”\�\']'
+# Reference: https://usefulwebtool.com/characters-afrikaans
+chars_to_remove_regex = '[\[\]\,\?\.\!\-\;\:\"\“\%\‘\”\�\'\|'
+chars_to_remove_regex += "\u002f"  # Forward slash
+chars_to_remove_regex += "\u2215"  # Divide
+chars_to_remove_regex += "\u00b0"  # Angle/degree sign
+chars_to_remove_regex += "\u00b2"  # Pow2 sign
+chars_to_remove_regex += "\u00e7"  # "c" with elongation
+chars_to_remove_regex += "\u00f5"  # "o" with tilde
+chars_to_remove_regex += "\u0142"  # "l" with line through it
+chars_to_remove_regex += "\u0144"  # "n" with an acute
+chars_to_remove_regex += "\u0307"  # No idea, weird characters
+chars_to_remove_regex += "\u0308"  # No idea, weird characters
+chars_to_remove_regex += "\u0366"  # Circle thing
+chars_to_remove_regex += "\u03ca"  # Greek letter
+chars_to_remove_regex += "\u2013"  # Long dash
+chars_to_remove_regex += "\u2019"  # Quote
+chars_to_remove_regex += "]"
+
 def remove_special_characters(sentence):
     return re.sub(chars_to_remove_regex, '', sentence).lower()
 
+def remove_special_characters_batch(batch):
+    batch["sentence"] = re.sub(chars_to_remove_regex, '', batch["sentence"]).lower()
+    return batch
 # ---------------------------------------
 # Downloading datasets
 # ---------------------------------------
