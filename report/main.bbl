@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{jurafskyspeech}
+Daniel Jurafsky and James~H Martin.
+\newblock Speech and language processing: An introduction to natural language
+  processing, computational linguistics, and speech recognition.
+
+\bibitem{cochran1967fast}
+William~T Cochran, James~W Cooley, David~L Favin, Howard~D Helms, Reginald~A
+  Kaenel, William~W Lang, George~C Maling, David~E Nelson, Charles~M Rader, and
+  Peter~D Welch.
+\newblock What is the fast fourier transform?
+\newblock {\em Proceedings of the IEEE}, 55(10):1664--1674, 1967.
+
+\bibitem{cooley1969fast}
+James~W Cooley, Peter~AW Lewis, and Peter~D Welch.
+\newblock The fast fourier transform and its applications.
+\newblock {\em IEEE Transactions on Education}, 12(1):27--34, 1969.
+
+\bibitem{baevski2020wav2vec}
+Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, and Michael Auli.
+\newblock wav2vec 2.0: A framework for self-supervised learning of speech
+  representations, 2020.
+
+\bibitem{bgn2021illustrated}
+Jonathan Bgn.
+\newblock An illustrated tour of wav2vec 2.0, 2021.
+
+\bibitem{graves2006connectionist}
+Alex Graves, Santiago Fern{\'a}ndez, Faustino Gomez, and J{\"u}rgen
+  Schmidhuber.
+\newblock Connectionist temporal classification: labelling unsegmented sequence
+  data with recurrent neural networks.
+\newblock In {\em Proceedings of the 23rd international conference on Machine
+  learning}, pages 369--376, 2006.
+
+\end{thebibliography}

@@ -3,7 +3,7 @@ The basic aim of this project is to perform automatic speech recognition for
 spoken Afrikaans and isiXhosa. 
 
 ## 1. How to run
-Read through the Python notebook: ``src/main.ipynb``.
+Refer to the Python notebooks in the ``src`` directory.
 
 ## 2. Datasets
 | Webpage Link | Language | Number of data entries | Additional info |
@@ -41,8 +41,6 @@ Read through the Python notebook: ``src/main.ipynb``.
 | XLS-R | Read and summarized. | I used this paper as a starting point to recurse through bibliographies. |
 | Layer Normalization | Skimmed over. | Relatively straight forward. |
 | Gaussian error linear units | Skimmed over. | Relatively straight forward. |
-| Whisper (OpenAI) | Skimmed over. | Does not rely on self-supervised pretraining. Relies on massive dataset and supervised techniques. | |
-| Speech SimCLR | Skimmed over. | Uses data augmentation, and relies on an objective that combines contrastive loss and reconstruction loss. |
 
 <!-- ### Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
@@ -159,21 +157,35 @@ Read through the Python notebook: ``src/main.ipynb``.
    4. **Question:** (``if answer_q2 == "no"``) Where can I find unsupervised speech data?
    5. **Question:** From your experience with ASR models, could you find a positive correlation between the learning rate and batch size?
    6. **Question:** What should I focus on the most?
-   6. **Question:** Can you please help me with the layout of the report? -->
+   6. **Question:** Can you please help me with the layout of the report?
 
-## 4. Progress Update & Questions
-
-### 4.1 Progress (21/09/2023)
+### Progress (21/09/2023)
    1. **Monday:** Fine-tune XLS-R to Afrikaans and isiXhosa. Started coding LM boosting.
    2. **Tuesday:** Finished LM boosting notebook. Tried LM boosted model, but config and LM alphabet did not align.
    3. **Wednesday:** Fixed config, LM boosted model works.
 
-### 4.2 Questions for Herman (21/09/2023)
+### Questions for Herman (21/09/2023)
    1. **Question:** Which data should I use for the LM? I don't think the Wiki data is enough.
    2. **Question:** Could you comment on my vocab and the characters which I am removing?
-   3. **Question:** What should I have written before our next meeting, and should I aim to finish the pretraining script as well?
+   3. **Question:** What should I have written before our next meeting, and should I aim to finish the pretraining script as well? -->
 
-## 5. References and Acknowledgements
+## 4. Progress Update & Questions
+
+### 4.1 Progress (28/09/2023)
+   1. Report writing:
+      - Completed background section.
+      - Created a possible outline for the remainder of the report.
+   2. Coding/experiments:
+      - Modified training AF and XH datasets.
+      - 
+
+### 4.2 Questions for Herman (28/09/2023)
+   1. **Question:** Do you have the already processed LM data from WikiMedia? I am struggling to find a simple solution to clean the data desirably.
+   2. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
+   3. **Question:** Does the research project count as a module (since it is not an actual thesis)?
+   4. **Question:** I am applying for several jobs for next year. I would like to work with Audio + ML. Do you have any connections/recommendations for me? Trackosaurus education?
+
+## 5. References and Acknowledgements (outdated)
 
 ### 5.1. Research papers and textbooks
 Refer to Section 3 above.
