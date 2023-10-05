@@ -1,19 +1,21 @@
 # Ignore the directory that contains the WAV and transcripts data:
+src/language_model_data/
 src/downloaded/
 src/asr_af/
 src/asr_xh/
-src/asr_af_xh/
-src/nchlt_afr/
 notes/
+
 
 # Ignore Python cache:
 __pycache__/
 .ipynb_checkpoints/
 
+
 # Ignore LaTeX files
 report/*.aux
 report/*.log
 report/*.out
+
 
 # Ignore HPC output files
 src/output.err

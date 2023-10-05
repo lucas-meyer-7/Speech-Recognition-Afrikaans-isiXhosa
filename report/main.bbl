@@ -17,14 +17,31 @@ James~W Cooley, Peter~AW Lewis, and Peter~D Welch.
 \newblock The fast fourier transform and its applications.
 \newblock {\em IEEE Transactions on Education}, 12(1):27--34, 1969.
 
-\bibitem{baevski2020wav2vec}
-Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, and Michael Auli.
-\newblock wav2vec 2.0: A framework for self-supervised learning of speech
-  representations, 2020.
-
 \bibitem{bgn2021illustrated}
 Jonathan Bgn.
 \newblock An illustrated tour of wav2vec 2.0, 2021.
+
+\bibitem{transformer}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
+
+\bibitem{alammar2018illustrated}
+Jay Alammar.
+\newblock The illustrated transformer, 2018.
+
+\bibitem{shaw2018relative}
+Peter Shaw, Jakob Uszkoreit, and Ashish Vaswani.
+\newblock Self-attention with relative position representations.
+\newblock {\em CoRR}, abs/1803.02155, 2018.
+
+\bibitem{AlexNet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In F.~Pereira, C.J. Burges, L.~Bottou, and K.Q. Weinberger, editors,
+  {\em Advances in Neural Information Processing Systems}, volume~25. Curran
+  Associates, Inc., 2012.
 
 \bibitem{graves2006connectionist}
 Alex Graves, Santiago Fern{\'a}ndez, Faustino Gomez, and J{\"u}rgen

@@ -1,7 +1,10 @@
 import os
 import shutil
 import librosa
+import numpy as np
+import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
+from tqdm import tqdm
 from utils import change_pwd, remove_special_characters, download_nchlt
 
 SR = 16000
@@ -46,27 +49,73 @@ def load_nchlt(only_af = False, only_xh = False, write_audio = False):
         os.makedirs(os.path.join(data_dir, "validation"), exist_ok=True)
         os.makedirs(os.path.join(data_dir, "test"), exist_ok=True)
 
-    csv_entries = []
+    # Get durations of all data entries and plot histogram
+    durations = []
+    for ds in [train_set, val_set, test_set]:
+        for data_entry in tqdm(ds):
+            audio_array, audio_sr = librosa.load(data_entry[0], sr=None)
+            duration = audio_array.shape[0] / audio_sr
+            durations.append(duration)
+    plot_durations_histogram(durations=durations, pdf_name="NCHLT")
 
+    # Get min and max times based on mean and standard deviation
+    mean_duration = np.mean(durations)
+    std_duration = np.std(durations)
+    min_time = mean_duration - 2*std_duration
+    max_time = mean_duration + 2*std_duration
+    removed_count = 0
+
+    # Get CSV entries for dataset
+    csv_entries = []
     for data_entry in train_set:
+        audio_array, audio_sr = librosa.load(data_entry[0], sr=None)
+        duration = audio_array.shape[0] / audio_sr
+        if (duration < min_time) or (duration > max_time):
+            removed_count += 1
+            continue
         src_path = data_entry[0]
         dst_path = os.path.join("data", "train", os.path.basename(src_path))
         if write_audio:
             shutil.copy(src_path, os.path.join(dataset_name, dst_path))
         csv_entries.append([dst_path, remove_special_characters(data_entry[1])])
     for data_entry in val_set:
+        audio_array, audio_sr = librosa.load(data_entry[0], sr=None)
+        duration = audio_array.shape[0] / audio_sr
+        if (duration < min_time) or (duration > max_time):
+            removed_count += 1
+            continue
         src_path = data_entry[0]
         dst_path = os.path.join("data", "validation", os.path.basename(src_path))
         if write_audio:
             shutil.copy(src_path, os.path.join(dataset_name, dst_path))
         csv_entries.append([dst_path, remove_special_characters(data_entry[1])])
     for data_entry in test_set:
+        audio_array, audio_sr = librosa.load(data_entry[0], sr=None)
+        duration = audio_array.shape[0] / audio_sr
+        if (duration < min_time) or (duration > max_time):
+            removed_count += 1
+            continue
         src_path = data_entry[0]
         dst_path = os.path.join("data", "test", os.path.basename(src_path))
         if write_audio:
             shutil.copy(src_path, os.path.join(dataset_name, dst_path))
         csv_entries.append([dst_path, remove_special_characters(data_entry[1])])
 
+    # Get durations of all data entries that were not removed    
+    durations = []
+    for ds in [train_set, val_set, test_set]:
+        for data_entry in ds:
+            audio_array, audio_sr = librosa.load(data_entry[0], sr=None)
+            duration = audio_array.shape[0] / audio_sr
+            if (duration < min_time) or (duration > max_time):
+                removed_count += 1
+                continue
+            durations.append(duration)
+    plot_durations_histogram(durations=durations, pdf_name="NCHLT after removing outliers")
+    print(f"NCHLT: Removed {removed_count}/{len(durations)} entries that were either too long or too short.")
+
+    # Show histograms and return CSV entries
+    plt.show()
     return csv_entries
 
 def get_sentences_nchlt(sentence_file):
@@ -111,5 +160,10 @@ def get_speech_data(audio_dir, files):
         audio_array, _ = librosa.load(file_path, sr=SR)
         yield file_path, audio_array
 
+def plot_durations_histogram(durations, pdf_name):
+    plt.figure()
+    plt.hist(durations, bins=200)
+    plt.savefig(f"{pdf_name}.pdf")
+
 if __name__ == "__main__":
-    load_nchlt(write_audio=True, only_af=True)
+    entries = load_nchlt(write_audio=True, only_af=True)

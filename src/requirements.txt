@@ -1,17 +1,25 @@
-datasets
-evaluate
-huggingface_hub
-librosa
-numpy
-pandas
-Requests
-torch
-tqdm
-transformers
-scipy
+# ****************************************
+# Generated with pipreqs
+# ****************************************
+datasets==2.14.4
+evaluate==0.4.0
+huggingface_hub==0.16.4
+librosa==0.10.0.post2
+numpy==1.23.5
+pandas==1.5.3
+pyctcdecode==0.3.0
+Requests==2.31.0
+scipy==1.8.0
+torch==2.0.1
+tqdm==4.65.0
+transformers==4.28.0
+
+
+# ****************************************
+# Added manually
+# ****************************************
 accelerate
 werkzeug
 jiwer
-omegaconf
-urllib3
-pyctcdecode
+# omegaconf
+# urllib3

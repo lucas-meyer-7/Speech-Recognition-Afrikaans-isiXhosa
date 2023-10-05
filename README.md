@@ -172,39 +172,70 @@ Refer to the Python notebooks in the ``src`` directory.
 ## 4. Progress Update & Questions
 
 ### 4.1 Progress (28/09/2023)
-   1. Report writing:
+   1. Coding:
+      - Dataset analysis - we can discuss later.
+      - Prepared more language data by adding the transcription data from the ASR training set.
+      - Prepared everything else required for running experiments.
+   2. Report writing:
       - Completed background section.
       - Created a possible outline for the remainder of the report.
-   2. Coding/experiments:
-      - Modified training AF and XH datasets.
-      - 
+   
+### 4.2 Questions for Herman (06/10/2023)
+**Main discussion points of meeting:**
+   1. The way in which I should be conducting experiments with the hyperparameters of ``Wav2vec2`` models and the ``KenLM`` $n$-gram models.
+   2. Fine-tuning several different pretrained ``Wav2vec2`` based models.
+   3. Using other SA languages such as Siswati and Zulu?
 
-### 4.2 Questions for Herman (28/09/2023)
+### 4.2.1 Coding questions (06/10/2023)
    1. **Question:** Do you have the already processed LM data from WikiMedia? I am struggling to find a simple solution to clean the data desirably.
-   2. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
-   3. **Question:** Does the research project count as a module (since it is not an actual thesis)?
-   4. **Question:** I am applying for several jobs for next year. I would like to work with Audio + ML. Do you have any connections/recommendations for me? Trackosaurus education?
+   2. **Question:** I would like to use the NCHLT data as well, since I am not performing pretraining anymore. Should I use it, even though its sh\*t?
+   3. **Discussion:** (Loosely-related to previous) How to remove the outliers of each dataset? I have created histograms that describe the durations of all entries for each of the three datasets.
 
-## 5. References and Acknowledgements (outdated)
+#### 4.2.1.1 Duration histograms (bins = 200)
+
+NCHLT             |  NCHLT after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/NCHLT.pdf)  |  ![](duration_histograms/NCHLT%20after%20removing%20outliers.pdf)
+
+
+FLEURS            |  FLEURS after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/FLEURS.pdf)  |  ![](duration_histograms/FLEURS%20after%20removing%20outliers.pdf)
+
+
+High-quality TTS             |  High-quality TTS after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/High-quality%20TTS.pdf)  |  ![](duration_histograms/High-quality%20TTS%20after%20removing%20outliers.pdf)
+
+
+### 4.2.2 Report writing questions (06/10/2023)
+   1. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
+   2. **Question:** Does the research project count as a module (since it is not an actual thesis)?
+   3. **Question:** Should I use "ASR" / "automatic speech recognition" or just simply "speech recognition" or both interchangeably?
+   4. **Discussion:** The outline of "Background".
+   5. **Discussion:** The outline of "Methodology" / "Experimental Setup" / "Emperical Procedure"?
+   6. **Question:** What should be included and what should be omitted when discussing datasets?
+   7. **Discussion:** The outline of the rest of the report.
+
+### 4.2.3 Questions unrelated to project (06/10/2023)
+   1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?
+   2. **Question:** I am thinking about applying for a job next year. I would like to work with Audio + ML (speech, music, etc.). 
+   Do you have any connections/recommendations for me? Trackosaurus education?
+
+## 5. References and Acknowledgements
 
 ### 5.1. Research papers and textbooks
-Refer to Section 3 above.
+Refer to the references section in the final report.
 
-### 5.2. ChatGPT chats:
- - https://chat.openai.com/share/af4e27d1-3899-45b2-8917-bf3b5f6e669a
- - https://chat.openai.com/share/9da5e4fb-c90c-4050-aa62-045137ee0076
- - https://chat.openai.com/share/4885c5b0-1465-4cc9-a74b-a1282bf8ccc1
-
-### 5.3. Tutorial/blog webpages:
- - HuggingFace website contains numerous tutorials on how to use 
- the ``datasets`` and ``transformers`` library.
- - Fine-tuning tutorial: https://huggingface.co/blog/fine-tune-xlsr-wav2vec2
-
-### 5.4. YouTube videos:
- - Transformer Neural Networks explained: https://www.youtube.com/watch?v=TQQlZhbC5ps 
- - HuggingFace introduction: https://www.youtube.com/watch?v=QEaBAZQCtwE
- - Layer normalization short: https://youtube.com/shorts/TKPowx9fb-A?feature=share
- - Self-supervised learning explained: https://www.youtube.com/watch?v=iGJ1XSkCyU0
- - Beam search: https://www.youtube.com/watch?v=RLWuzLLSIgw
- - Refining beam search: https://www.youtube.com/watch?v=gb__z7LlN_4 
- - Watching neural networks learn: https://www.youtube.com/watch?v=TkwXa7Cvfr8&list=LL&index=18
+### 5.2. Other resources
+ - (Docs) HuggingFace [datasets](https://huggingface.co/docs/datasets/index) and [transformers](https://huggingface.co/docs/transformers/index).
+ - (Docs) HuggingFace [Wav2Vec2](https://huggingface.co/docs/transformers/model_doc/wav2vec2) documentation.
+ - (Blogpost) [XLS-R Fine-tuning tutorial](https://huggingface.co/blog/fine-tune-xlsr-wav2vec2)
+ - (Blogpost) [Boosting Wav2Vec2 with n-grams](https://huggingface.co/blog/wav2vec2-with-ngram)
+ - (Blogpost) [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+ - (YT video) [Transformer Neural Networks explained](https://www.youtube.com/watch?v=TQQlZhbC5ps)
+ - (YT video) [GELU](awe)
+ - (YT video) [Layer normalization](https://youtube.com/shorts/TKPowx9fb-A?feature=share)
+ - (YT video) [Grouped convolution](https://www.youtube.com/watch?v=3NU2vV3XD8c)
+ - (YT video) [Self-supervised learning explained](https://www.youtube.com/watch?v=iGJ1XSkCyU0)
+ - (YT video) [Beam search](https://www.youtube.com/watch?v=RLWuzLLSIgw) and [Refining beam search](https://www.youtube.com/watch?v=gb__z7LlN_4)
