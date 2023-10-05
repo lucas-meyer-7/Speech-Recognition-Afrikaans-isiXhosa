@@ -191,23 +191,22 @@ Refer to the Python notebooks in the ``src`` directory.
    2. **Question:** I would like to use the NCHLT data as well, since I am not performing pretraining anymore. Should I use it, even though its sh\*t?
    3. **Discussion:** (Loosely-related to previous) How to remove the outliers of each dataset? I have created histograms that describe the durations of all entries for each of the three datasets.
 
-#### 4.2.1.1 NCHLT duration histograms (bins = 200)
-<p float="left">
-  <img src="duration_histograms/NCHLT.pdf" width="50%" />
-  <img src="duration_histograms/NCHLT%20after%20removing%20outliers.pdf" width="50%" />
-</p>
+#### 4.2.1.1 Duration histograms (bins = 200)
 
-#### 4.2.1.2 FLEURS duration histograms (bins = 200)
-<p float="left">
-  <img src="duration_histograms/FLEURS.pdf" width="50%" />
-  <img src="duration_histograms/FLEURS%20after%20removing%20outliers.pdf" width="50%" />
-</p>
+NCHLT             |  NCHLT after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/NCHLT.png)  |  ![](duration_histograms/NCHLT%20after%20removing%20outliers.png)
 
-#### 4.2.1.3 High-quality TTS duration histograms (bins = 200)
-<p float="left">
-  <img src="duration_histograms/High-quality%20TTS.pdf" width="50%" />
-  <img src="duration_histograms/High-quality%20TTS%20after%20removing%20outliers.pdf" width="50%" />
-</p>
+
+FLEURS            |  FLEURS after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/FLEURS.png)  |  ![](duration_histograms/FLEURS%20after%20removing%20outliers.png)
+
+
+High-quality TTS             |  High-quality TTS after removing outliers (95% CI)
+:-------------------------:|:-------------------------:
+![](duration_histograms/High-quality%20TTS.png)  |  ![](duration_histograms/High-quality%20TTS%20after%20removing%20outliers.png)
+
 
 ### 4.2.2 Report writing questions (06/10/2023)
    1. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
