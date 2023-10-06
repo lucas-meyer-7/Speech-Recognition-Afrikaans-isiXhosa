@@ -177,8 +177,8 @@ Refer to the Python notebooks in the ``src`` directory.
       - Prepared more language data by adding the transcription data from the ASR training set.
       - Prepared everything else required for running experiments.
    2. Report writing:
-      - Completed background section.
-      - Created a possible outline for the remainder of the report.
+      - Completed 80% of "Background" section.
+      - Created outline for the remainder of the report.
    
 ### 4.2 Questions for Herman (06/10/2023)
 **Main discussion points of meeting:**
