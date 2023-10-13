@@ -1,9 +1,19 @@
-# Ignore the directory that contains the WAV and transcripts data:
-src/language_model_data/
-src/downloaded/
-src/asr_af/
-src/asr_xh/
-notes/
+# Ignore LM data - Wikipedia dumps and WikiExtractor
+src/data/language_model_data/extract_wikipedia/
+
+
+# Ignore LM data - cleaned Wikipedia data
+src/data/language_model_data/cleaned_data/
+
+
+# Ignore speech data - downloaded datasets
+src/data/speech_data/downloaded/
+
+
+# Ignore speech data - self-made datasets
+src/data/speech_data/asr_af/
+src/data/speech_data/asr_xh/
+src/data/speech_data/asr_af_xh/
 
 
 # Ignore Python cache:

@@ -41,8 +41,8 @@ Refer to the Python notebooks in the ``src`` directory.
 | XLS-R | Read and summarized. | I used this paper as a starting point to recurse through bibliographies. |
 | Layer Normalization | Skimmed over. | Relatively straight forward. |
 | Gaussian error linear units | Skimmed over. | Relatively straight forward. |
-
-<!-- ### Progress (11/08/2023)
+<!-- 
+### Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
    2. Performed preprocessing to convert data into Dataset format for huggingface.
    3. Created a train/validation/test set from the data.
@@ -167,11 +167,9 @@ Refer to the Python notebooks in the ``src`` directory.
 ### Questions for Herman (21/09/2023)
    1. **Question:** Which data should I use for the LM? I don't think the Wiki data is enough.
    2. **Question:** Could you comment on my vocab and the characters which I am removing?
-   3. **Question:** What should I have written before our next meeting, and should I aim to finish the pretraining script as well? -->
+   3. **Question:** What should I have written before our next meeting, and should I aim to finish the pretraining script as well?
 
-## 4. Progress Update & Questions
-
-### 4.1 Progress (28/09/2023)
+### Progress (06/10/2023)
    1. Coding:
       - Dataset analysis - we can discuss later.
       - Prepared more language data by adding the transcription data from the ASR training set.
@@ -179,48 +177,37 @@ Refer to the Python notebooks in the ``src`` directory.
    2. Report writing:
       - Completed 80% of "Background" section.
       - Created outline for the remainder of the report.
-   
-### 4.2 Questions for Herman (06/10/2023)
-**Main discussion points of meeting:**
-   1. The way in which I should be conducting experiments with the hyperparameters of ``Wav2vec2`` models and the ``KenLM`` $n$-gram models.
-   2. Fine-tuning several different pretrained ``Wav2vec2`` based models.
-   3. Using other SA languages such as Siswati and Zulu?
 
-### 4.2.1 Coding questions (06/10/2023)
+### Questions for Herman (06/10/2023)
    1. **Question:** Do you have the already processed LM data from WikiMedia? I am struggling to find a simple solution to clean the data desirably.
    2. **Question:** I would like to use the NCHLT data as well, since I am not performing pretraining anymore. Should I use it, even though its sh\*t?
    3. **Discussion:** (Loosely-related to previous) How to remove the outliers of each dataset? I have created histograms that describe the durations of all entries for each of the three datasets.
+   4. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
+   5. **Question:** Does the research project count as a module (since it is not an actual thesis)?
+   6. **Question:** Should I use "ASR" / "automatic speech recognition" or just simply "speech recognition" or both interchangeably?
+   7. **Discussion:** The outline of "Background".
+   8. **Discussion:** The outline of "Methodology" / "Experimental Setup" / "Emperical Procedure"?
+   9. **Question:** What should be included and what should be omitted when discussing datasets?
+   10. **Discussion:** The outline of the rest of the report. -->
 
-#### 4.2.1.1 Duration histograms (bins = 200)
+## 4. Progress Update & Questions
 
-NCHLT             |  NCHLT after removing outliers (95% CI)
-:-------------------------:|:-------------------------:
-![](duration_histograms/NCHLT.png)  |  ![](duration_histograms/NCHLT%20after%20removing%20outliers.png)
+### 4.1 Progress (13/10/2023)
+   1. Ensured that Afrikaans and isiXhosa datasets are similiar w.r.t. total duration and duration histograms.
+   2. Finalized text datasets used for $n$-gram LMs.
+   3. Writing report.
+   4. Performed experiments and observed the effect of changing the values of different hyperparameters.
 
+### 4.2 Questions for Herman (13/10/2023)
+   1. **Question:** Do you think there is time today/tomorrow for me to send you a more updated version of my report?
+   1. **Discussion:** Do you think I should include more diagrams for wav2vec 2.0 background section (one for each component)? Here is an [example](https://jonathanbgn.com/2021/09/30/illustrated-wav2vec-2.html). I think it could be useful, since it took very long for me to understand.
+   2. **Question:** Should I use TikZ for diagrams? If not, can you recommend any applications for creating diagrams/figures that were useful to you in the past.
+   3. **Question:** I have included an outline for the Experimental Setup. Can you review this as well?
 
-FLEURS            |  FLEURS after removing outliers (95% CI)
-:-------------------------:|:-------------------------:
-![](duration_histograms/FLEURS.png)  |  ![](duration_histograms/FLEURS%20after%20removing%20outliers.png)
-
-
-High-quality TTS             |  High-quality TTS after removing outliers (95% CI)
-:-------------------------:|:-------------------------:
-![](duration_histograms/High-quality%20TTS.png)  |  ![](duration_histograms/High-quality%20TTS%20after%20removing%20outliers.png)
-
-
-### 4.2.2 Report writing questions (06/10/2023)
-   1. **Question:** Is [this](https://www.overleaf.com/latex/templates/stellenbosch-university-statistics-and-actuarial-science-thesis-template/kvvvzcgntntt) the correct template that you wanted me to use?
-   2. **Question:** Does the research project count as a module (since it is not an actual thesis)?
-   3. **Question:** Should I use "ASR" / "automatic speech recognition" or just simply "speech recognition" or both interchangeably?
-   4. **Discussion:** The outline of "Background".
-   5. **Discussion:** The outline of "Methodology" / "Experimental Setup" / "Emperical Procedure"?
-   6. **Question:** What should be included and what should be omitted when discussing datasets?
-   7. **Discussion:** The outline of the rest of the report.
-
-### 4.2.3 Questions unrelated to project (06/10/2023)
+<!-- ### 4.3 Questions unrelated to project (06/10/2023)
    1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?
    2. **Question:** I am thinking about applying for a job next year. I would like to work with Audio + ML (speech, music, etc.). 
-   Do you have any connections/recommendations for me? Trackosaurus education?
+   Do you have any connections/recommendations for me? Trackosaurus education? -->
 
 ## 5. References and Acknowledgements
 

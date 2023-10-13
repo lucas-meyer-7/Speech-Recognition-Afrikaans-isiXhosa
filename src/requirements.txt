@@ -18,8 +18,8 @@ transformers==4.28.0
 # ****************************************
 # Added manually
 # ****************************************
-accelerate
-werkzeug
-jiwer
-# omegaconf
-# urllib3
+accelerate==0.23.0
+werkzeug==3.0.0
+jiwer==3.0.3
+kenlm==0.2.0
+urllib3==2.0.6

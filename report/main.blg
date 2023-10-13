@@ -1,53 +1,56 @@
 This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
-The style file: unsrt.bst
-Database file #1: biblist.bib
-Warning--entry type for "bgn2021illustrated" isn't style-file defined
---line 47 of file biblist.bib
-Warning--entry type for "alammar2018illustrated" isn't style-file defined
---line 80 of file biblist.bib
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "baevski2020wav2vec"
-You've used 9 entries,
-            1791 wiz_defined-function locations,
-            498 strings with 5196 characters,
-and the built_in function-call counts, 2047 in all, are:
-= -- 153
-> -- 135
-< -- 2
-+ -- 48
-- -- 39
-* -- 137
-:= -- 339
-add.period$ -- 25
-call.type$ -- 9
-change.case$ -- 9
-chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 82
-empty$ -- 195
-format.name$ -- 39
-if$ -- 447
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: mybib.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 14 entries,
+            4087 wiz_defined-function locations,
+            900 strings with 10238 characters,
+and the built_in function-call counts, 9143 in all, are:
+= -- 682
+> -- 289
+< -- 45
++ -- 147
+- -- 61
+* -- 437
+:= -- 1421
+add.period$ -- 30
+call.type$ -- 14
+change.case$ -- 17
+chr.to.int$ -- 102
+cite$ -- 14
+duplicate$ -- 669
+empty$ -- 751
+format.name$ -- 73
+if$ -- 2078
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 6
-newline$ -- 45
-num.names$ -- 11
-pop$ -- 34
+int.to.str$ -- 14
+missing$ -- 146
+newline$ -- 77
+num.names$ -- 16
+pop$ -- 384
 preamble$ -- 1
 purify$ -- 0
-quote$ -- 0
-skip$ -- 49
+quote$ -- 2
+skip$ -- 687
 stack$ -- 0
-substring$ -- 82
-swap$ -- 21
-text.length$ -- 2
+substring$ -- 251
+swap$ -- 499
+text.length$ -- 11
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
+top$ -- 5
+type$ -- 14
 warning$ -- 0
-while$ -- 17
-width$ -- 10
-write$ -- 92
-(There were 4 warnings)
+while$ -- 31
+width$ -- 16
+write$ -- 159

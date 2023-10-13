@@ -4,8 +4,8 @@ import re
 import torch
 import tarfile
 import requests
-
 from tqdm import tqdm
+
 
 # ---------------------------------------
 # Changing power working directory to the
@@ -21,6 +21,7 @@ def change_pwd():
     script_path = os.path.abspath(__file__)
     script_directory = os.path.dirname(script_path)
     os.chdir(script_directory)
+
 
 # ---------------------------------------
 # Preprocess transcript data
@@ -50,6 +51,8 @@ def remove_special_characters(sentence):
 def remove_special_characters_batch(batch):
     batch["sentence"] = re.sub(chars_to_remove_regex, '', batch["sentence"]).lower()
     return batch
+
+
 # ---------------------------------------
 # Downloading datasets
 # ---------------------------------------
@@ -59,12 +62,15 @@ def download_file(url, file_name):
     Downloads the file for the given ``url``, and names it 
     as the given ``file_name``.
     """
+
+    # Set up for downloading blocks and set up progress bar
     response = requests.get(url, stream=True)
     file_size = int(response.headers.get("content-length", 0))
     block_size = 1024  # 128 KB
     print(f"Downloading {os.path.basename(file_name)} ...")
     progress_bar = tqdm(total=file_size, unit="iB", unit_scale=True)
 
+    # Download all blocks and update progress bar
     with open(file_name, 'wb') as file:
         for data in response.iter_content(block_size):
             progress_bar.update(len(data))
@@ -74,19 +80,30 @@ def download_file(url, file_name):
     print(f"File {os.path.basename(file_name)} downloaded successfully!\n")
 
 def extract_tar_file(tar_path, extract_path):
-    """Uses the tarfile library to extract the downloaded data sets."""
+    """
+    Uses the tarfile library to extract 
+    the downloaded data sets.
+    """
+    
+    # Extract and remove tarfile
     with tarfile.open(tar_path, "r:gz") as tar_:
         tar_.extractall(path=extract_path)
     os.remove(tar_path)
 
-def download_high_quality_tts():
+def download_high_quality_tts(language: str):
     """
     Downloads data required for this project. 
     Also checks if data is already downloaded
     """
-    change_pwd()
-    DATA_PATH = os.path.join("downloaded", "high-quality-tts-data")
 
+    # Check arguments
+    if not (language == "af" or language == "xh" or language == "both"):
+        raise Exception("Must specify a language as either 'af'/'xh'/'both'.")
+
+    # Make directories for datasets
+    change_pwd()
+    DATA_PATH = os.path.join("data", "speech_data", "downloaded", "high-quality-tts-data")
+    # os.makedirs(DATA_PATH, exist_ok=True)
     af_url = "https://repo.sadilar.org/bitstream/handle/20.500.12185/527/af_za.tar.gz"
     af_file_name = os.path.join(DATA_PATH, "af_za.tar.gz")
     xh_url = "https://repo.sadilar.org/bitstream/handle/20.500.12185/527/xh_za.tar.gz"
@@ -94,25 +111,48 @@ def download_high_quality_tts():
 
     # Download and extract the datasets
     try:
-        download_file(af_url, af_file_name)
-        download_file(xh_url, xh_file_name)
-        extract_tar_file(af_file_name, DATA_PATH)
-        extract_tar_file(xh_file_name, DATA_PATH)
+        if language == "af":
+            download_file(af_url, af_file_name)
+            extract_tar_file(af_file_name, DATA_PATH)
+        elif language == "xh":
+            download_file(xh_url, xh_file_name)
+            extract_tar_file(xh_file_name, DATA_PATH)
+        elif language == "both":
+            download_file(af_url, af_file_name)
+            download_file(xh_url, xh_file_name)
+            extract_tar_file(af_file_name, DATA_PATH)
+            extract_tar_file(xh_file_name, DATA_PATH)
+        else:
+            raise Exception("")
     except requests.exceptions.RequestException as e:
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
 
-def download_nchlt(only_af = False, only_xh = False):
+def download_nchlt(language: str):
     """
     Downloads data required for this project. 
     Also checks if data is already downloaded
     """
+
+    # Check arguments
+    if not (language == "af" or language == "xh" or language == "both"):
+        raise Exception("Must specify a language as either 'af'/'xh'/'both'.")
+
+    # Make directories for datasets
     change_pwd()
-    DATA_PATH = os.path.join("downloaded")
+    DATA_PATH = os.path.join("data", "speech_data", "downloaded")
     AF_PATH = os.path.join(DATA_PATH, "nchlt_afr")
     XH_PATH = os.path.join(DATA_PATH, "nchlt_xho")
+    # if language == "af":
+    #     os.makedirs(AF_PATH, exist_ok=True)
+    # elif language == "xh":
+    #     os.makedirs(XH_PATH, exist_ok=True)
+    # elif language == "both":
+    #     os.makedirs(AF_PATH, exist_ok=True)
+    #     os.makedirs(XH_PATH, exist_ok=True)
 
+    # Store URLs of datasets
     af_url = "http://ftp.internat.freebsd.org/pub/nchlt/Speech_corpora/nchlt_afr.tar.gz"
     af_file_name = os.path.join(AF_PATH, "nchlt_afr.tar.gz")
     xh_url = "http://ftp.internat.freebsd.org/pub/nchlt/Speech_corpora/nchlt_xho.tar.gz"
@@ -120,15 +160,26 @@ def download_nchlt(only_af = False, only_xh = False):
 
     # Download and extract the datasets
     try:
-        download_file(af_url, af_file_name)
-        extract_tar_file(af_file_name, AF_PATH)
-        if only_xh or (only_af == False and only_xh == False):
+        if language == "af":
+            download_file(af_url, af_file_name)
+            extract_tar_file(af_file_name, AF_PATH)
+        elif language == "xh":
+            download_file(xh_url, xh_file_name)
+            extract_tar_file(xh_file_name, XH_PATH)
+        elif language == "both":
+            download_file(af_url, af_file_name)
+            extract_tar_file(af_file_name, AF_PATH)
             download_file(xh_url, xh_file_name)
             extract_tar_file(xh_file_name, XH_PATH)
     except requests.exceptions.RequestException as e:
         print(f"Error occurred while handling the data: {e}")
     except Exception as e:
         print(f"Error occurred while handling the data: {e}")
+
+
+# ---------------------------------------
+# Clear cache (PyTorch)
+# ---------------------------------------
 
 def clear_cache():
     gc.collect()

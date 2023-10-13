@@ -1,0 +1,38 @@
+\graphicspath{{experimental_setup/fig/}}
+
+\chapter{Experimental Setup} \label{chap:experimental_setup}
+
+\section{Experiments}
+\hl{TODO}:
+\begin{itemize}
+    \item Explain each experiment.
+\end{itemize}
+
+\section{Data sets}
+\hl{TODO}:
+\begin{itemize}
+    \item Explain that we combined three different datasets to create two datasets for Afrikaans and isiXhosa.
+    \item Provide huggingface links to datasets.
+    \item Describe each of the three datasets with some very basic statistics such as counts and means.
+    \item Explain how we made sure that our final datasets have similar duration histograms and total duration (just less than $7.5$ hours).
+    \item Discuss preprocessing steps of audio ($\text{SR} = 16000$). Dicuss transcription preprocessing in LM subsection.
+\end{itemize}
+
+\subsection{Language model data}
+\hl{TODO}:
+\begin{itemize}
+    \item Explain where we got the Wikipedia data.
+    \item Cite WikiExtractor.
+    \item Explain text preprocessing steps.
+\end{itemize}
+
+
+\section{Models and Hyperparameters}
+\hl{TODO}: I am not really sure what to say here.
+
+\section{Evaluation metrics}
+
+\paragraph*{Word error rate}
+The word error rate (WER) is equal to the number of character-level errors in the predicted transcript, 
+divided by the number of words in the true transcript. One character-level error is corrected using one of three operations:
+inserting a new character, deleting an existing character, or substituting an existing character for a new character.
