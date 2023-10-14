@@ -1,32 +1,28 @@
+# Ignore KenLM repo
+src/kenlm/
+
 # Ignore LM data - Wikipedia dumps and WikiExtractor
 src/data/language_model_data/extract_wikipedia/
-
 
 # Ignore LM data - cleaned Wikipedia data
 src/data/language_model_data/cleaned_data/
 
-
 # Ignore speech data - downloaded datasets
 src/data/speech_data/downloaded/
-
 
 # Ignore speech data - self-made datasets
 src/data/speech_data/asr_af/
 src/data/speech_data/asr_xh/
 src/data/speech_data/asr_af_xh/
 
-
 # Ignore Python cache:
 __pycache__/
 .ipynb_checkpoints/
-
 
 # Ignore LaTeX files
 report/*.aux
 report/*.log
 report/*.out
-
-
-# Ignore HPC output files
-src/output.err
-src/output.out
+report/*.toc
+report/*.bbl
+report/*.blg
