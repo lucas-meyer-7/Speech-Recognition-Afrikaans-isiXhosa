@@ -199,9 +199,13 @@ The following three data sources were used:
 
 ## 3. Progress Update & Questions
 
-### 3.1 Progress (13/10/2023)
+### 3.1 Progress (20/10/2023)
+ - Running experiments.
+ - Editing report based on feedback.
+ - Collecting Zulu data from sources.
 
-### 3.2 Questions for Herman (13/10/2023)
+### 3.2 Questions for Herman (20/10/2023)
+None.
 
 <!-- ### 4.3 Questions unrelated to project (06/10/2023)
    1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?
