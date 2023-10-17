@@ -1,6 +1,6 @@
-# Automatic Speech Recognition for Afrikaans & isiXhosa
+# Automatic speech recognition for Afrikaans & isiXhosa
 The basic aim of this project is to perform automatic speech recognition for 
-spoken Afrikaans and isiXhosa. 
+spoken Afrikaans and isiXhosa.
 
 ## 1. How to run
 Refer to the Python notebooks in the ``src`` directory.
@@ -36,18 +36,8 @@ The following three data sources were used:
 |**Multipron corpus**||||
 | [multipron corpus](https://repo.sadilar.org/handle/20.500.12185/379)               | af      | ~2500-3000  | Proper names dataset. 7 female speaker and 6 male speakers. | -->
 
-## 3. Reading material
-| Resource | Progress | Extra notes |
-|-|-|-|
-| Attention is all you need | Read and summarized. | Relatively straight forward. | 
-| wav2vec & vq-wav2vec | Skimmed over. | wav2vec 2.0 builds on this work.|
-| wav2vec 2.0 | Read and summarized. | I don't understand all the main parts yet, but went over everything at least once. |
-| Speech and Language processing (Ch. 16) | Read and summarized. | Provides a great introduction and background of the ASR field. Leaves out self-supervision techniques. |
-| XLS-R | Read and summarized. | I used this paper as a starting point to recurse through bibliographies. |
-| Layer Normalization | Skimmed over. | Relatively straight forward. |
-| Gaussian error linear units | Skimmed over. | Relatively straight forward. |
-<!-- 
-### Progress (11/08/2023)
+
+<!-- ### Progress (11/08/2023)
    1. Downloaded Afrikaans and isiXhosa TTS datasets.
    2. Performed preprocessing to convert data into Dataset format for huggingface.
    3. Created a train/validation/test set from the data.
@@ -193,37 +183,41 @@ The following three data sources were used:
    7. **Discussion:** The outline of "Background".
    8. **Discussion:** The outline of "Methodology" / "Experimental Setup" / "Emperical Procedure"?
    9. **Question:** What should be included and what should be omitted when discussing datasets?
-   10. **Discussion:** The outline of the rest of the report. -->
+   10. **Discussion:** The outline of the rest of the report.
 
-## 4. Progress Update & Questions
-
-### 4.1 Progress (13/10/2023)
+### Progress (13/10/2023)
    1. Ensured that Afrikaans and isiXhosa datasets are similiar w.r.t. total duration and duration histograms.
    2. Finalized text datasets used for $n$-gram LMs.
    3. Writing report.
    4. Performed experiments and observed the effect of changing the values of different hyperparameters.
 
-### 4.2 Questions for Herman (13/10/2023)
+### Questions for Herman (13/10/2023)
    1. **Question:** Do you think there is time today/tomorrow for me to send you a more updated version of my report?
    1. **Discussion:** Do you think I should include more diagrams for wav2vec 2.0 background section (one for each component)? Here is an [example](https://jonathanbgn.com/2021/09/30/illustrated-wav2vec-2.html). I think it could be useful, since it took very long for me to understand.
    2. **Question:** Should I use TikZ for diagrams? If not, can you recommend any applications for creating diagrams/figures that were useful to you in the past.
-   3. **Question:** I have included an outline for the Experimental Setup. Can you review this as well?
+   3. **Question:** I have included an outline for the Experimental Setup. Can you review this as well? -->
+
+## 3. Progress Update & Questions
+
+### 3.1 Progress (13/10/2023)
+
+### 3.2 Questions for Herman (13/10/2023)
 
 <!-- ### 4.3 Questions unrelated to project (06/10/2023)
    1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?
    2. **Question:** I am thinking about applying for a job next year. I would like to work with Audio + ML (speech, music, etc.). 
    Do you have any connections/recommendations for me? Trackosaurus education? -->
 
-## 5. References and Acknowledgements
+## 4. References and Acknowledgements
 
-### 5.1. My supervisor
+### 4.1. My supervisor
 I would like to thank my supervisor, [Herman Kamper](https://www.kamperh.com/), for allowing me to do this project with him.
 He has provided me with great advice and many helpful resources, which includes his report template.
 
-### 5.2. Research papers and textbooks
+### 4.2. Research papers and textbooks
 Refer to the references section in the final report.
 
-### 5.3. Other resources
+### 4.3. Other resources
  - (Docs) HuggingFace [datasets](https://huggingface.co/docs/datasets/index) and [transformers](https://huggingface.co/docs/transformers/index).
  - (Docs) HuggingFace [Wav2Vec2](https://huggingface.co/docs/transformers/model_doc/wav2vec2) documentation.
  - (Blogpost) [XLS-R Fine-tuning tutorial](https://huggingface.co/blog/fine-tune-xlsr-wav2vec2)
