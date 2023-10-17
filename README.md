@@ -6,6 +6,11 @@ spoken Afrikaans and isiXhosa.
 Refer to the Python notebooks in the ``src`` directory.
 
 ## 2. Datasets
+We combined recordings from three data sources to create the following two datasets:
+ - [ASR Afrikaans](https://huggingface.co/datasets/lucas-meyer/asr_af)
+ - [ASR isiXhosa](https://huggingface.co/datasets/lucas-meyer/asr_xh)
+
+The following three data sources were used:
 | Webpage Link | Language | Number of data entries | Additional info |
 |--------------|----------|------------------------|-----------------|
 |**NHCLT**||||
