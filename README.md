@@ -211,17 +211,21 @@ Refer to the Python notebooks in the ``src`` directory.
 
 ## 5. References and Acknowledgements
 
-### 5.1. Research papers and textbooks
+### 5.1. My supervisor
+I would like to thank my supervisor, [Herman Kamper](https://www.kamperh.com/), for allowing me to do this project with him.
+He has provided me with great advice and many helpful resources, which includes his report template.
+
+### 5.2. Research papers and textbooks
 Refer to the references section in the final report.
 
-### 5.2. Other resources
+### 5.3. Other resources
  - (Docs) HuggingFace [datasets](https://huggingface.co/docs/datasets/index) and [transformers](https://huggingface.co/docs/transformers/index).
  - (Docs) HuggingFace [Wav2Vec2](https://huggingface.co/docs/transformers/model_doc/wav2vec2) documentation.
  - (Blogpost) [XLS-R Fine-tuning tutorial](https://huggingface.co/blog/fine-tune-xlsr-wav2vec2)
  - (Blogpost) [Boosting Wav2Vec2 with n-grams](https://huggingface.co/blog/wav2vec2-with-ngram)
  - (Blogpost) [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
  - (YT video) [Transformer Neural Networks explained](https://www.youtube.com/watch?v=TQQlZhbC5ps)
- - (YT video) [GELU](awe)
+ - (YT video) [GELU](https://www.youtube.com/watch?v=kMpptn-6jaw)
  - (YT video) [Layer normalization](https://youtube.com/shorts/TKPowx9fb-A?feature=share)
  - (YT video) [Grouped convolution](https://www.youtube.com/watch?v=3NU2vV3XD8c)
  - (YT video) [Self-supervised learning explained](https://www.youtube.com/watch?v=iGJ1XSkCyU0)
