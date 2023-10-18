@@ -136,4 +136,4 @@ def plot_durations_histogram(durations, pdf_name):
 
 
 if __name__ == "__main__":
-    entries = load_fleurs_asr(language="af", write_audio=False, plot_durations=False)
+    entries = load_fleurs(language="af", write_audio=False, plot_durations=False)
