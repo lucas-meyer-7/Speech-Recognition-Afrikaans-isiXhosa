@@ -200,12 +200,31 @@ The following three data sources were used:
 ## 3. Progress Update & Questions
 
 ### 3.1 Progress (20/10/2023)
- - Running experiments.
- - Editing report based on feedback.
- - Collecting Zulu data from sources.
+**Experiments (DONE)**:
+ - Collected a corpus of Zulu data from FLEURS.
+ - Fine-tuned using only Afrikaans, only isiXhosa, or only isiZulu (used different hyperparameters) 
+ - Saved two best models for Afrikaans, isiXhosa, and isiZulu.
+ - Added LMs for the Afrikaans and isiXhosa models.
+
+**Experiments (TODO)**:
+ - Perform sequential fine-tuning experiments.
+
+**Report (DONE)**:
+ - Made changes to Background and Experimental Setup (based on feedback).
+ - Wrote $80%$ of Abstract.
+ - Created tables to store results of experiments.
+
+**Report (TODO)**:
+ - Abstract (results and conclusions - very short).
+ - Introduction.
+ <!-- - Background (two paragraphs). -->
+ - Experimental Setup (add explanation of isiZulu data and experiments - very short).
+ - Results.
+ - Conclusion (answers to research questions, conclusions, and future work).
 
 ### 3.2 Questions for Herman (20/10/2023)
-None.
+ - **Question:** I really don't like the IEEE Figure position rule. Do you think it will harm my mark if I ignore this rule?
+ - **Question:** Do you think that my mark will be harmed if the sequential fine-tuning approach does not improve the accuracy over the simple fine-tuning approach?
 
 <!-- ### 4.3 Questions unrelated to project (06/10/2023)
    1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?

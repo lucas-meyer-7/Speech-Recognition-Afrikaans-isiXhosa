@@ -102,3 +102,4 @@ def plot_durations_histogram(durations, pdf_name):
 
 if __name__ == "__main__":
     entries = load_fleurs_zu(write_audio=False, plot_durations=True)
+
