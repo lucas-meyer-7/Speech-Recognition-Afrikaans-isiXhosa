@@ -2,4 +2,47 @@
 
 \chapter{Results} \label{chap:results}
 
-\hl{TODO}
+\begin{table}[!h]
+    \renewcommand{\arraystretch}{1.1}
+    \centering
+    \caption{The WER for different models evaluated on the validation/test data of the Afrikaans dataset. The hyperlinks for each model provide more information about the hyperparameters and training results.}
+    \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
+        \toprule
+        & \multicolumn{2}{c}{Word error rate (WER)} \\
+        \cmidrule(lr){2-3}
+        Model                                                                                                                   & Validation  & Test   \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1}{Run 1}                      & 0.3789      & 0.3841 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1-with-LM}{Run 1 (with LM)}    & 0.2753      & 0.2803 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run2}{Run 2}                      & 0.3798      & 0.3801 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run2-with-LM}{Run 2 (with LM)}    & 0.3149      & 0.3119 \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:abx_speaker}
+\end{table}
+
+\begin{table}[!h]
+    \renewcommand{\arraystretch}{1.1}
+    \centering
+    \caption{The WER for different models evaluated on the validation/test data of the isiXhosa dataset. The hyperlinks for each model provide more information about the hyperparameters and training results.}
+    \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
+        \toprule
+        & \multicolumn{2}{c}{Word error rate (WER)} \\
+        \cmidrule(lr){2-3}
+        Model                                                                                                 & Validation  & Test   \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run1}{Run 1}                      & ?           & ? \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run1-with-LM}{Run 1 (with LM)}    & ?           & ? \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2}{Run 2}                      & 0.5436      & 0.5494 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2-with-LM}{Run 2 (with LM)}    & 0.4373      & 0.4211 \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:abx_speaker}
+\end{table}
+
+
+The two isiZulu runs (intended for fine-tuning again):
+\begin{itemize}
+    \item \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-fleurs_zu-run1}{Run 1}
+    \item \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-fleurs_zu-run2}{Run 2}
+\end{itemize}

@@ -30,10 +30,9 @@ Therefore, it is common in ASR and other speech-related tasks to transform audio
 The traditional approach is to compute speech features by transforming the audio data from the amplitude-time domain 
 to the frequency-time domain using the Fast Fourier Transform (FFT) algorithm \cite{cochran1967fast}, \cite{cooley1969fast}.
 
-\begin{figure}
+\begin{figure}[!ht]
     \centering
-    \captionsetup{justification=centering}
-    \includegraphics[width=0.8\textwidth]{wave.pdf}
+    \includegraphics[width=0.9\textwidth]{wave.pdf}
     \caption{A diagram that explains what audio data represents. Note that this is an oversimplified explanation. The intent of the diagram is to explain why it is difficult to interpret raw audio data.}
     \label{fig:wave}
 \end{figure}
@@ -101,9 +100,9 @@ In the second step the model is fine-tuned on a downstream task using labeled da
 Fine-tuning wav2vec 2.0 (\ref{subsec:finetune}) for ASR involves replacing the head of the 
 pre-trained model with an appropriate loss function such as CTC (\ref{sec:ctc}).
 
-\begin{figure}
+\begin{figure}[!ht]
     \centering
-    \captionsetup{justification=centering}
+    
     \includegraphics[width=\textwidth]{wav2vec2architecture.pdf}
     \caption{A visualization of the network architecture of wav2vec 2.0 \cite{baevski2020wav2vec}.}
     \label{fig:wav2vec2_architecture}
@@ -239,9 +238,9 @@ developed to map a sequence of speech features to a sequence of characters.
 Our explanation of CTC is heavily based on the speech recognition and text-to-speech chapter in \cite{jurafskyspeech}.
 We recommend readers to use Figure~\ref{ctc} as a visual aid for our explanation.
 
-\begin{figure}
+\begin{figure}[!ht]
     \centering
-    \captionsetup{justification=centering}
+    
     \includegraphics[width=0.8\textwidth]{ctc.pdf}
     \caption{A diagram that describes the alignment procedure of CTC \cite{jurafskyspeech}.}
     \label{ctc}
@@ -255,9 +254,9 @@ With the addition of the blank character, the collapsing function is responsible
 Following the notation of \cite{jurafskyspeech}, we define the collapsing function as a mapping $B: A \rightarrow Y$ for an alignment $A$ and output text $Y$.
 Notice that $B$ is many-to-one, since many different alignments can map to the same output text (see Figure~\ref{dinner}).
 
-\begin{figure}
+\begin{figure}[!ht]
     \centering
-    \captionsetup{justification=centering}
+    
     \includegraphics[width=0.75\textwidth]{3alignments.pdf}
     \caption{Three different alignments that produce the same output text when using the CTC collapsing function \cite{jurafskyspeech}.}
     \label{dinner}
@@ -330,7 +329,7 @@ This is done by adding an additional term in the CTC loss function with interpol
 \begin{equation}
     \text{score}_{\text{CTC}}(Y|X) = \log\left(P_{\text{CTC}}(Y|X)\right) + \lambda_1 \log\left(P_{\text{LM}}(Y)\right) + \lambda_2 L(Y).
 \end{equation}
-\hl{TODO}: briefly unpack what $P_{\text{LM}}(Y)$ is, and how it would be constructed
+% \hl{TODO}: briefly unpack what $P_{\text{LM}}(Y)$ is, and how it would be constructed
 
 We have now discussed how to create an ASR model that is pre-trained using wav2vec 2.0 and fine-tuned using CTC. 
 However, in the following section we discuss an issue with this approach for our particular study.
@@ -362,7 +361,7 @@ Batches are sampled from a probability distribution $p_l \sim \left(\dfrac{n_l}{
     \item $N$ is the number of hours of all the unlabeled data and $n_l$ is the number of hours of unlabeled data for the language $l$.
     \item $\alpha$ controls how much data is chosen from the high-resource and low-resource languages.
 \end{itemize}
-\hl{TODO}: Give an intution for why this strategy is used.
+% \hl{TODO}: Give an intution for why this strategy is used.
 
 The total number of hours of all the unlabeled data combined is about 436k hours. The authors use data from 24 high-resource languages, 17 mid-resource languages, and 88 low-resource languages.
 The high-resource languages contain more than 1k hours of data each, the mid-resource languages contain more than 100 hours (but less than 1k hours)

@@ -2,15 +2,23 @@
 \addcontentsline{toc}{chapter}{Abstract}
 \makeatletter\@mkboth{}{Abstract}\makeatother
 
-\hl{TODO}: The English abstract.
+Automatic speech recognition (ASR) is an important technology for education \cite{wald2005using}, 
+helping people with disabilities \cite{terbeh2013automatic}, and captioning (especially for deaf and hard of hearing people \cite{wald2006captioning}).
+Several high quality ASR systems for English exist today, such as Siri, Alexa, and Google Assistant. However, ASR remains a challenge for low-resource languages. 
 
+In this study, we perform ASR for two South African languages: Afrikaans and isiXhosa.
+Our approach involves fine-tuning well-known pre-trained models, and using seperately trained language models to boost performance.
+We propose a sequential fine-tuning approach, in which the model is first fine-tuned on one language, and then fine-tuned on the target language.
+Our sequential fine-tuning approach is compared to a simple fine-tuning approach, where one language is used to fine-tune the model.
+Our models are evaluated using the word error rate (WER).
 
+Our experimental results conclude that...
 
-\selectlanguage{afrikaans}
-\chapter*{Uittreksel}
-\addcontentsline{toc}{chapter}{Opsomming}
-\makeatletter\@mkboth{}{Opsomming}\makeatother
+% \selectlanguage{afrikaans}
+% \chapter*{Uittreksel}
+% \addcontentsline{toc}{chapter}{Opsomming}
+% \makeatletter\@mkboth{}{Opsomming}\makeatother
 
-\hl{TODO}: Die Afrikaanse uittreksel.
+% \hl{TODO}: Die Afrikaanse uittreksel.
 
-\selectlanguage{english}
+% \selectlanguage{english}
