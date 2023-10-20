@@ -200,6 +200,7 @@ The following three data sources were used:
 ## 3. Progress Update & Questions
 
 ### 3.1 Progress (20/10/2023)
+
 **Experiments (DONE)**:
  - Collected a corpus of Zulu data from FLEURS.
  - Fine-tuned using only Afrikaans, only isiXhosa, or only isiZulu (used different hyperparameters) 
@@ -207,6 +208,7 @@ The following three data sources were used:
  - Added LMs for the Afrikaans and isiXhosa models.
 
 **Experiments (TODO)**:
+ - One isiXhosa run, one-two isiZulu runs.
  - Perform sequential fine-tuning experiments.
 
 **Report (DONE)**:
@@ -217,7 +219,7 @@ The following three data sources were used:
 **Report (TODO)**:
  - Abstract (results and conclusions - very short).
  - Introduction.
- <!-- - Background (two paragraphs). -->
+ - Background (two paragraphs).
  - Experimental Setup (add explanation of isiZulu data and experiments - very short).
  - Results.
  - Conclusion (answers to research questions, conclusions, and future work).

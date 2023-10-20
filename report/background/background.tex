@@ -329,7 +329,7 @@ This is done by adding an additional term in the CTC loss function with interpol
 \begin{equation}
     \text{score}_{\text{CTC}}(Y|X) = \log\left(P_{\text{CTC}}(Y|X)\right) + \lambda_1 \log\left(P_{\text{LM}}(Y)\right) + \lambda_2 L(Y).
 \end{equation}
-% \hl{TODO}: briefly unpack what $P_{\text{LM}}(Y)$ is, and how it would be constructed
+\hl{TODO}: briefly unpack what $P_{\text{LM}}(Y)$ is, and how it would be constructed
 
 We have now discussed how to create an ASR model that is pre-trained using wav2vec 2.0 and fine-tuned using CTC. 
 However, in the following section we discuss an issue with this approach for our particular study.
@@ -361,7 +361,7 @@ Batches are sampled from a probability distribution $p_l \sim \left(\dfrac{n_l}{
     \item $N$ is the number of hours of all the unlabeled data and $n_l$ is the number of hours of unlabeled data for the language $l$.
     \item $\alpha$ controls how much data is chosen from the high-resource and low-resource languages.
 \end{itemize}
-% \hl{TODO}: Give an intution for why this strategy is used.
+\hl{TODO}: Give an intution for why this strategy is used.
 
 The total number of hours of all the unlabeled data combined is about 436k hours. The authors use data from 24 high-resource languages, 17 mid-resource languages, and 88 low-resource languages.
 The high-resource languages contain more than 1k hours of data each, the mid-resource languages contain more than 100 hours (but less than 1k hours)
