@@ -1,7 +1,7 @@
 \graphicspath{{background/fig/}}
 
 \chapter{Background} \label{chap:background}
-This chapter provides an overview of Automatic Speech Recognition (ASR), the general approach of ASR, and the common challenges of ASR.
+This chapter provides an overview of automatic speech recognition (ASR), the general approach of ASR, and the common challenges of ASR.
 We provide a detailed explanation of wav2vec 2.0, a framework for learning speech features.
 We discuss how the connectionist temporal classification (CTC) algorithm is used to fine-tune speech features for ASR.
 The chapter concludes with an explanation of why pre-training is infeasible for our study,
@@ -28,11 +28,11 @@ Note that sound is a continuous wave function, but a recording is a discretized 
 The issue is that mapping a sequence of samples to a sequence of characters is difficult.
 Therefore, it is common in ASR and other speech-related tasks to transform audio data into speech features.
 The traditional approach is to compute speech features by transforming the audio data from the amplitude-time domain 
-to the frequency-time domain using the Fast Fourier Transform (FFT) algorithm \cite{cochran1967fast}, \cite{cooley1969fast}.
+to the frequency-time domain using the fast Fourier transform (FFT) algorithm \cite{cochran1967fast}, \cite{cooley1969fast}.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{wave.pdf}
+    \includegraphics[width=0.88\textwidth]{wave.pdf}
     \caption{A diagram that explains what audio data represents. Note that this is an oversimplified explanation. The intent of the diagram is to explain why it is difficult to interpret raw audio data.}
     \label{fig:wave}
 \end{figure}
@@ -102,8 +102,7 @@ pre-trained model with an appropriate loss function such as CTC (\ref{sec:ctc}).
 
 \begin{figure}[!ht]
     \centering
-    
-    \includegraphics[width=\textwidth]{wav2vec2architecture.pdf}
+    \includegraphics[width=0.88\textwidth]{wav2vec2architecture.pdf}
     \caption{A visualization of the network architecture of wav2vec 2.0 \cite{baevski2020wav2vec}.}
     \label{fig:wav2vec2_architecture}
 \end{figure}
@@ -241,7 +240,7 @@ We recommend readers to use Figure~\ref{ctc} as a visual aid for our explanation
 \begin{figure}[!ht]
     \centering
     
-    \includegraphics[width=0.8\textwidth]{ctc.pdf}
+    \includegraphics[width=0.88\textwidth]{ctc.pdf}
     \caption{A diagram that describes the alignment procedure of CTC \cite{jurafskyspeech}.}
     \label{ctc}
 \end{figure}
@@ -257,7 +256,7 @@ Notice that $B$ is many-to-one, since many different alignments can map to the s
 \begin{figure}[!ht]
     \centering
     
-    \includegraphics[width=0.75\textwidth]{3alignments.pdf}
+    \includegraphics[width=0.88\textwidth]{3alignments.pdf}
     \caption{Three different alignments that produce the same output text when using the CTC collapsing function \cite{jurafskyspeech}.}
     \label{dinner}
 \end{figure}
@@ -324,12 +323,15 @@ Because of the strong conditional independence assumption mentioned earlier,
 CTC does not implicitly learn a language model over the data.
 Therefore, the CTC algorithm commonly predicts sentences that contain obvious spelling mistakes.
 We can mitigate this issue by using a seperately trained language model (LM).
-This is done by adding an additional term in the CTC loss function with interpolation weights:
+This is done by adding additional terms in the CTC loss function with interpolation weights:
 
 \begin{equation}
-    \text{score}_{\text{CTC}}(Y|X) = \log\left(P_{\text{CTC}}(Y|X)\right) + \lambda_1 \log\left(P_{\text{LM}}(Y)\right) + \lambda_2 L(Y).
+    \text{score}_{\text{CTC}}(Y|X) = \log\left(P_{\text{CTC}}(Y|X)\right) + \lambda_1 \log\left(P_{\text{LM}}(Y)\right) + \lambda_2 L(Y),
 \end{equation}
-\hl{TODO}: briefly unpack what $P_{\text{LM}}(Y)$ is, and how it would be constructed
+where $\lambda_1$ and $\lambda_2$ are the interpolation weights. $P_{\text{LM}}(Y)$ is the probability of the LM and $L(Y)$ is a length factor.
+In this study, we use \textbf{$n$-gram} LMs with Kneser-Ney smoothing \cite{shannon1948}, \cite{ney1994structuring}. 
+We use $5$-gram LMs, due to its popularity in recent ASR literature.
+We omit the details of $n$-grams and Kneser-Ney smoothing. However, we recommend \cite{jurafskyspeech} to interested readers.
 
 We have now discussed how to create an ASR model that is pre-trained using wav2vec 2.0 and fine-tuned using CTC. 
 However, in the following section we discuss an issue with this approach for our particular study.
@@ -347,8 +349,7 @@ Pre-training with wav2vec 2.0 using unlabeled data is infeasible for our study b
 \end{enumerate}
 At the time of conducting this study, we did not have access to the computational resources required to perform pre-training experiments.
 Therefore, our study focuses on fine-tuning already pre-trained wav2vec 2.0 models, rather than performing pre-training and then fine-tuning.
-In this section, we discuss the pre-trained models used in this study: \href{https://huggingface.co/facebook/wav2vec2-large}{Wav2Vec2-Large} and XLS-R.
-Wav2Vec2-Large \cite{baevski2020wav2vec} is a base-sized wav2vec 2.0 model pre-trained on $960$ hours of English speech recordings.
+In this section, we discuss XLS-R, which is the pre-trained model used in this study.
 
 \subsection{XLS-R}
 XLS-R \cite{babu2021xls} is a large-scale wav2vec 2.0 model trained on $128$ different languages to learn \emph{cross-lingual} speech representations.
@@ -359,9 +360,11 @@ Batches are sampled from a probability distribution $p_l \sim \left(\dfrac{n_l}{
 \begin{itemize}
     \item $l \in \{1, \dots, L\}$ represents each language.
     \item $N$ is the number of hours of all the unlabeled data and $n_l$ is the number of hours of unlabeled data for the language $l$.
-    \item $\alpha$ controls how much data is chosen from the high-resource and low-resource languages.
+    \item $\alpha$ controls how much data is chosen from the high-resource and low-resource languages. If $\alpha = 0$, then there is an equal probability to select from each of the $128$ languages. 
 \end{itemize}
-\hl{TODO}: Give an intution for why this strategy is used.
+The batch selection strategy results in diverse batches that contain recordings from different languages.
+The diverse batches leads to the model being encouraged to learn cross-lingual representations.
+The risk of not using this strategy is that some batches may contain recordings of only one or two languages, which increases training time.
 
 The total number of hours of all the unlabeled data combined is about 436k hours. The authors use data from 24 high-resource languages, 17 mid-resource languages, and 88 low-resource languages.
 The high-resource languages contain more than 1k hours of data each, the mid-resource languages contain more than 100 hours (but less than 1k hours)

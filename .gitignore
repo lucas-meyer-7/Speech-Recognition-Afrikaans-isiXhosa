@@ -1,19 +1,23 @@
 # Ignore KenLM repo
 src/kenlm/
 
-# Ignore LM data - Wikipedia dumps and WikiExtractor
+# Ignore LM data: Wikipedia dumps and WikiExtractor
 src/data/language_model_data/extract_wikipedia/
 
-# Ignore LM data - cleaned Wikipedia data
+# Ignore LM data: cleaned Wikipedia data
 src/data/language_model_data/cleaned_data/
 
-# Ignore speech data - downloaded datasets
+# Ignore speech data: downloaded datasets
 src/data/speech_data/downloaded/
 
-# Ignore speech data - self-made datasets
+# Ignore speech data: self-made datasets
 src/data/speech_data/asr_af/
 src/data/speech_data/asr_xh/
 src/data/speech_data/asr_af_xh/
+
+# Ignore my own chunk
+src/pickle_script.py
+src/password.txt
 
 # Ignore Python cache:
 __pycache__/
@@ -26,3 +30,7 @@ report/*.out
 report/*.toc
 report/*.bbl
 report/*.blg
+report/*.fls
+report/*.fdb_latexmk
+
+report/other/

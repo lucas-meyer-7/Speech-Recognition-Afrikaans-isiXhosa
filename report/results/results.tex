@@ -1,44 +1,65 @@
 \graphicspath{{results/fig/}}
 
 \chapter{Results} \label{chap:results}
+%
+%
+%  USE HERMAN KAMPER RESULTS SECTION AS REF 
+%
+%
+\section{Afrikaans model results}
 
+\subsection{Basic fine-tuning results}
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
     \caption{The WER for different models evaluated on the validation/test data of the Afrikaans dataset. The hyperlinks for each model provide more information about the hyperparameters and training results.}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
-        & \multicolumn{2}{c}{Word error rate (WER)} \\
+        & \multicolumn{2}{c}{WER} \\
         \cmidrule(lr){2-3}
         Model                                                                                                                   & Validation  & Test   \\
         \midrule
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1}{Run 1}                      & 0.3789      & 0.3841 \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1-with-LM}{Run 1 (with LM)}    & 0.2753      & 0.2803 \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run2}{Run 2}                      & 0.3798      & 0.3801 \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run2-with-LM}{Run 2 (with LM)}    & 0.3149      & 0.3119 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1}{Fine-tune on \verb|asr_af|}                      & 0.3789      & 0.3841 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_af-run1-with-LM}{Fine-tune on \verb|asr_af| (with LM)}    & 0.2753      & 0.2803 \\
         \bottomrule
     \end{tabularx}
     \label{tbl:abx_speaker}
 \end{table}
 
+\subsection{Sequential fine-tuning results}
+\hl{TODO}
+
+
+
+
+
+\section{isiXhosa model results}
+
+\subsection{Basic fine-tuning results}
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
     \caption{The WER for different models evaluated on the validation/test data of the isiXhosa dataset. The hyperlinks for each model provide more information about the hyperparameters and training results.}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
-        & \multicolumn{2}{c}{Word error rate (WER)} \\
+        & \multicolumn{2}{c}{WER} \\
         \cmidrule(lr){2-3}
         Model                                                                                                 & Validation  & Test   \\
         \midrule
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run1}{Run 1}                      & ?           & ? \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run1-with-LM}{Run 1 (with LM)}    & ?           & ? \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2}{Run 2}                      & 0.5436      & 0.5494 \\
-        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2-with-LM}{Run 2 (with LM)}    & 0.4373      & 0.4211 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2}{Fine-tune on \verb|asr_xh|}                      & 0.5436      & 0.5494 \\
+        \href{https://huggingface.co/lucas-meyer/wav2vec2-xls-r-300m-asr_xh-run2-with-LM}{Fine-tune on \verb|asr_xh| (with LM)}    & 0.4373      & 0.4211 \\
         \bottomrule
     \end{tabularx}
     \label{tbl:abx_speaker}
 \end{table}
+
+
+\subsection{Sequential fine-tuning results}
+\hl{TODO}
+
+
+
+
 
 
 The two isiZulu runs (intended for fine-tuning):

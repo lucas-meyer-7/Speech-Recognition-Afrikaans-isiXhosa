@@ -7,8 +7,8 @@ Refer to the Python notebooks in the ``src`` directory.
 
 ## 2. Datasets
 We combined recordings from three data sources to create the following two datasets:
- - [ASR Afrikaans](https://huggingface.co/datasets/lucas-meyer/asr_af)
- - [ASR isiXhosa](https://huggingface.co/datasets/lucas-meyer/asr_xh)
+ - [Afrikaans ASR dataset (``asr_af``)](https://huggingface.co/datasets/lucas-meyer/asr_af)
+ - [isiXhosa ASR dataset (``asr_xh``)](https://huggingface.co/datasets/lucas-meyer/asr_xh)
 
 The following three data sources were used:
 | Webpage Link | Language | Number of data entries | Additional info |
@@ -208,17 +208,19 @@ The following three data sources were used:
  - Added LMs for the Afrikaans and isiXhosa models.
 
 **Experiments (TODO)**:
- - One isiXhosa run, one-two isiZulu runs.
- - Perform sequential fine-tuning experiments.
+ - One basic isiXhosa run.
+ - One basic isiZulu run.
+ - Two sequential Afrikaans runs.
+ - Two sequential isiXhosa runs.
 
 **Report (DONE)**:
  - Made changes to Background and Experimental Setup (based on feedback).
- - Wrote $80%$ of Abstract.
+ - Wrote $80\%$ of Abstract.
  - Created tables to store results of experiments.
 
 **Report (TODO)**:
  - Abstract (results and conclusions - very short).
- - Introduction.
+ - Introduction (refine, results and conclusions - very short).
  - Background (two paragraphs).
  - Experimental Setup (add explanation of isiZulu data and experiments - very short).
  - Results.
@@ -237,7 +239,7 @@ The following three data sources were used:
 
 ### 4.1. My supervisor
 I would like to thank my supervisor, [Herman Kamper](https://www.kamperh.com/), for allowing me to do this project with him.
-He has provided me with great advice and many helpful resources, which includes his report template.
+He has provided me with great advice and many helpful resources. He is also the creator of this report template.
 
 ### 4.2. Research papers and textbooks
 Refer to the references section in the final report.

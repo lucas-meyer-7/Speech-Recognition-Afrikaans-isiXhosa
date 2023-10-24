@@ -14,17 +14,17 @@ histogram_directory = os.path.join("data", "speech_data", "duration_histograms")
 os.makedirs(list_directory, exist_ok=True)
 os.makedirs(histogram_directory, exist_ok=True)
 
-def load_fleurs_zu(write_audio, plot_durations=False):
+def load_fleurs_nl(write_audio, plot_durations=False):
     change_pwd()
 
-    dataset_name = "fleurs_zu"
-    zu_train = load_dataset("google/fleurs", "zu_za", split="train")
-    zu_val = load_dataset("google/fleurs", "zu_za", split="validation")
-    zu_test = load_dataset("google/fleurs", "zu_za", split="test")
-    zu_train = zu_train.remove_columns(['id','raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
-    zu_val = zu_val.remove_columns(['id', 'raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
-    zu_test = zu_test.remove_columns(['id', 'raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
-    datasets = [zu_train, zu_val, zu_test]
+    dataset_name = "fleurs_nl"
+    nl_train = load_dataset("google/fleurs", "nl_nl", split="train")
+    nl_val = load_dataset("google/fleurs", "nl_nl", split="validation")
+    nl_test = load_dataset("google/fleurs", "nl_nl", split="test")
+    nl_train = nl_train.remove_columns(['id','raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
+    nl_val = nl_val.remove_columns(['id', 'raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
+    nl_test = nl_test.remove_columns(['id', 'raw_transcription', 'gender', 'lang_id', 'language', 'lang_group_id'])
+    datasets = [nl_train, nl_val, nl_test]
 
     if write_audio:
         dataset_dir = os.path.join("data", "speech_data", dataset_name)
@@ -39,7 +39,7 @@ def load_fleurs_zu(write_audio, plot_durations=False):
             duration = data_entry["audio"]["array"].shape[0] / data_entry["audio"]["sampling_rate"]
             durations.append(duration)
     if plot_durations:
-        plot_durations_histogram(durations=durations, pdf_name=f"FLEURS [zu]")
+        plot_durations_histogram(durations=durations, pdf_name=f"FLEURS [nl]")
 
     # Get min and max times based on mean and standard deviation
     mean_duration = np.mean(durations)
@@ -81,13 +81,13 @@ def load_fleurs_zu(write_audio, plot_durations=False):
     print(f"FLEURS finished loading.\nRemoved {removed_count}/{len(durations)} outlier entries.")
 
     # Save durations of all data entries that were not removed
-    with open(os.path.join(list_directory, f'fleurs_durations_zu.ob'), 'wb') as fp:
+    with open(os.path.join(list_directory, f'fleurs_durations_nl.ob'), 'wb') as fp:
         pickle.dump(new_durations, fp)
 
     # Plot histograms
     if plot_durations:
         plot_durations_histogram(durations=new_durations, 
-                                 pdf_name=f"FLEURS after removing outliers [zu]")
+                                 pdf_name=f"FLEURS after removing outliers [nl]")
         plt.show()
 
     # Return CSV entries
@@ -103,5 +103,4 @@ def plot_durations_histogram(durations, pdf_name):
 
 
 if __name__ == "__main__":
-    entries = load_fleurs_zu(write_audio=False, plot_durations=True)
-
+    entries = load_fleurs_nl(write_audio=False, plot_durations=True)

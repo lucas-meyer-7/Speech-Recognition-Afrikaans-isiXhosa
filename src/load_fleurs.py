@@ -131,6 +131,8 @@ def load_fleurs(language, write_audio, plot_durations=False):
 def plot_durations_histogram(durations, pdf_name):
     os.makedirs(histogram_directory, exist_ok=True)
     plt.figure()
+    plt.xlabel("Duration")
+    plt.ylabel("Frequency")
     plt.hist(durations, bins=200)
     plt.savefig(os.path.join(histogram_directory, f"{pdf_name}.pdf"))
 

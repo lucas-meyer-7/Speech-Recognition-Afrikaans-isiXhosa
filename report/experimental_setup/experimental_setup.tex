@@ -7,18 +7,18 @@ our ASR models, as well as the data for our language model (LM).
 The chapter concludes with a discussion of the metrics used in this study to evaluate our ASR models.
 
 \section{Research questions and experiments}
-The main research question we attempt to answer in this study is: ``Does a sequential fine-tuning strategy, where the model is first fine-tuned on (for example) Afrikaans data and subsequently on isiXhosa data, result in better accuracy and generalization performance compared to fine-tuning on isiXhosa data alone?''.
-We investigate this research question by fine-tuning Wav2Vec2-Large and XLS-R using:
-\begin{enumerate}
-    \item Only Afrikaans data.
-    \item Only isiXhosa data.
-    \item isiXhosa data, and then Afrikaans data.
-    \item Afrikaans data, and then isiXhosa data.
-\end{enumerate}
-Experiments (1) and (3), and experiments (2) and (4) are compared using WER (\ref{subsec:wer}).
-Additionally, each model is also evaluated with and without the use of a $5$-gram LM with Kneser-Ney smoothing \cite{shannon1948}, \cite{ney1994structuring}.
+The focus of our research is determining which fine-tuning strategy results in the best Afrikaans and isiXhosa ASR model respectively.
+We elaborate on this by determining whether a sequential fine-tuning approach can obtain better results than standard fine-tuning.
+Our standard fine-tuning approach involves fine-tuning a wav2vec 2.0 model (\ref{subsec:finetune}) using one dataset, which contains recordings from one language.
+Our sequential fine-tuning approach involves fine-tuning a wav2vec 2.0 model (\ref{subsec:finetune}) using one dataset, and the using a different dataset (which contains recordings from a different language)
+to continue fine-tuning. To determine which approach performs better, we perform multiple experiments to obtain Afrikaans and isiXhosa ASR models.
 
-\section{Data sets}
+Our experiments involve fine-tuning the \href{https://huggingface.co/facebook/wav2vec2-xls-r-300m}{XLS-R (300M)} model using Afrikaans, isiXhosa, and isiZulu speech data.
+We use isiZulu speech data for our sequential fine-tuning experiments, because isiZulu and isiXhosa are closely related.
+Our assumption is that fine-tuning on isiZulu and then isiXhosa may result in better accuracy compared to fine-tuning on Afrikaans and then isiXhosa.
+Performance of each model is measured using the word error rate (\ref{subsec:wer}).
+
+\section{Data}
 We use three different data sources to create an \href{https://huggingface.co/datasets/lucas-meyer/asr_af}{Afrikaans dataset} and an \href{https://huggingface.co/datasets/lucas-meyer/asr_xh}{isiXhosa dataset}, which contains labeled speech recordings.
 The three data sources are briefly explained in the paragraphs below.
 
