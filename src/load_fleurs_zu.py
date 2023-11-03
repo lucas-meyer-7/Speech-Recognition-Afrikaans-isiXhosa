@@ -14,7 +14,7 @@ histogram_directory = os.path.join("data", "speech_data", "duration_histograms")
 os.makedirs(list_directory, exist_ok=True)
 os.makedirs(histogram_directory, exist_ok=True)
 
-def load_fleurs_zu(write_audio, plot_durations=False):
+def load_fleurs_zu(write_audio):
     change_pwd()
 
     dataset_name = "fleurs_zu"
@@ -33,19 +33,23 @@ def load_fleurs_zu(write_audio, plot_durations=False):
         os.makedirs(os.path.join(dataset_dir, "data", "test"), exist_ok=True)
 
     # Get durations of all data entries
-    durations = []
-    for ds in datasets:
+    ds_durations = [[], [], []]
+    for i in range(len(datasets)):
+        ds = datasets[i]
         for data_entry in ds:
             duration = data_entry["audio"]["array"].shape[0] / data_entry["audio"]["sampling_rate"]
-            durations.append(duration)
-    if plot_durations:
-        plot_durations_histogram(durations=durations, pdf_name=f"FLEURS [zu]")
+            ds_durations[i].append(duration)
 
     # Get min and max times based on mean and standard deviation
-    mean_duration = np.mean(durations)
-    std_duration = np.std(durations)
-    min_time = mean_duration - (1.5)*std_duration
-    max_time = mean_duration + (0.5)*std_duration
+    ds_mean_duration = []
+    ds_std_duration  = []
+    ds_min_time = []
+    ds_max_time = []
+    for i in range(len(datasets)):
+        ds_mean_duration.append(np.mean(ds_durations[i]))
+        ds_std_duration.append(np.std(ds_durations[i]))
+        ds_min_time.append(ds_mean_duration[i] - (1.0)*ds_std_duration[i])
+        ds_max_time.append(ds_mean_duration[i] + (1.0)*ds_std_duration[i])
     removed_count = 0
 
     # NumPy set seed - very important
@@ -62,46 +66,35 @@ def load_fleurs_zu(write_audio, plot_durations=False):
     for ds in datasets:
         for data_entry in ds:
             duration = data_entry["audio"]["array"].shape[0] / data_entry["audio"]["sampling_rate"]
-            if (duration < min_time) or (duration > max_time):
-                removed_count += 1
-                continue
-            new_durations.append(duration)
             dst_path = os.path.join("data", os.path.split(data_entry["audio"]["path"])[0])
             if "train" in dst_path:
+                if (duration < ds_min_time[0]) or (duration > ds_max_time[0]):
+                    removed_count += 1
+                    continue
+                new_durations.append(duration)
                 dst_path = os.path.join(dst_path, f"fleurs_{train_count}.wav"); train_count += 1
             elif "dev" in dst_path:
+                if (duration < ds_min_time[1]) or (duration > ds_max_time[1]):
+                    removed_count += 1
+                    continue
+                new_durations.append(duration)
                 dst_path = os.path.join("data", "validation", f"fleurs_{val_count}.wav"); val_count += 1
             elif "test" in dst_path:
+                if (duration < ds_min_time[2]) or (duration > ds_max_time[2]):
+                    removed_count += 1
+                    continue
+                new_durations.append(duration)
                 dst_path = os.path.join(dst_path, f"fleurs_{test_count}.wav"); test_count += 1
             if write_audio:
                 write(os.path.join(dataset_dir, dst_path), data_entry["audio"]["sampling_rate"], data_entry["audio"]["array"])
             csv_entries.append([dst_path, remove_special_characters(data_entry["transcription"])])
 
     # Print finished and number of outliers removed
-    print(f"FLEURS finished loading.\nRemoved {removed_count}/{len(durations)} outlier entries.")
-
-    # Save durations of all data entries that were not removed
-    with open(os.path.join(list_directory, f'fleurs_durations_zu.ob'), 'wb') as fp:
-        pickle.dump(new_durations, fp)
-
-    # Plot histograms
-    if plot_durations:
-        plot_durations_histogram(durations=new_durations, 
-                                 pdf_name=f"FLEURS after removing outliers [zu]")
-        plt.show()
+    print(f"FLEURS finished loading.\nRemoved {removed_count}/{len(ds_durations[0]) + len(ds_durations[1]) + len(ds_durations[2])} outlier entries.")
 
     # Return CSV entries
     return csv_entries
 
-def plot_durations_histogram(durations, pdf_name):
-    os.makedirs(histogram_directory, exist_ok=True)
-    plt.figure()
-    plt.xlabel("Duration")
-    plt.ylabel("Frequency")
-    plt.hist(durations, bins=200)
-    plt.savefig(os.path.join(histogram_directory, f"{pdf_name}.pdf"))
-
 
 if __name__ == "__main__":
-    entries = load_fleurs_zu(write_audio=False, plot_durations=True)
-
+    entries = load_fleurs_zu(write_audio=False)

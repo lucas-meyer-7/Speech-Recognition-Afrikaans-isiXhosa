@@ -1,11 +1,145 @@
-\chapter{Project Planning Schedule}
+\chapter{Full experimental results}
 \makeatletter\@mkboth{}{Appendix}\makeatother
-\label{appen:derivations_bigramseg}
+\label{appen:results}
 
-This is an appendix.
 
-\chapter{Outcomes Compliance}
-\makeatletter\@mkboth{}{Appendix}\makeatother
-\label{appen:derivations_bigramseg}
 
-This is another appendix.
+
+
+\section{Basic fine-tuning results}
+
+\subsection{Afrikaans results}
+Table \ref{tbl:full-basic-af} provides the results of all our Afrikaans models using the basic fine-tuning strategy. 
+\hl{Note:} Going to perform 4 more runs (af and xh) using basic fine-tuning.
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our Afrikaans model using the basic fine-tuning strategy. 
+    The model is evaluated on the validation and test data of the Afrikaans dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_af}{\texttt{asr\_af}}).}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                       & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run1}{Run 1}          & $4$ & $3$ & $400$ & $2$ & $0.3879$ & $0.3841$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run2}{\textbf{Run 2}} & $8$ & $2$ & $50$ & $3$ & $0.3798$ & $0.3801$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run3}{Run 3}          & $4$ & $3$ & $250$ & $3$ & $0.4306$ & $0.4366$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run4}{Run 4}          & $8$ & $2$ & $100$ & $3$ & $0.4133$ & $0.4229$ \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-basic-af}
+\end{table}
+
+\subsection{isiXhosa results}
+Table \ref{tbl:full-basic-xh} provides the results of all our isiXhosa models using the basic fine-tuning strategy. 
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our isiXhosa model using the basic fine-tuning strategy. 
+    The model is evaluated on the validation and test data of the isiXhosa dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_xh}{\texttt{asr\_xh}}).}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                       & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run1}{\textbf{Run 1}} & $4$ & $3$ & $250$ & $2$ & $0.5008$ & $0.5052$  \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run2}{Run 2}          & $8$ & $2$ & $50$ & $3$ & $0.5436$ & $0.5494$   \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run3}{Run 3}          & $8$ & $2$ & $100$ & $3$ & $0.5306$ & $0.5388$  \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run4}{Run 4}          & $16$ & $2$ & $100$ & $2$ & $0.5008$ & $0.5104$ \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-basic-xh}
+\end{table}
+
+
+
+
+
+\section{Sequential fine-tuning results}
+\subsection{Afrikaans results}
+Table \ref{tbl:full-seq-af} provides the results of all our Afrikaans models using the sequential fine-tuning strategy. \hl{Note}\footnote{
+    The results you seen on the model card do not match with the tabular results. I evaluate the models seperately using \texttt{src/test.ipynb}. I also need to re-run Run 8 (af and xh).
+}
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our Afrikaans model using the sequential fine-tuning strategy. 
+    The model is evaluated on the validation and test data of the Afrikaans dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_af}{\texttt{asr\_af}}).}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                                                & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run1}{Run 1}                & $4$ & $3$ & $50$ & $3$ & $0.3723$ & $0.3778$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run2}{Run 2}               & $4$ & $3$ & $100$ & $3$ & $0.3875$ & $0.3866$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run3}{\textbf{Run 3}}       & $4$ & $3$ & $250$ & $2$ & $0.3671$ & $0.3716$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run4}{Run 4}               & $4$ & $3$ & $400$ & $2$ & $0.4041$ & $0.4225$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run5}{Run 5}               & $8$ & $2$ & $50$ & $3$ & $0.4140$ & $0.4251$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run6}{Run 6}               & $8$ & $2$ & $100$ & $3$ & $0.3517$ & $0.3749$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run7}{Run 7}               & $8$ & $2$ & $250$ & $2$ & $0.3672$ & $0.3716$  \\
+        % \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run14}{Run 8}               & $8$ & $2$ & $400$ & $2$ & \hl{?} & \hl{?}  \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-seq-af}
+\end{table}
+
+\subsection{isiXhosa results}
+Table \ref{tbl:full-seq-xh} provides the results of all our isiXhosa models using the sequential fine-tuning strategy. 
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our isiXhosa model using the sequential fine-tuning strategy. 
+    The model is evaluated on the validation and test data of the isiXhosa dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_xh}{\texttt{asr\_xh}}).}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                                               & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run1}{Run 1}               & $4$ & $3$ & $50$ & $3$ & $0.6404$ & $0.6440$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run2}{Run 2}               & $4$ & $3$ & $100$ & $3$ & $0.5115$ & $0.5132$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run3}{Run 3}                & $4$ & $3$ & $250$ & $2$ & $0.5206$ & $0.5318$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run4}{Run 4}               & $4$ & $3$ & $400$ & $2$ & $0.5400$ & $0.5518$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run5}{Run 5}               & $8$ & $2$ & $50$ & $3$ & $0.5578$ & $0.5766$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run6}{Run 6}               & $8$ & $2$ & $100$ & $3$ & $0.5222$ & $0.5530$  \\
+        \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run7}{\textbf{Run 7}}      & $8$ & $2$ & $250$ & $2$ & $0.4945$ & $0.4989$  \\
+        % \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run14}{Run 8}               & $8$ & $2$ & $400$ & $2$ & $0.5241$ & $0.5475$  \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-seq-xh}
+\end{table}
+
+
+
+
+
+\section{Additional fine-tuning results}
+
+\subsection{Dutch results}
+Table \ref{tbl:full-basic-nl} provides the results of all our Dutch models using the basic fine-tuning strategy. 
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our Dutch model using the basic fine-tuning strategy. 
+    The model is evaluated on the validation and test data of \texttt{FLEURS\_nl}.}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                           & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule    
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_nl-run1}{Run 1}           & $4$ & $3$ & $250$ & $3$ & $0.4036$ & $0.4073$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_nl-run2}{\textbf{Run 2}}  & $8$ & $2$ & $100$ & $3$ & $0.3805$ & $0.3720$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_nl-run3}{Run 3}           & $4$ & $3$ & $100$ & $3$ & $0.4048$ & $0.4089$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_nl-run4}{Run 4}           & $16$ & $2$ & $100$ & $2$ & $0.4294$ & $0.4374$ \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-basic-nl}
+\end{table}
+
+\subsection{isiZulu results}
+Table \ref{tbl:full-basic-zu} provides the results of all our isiZulu models using the basic fine-tuning strategy. 
+\begin{table}[!h]
+    \mytable
+    \caption{The results of all our isiZulu model using the basic fine-tuning strategy. 
+    The model is evaluated on the validation and test data of \texttt{FLEURS\_zu}.}
+    \begin{tabularx}{\linewidth}{@{}lCCCCCC@{}}
+        \toprule
+        Model                                                                           & Batch Size & Gradient Accumulation Steps & Evaluation Steps & Early Stopping Patience & \textbf{WER \ (Val. Set)} & \textbf{WER (Test Set)} \\
+        \midrule
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_zu-run1}{Run 1}           & $4$ & $3$ & $250$ & $3$ & $0.6141$ & $0.6023$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_zu-run2}{Run 2}           & $8$ & $2$ & $100$ & $3$ & $0.6693$ & $0.6609$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_zu-run3}{\textbf{Run 3}}  & $4$ & $3$ & $50$ & $3$ & $0.5719$ & $0.5727$ \\
+        \href{https://huggingface.co/lucas-meyer/xls-r-fleurs_zu-run4}{Run 4}           & $4$ & $3$ & $100$ & $3$ & $0.6779$ & $0.6797$ \\
+        \bottomrule
+    \end{tabularx}
+    \label{tbl:full-basic-zu}
+\end{table}

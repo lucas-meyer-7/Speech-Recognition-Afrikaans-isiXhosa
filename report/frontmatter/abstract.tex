@@ -1,22 +1,23 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \makeatletter\@mkboth{}{Abstract}\makeatother
-%
-%
-%  USE HERMAN KAMPER ABSTRACT SECTION AS REF 
-%
-%
-Automatic speech recognition (ASR) is an important technology that is used for education \cite{wald2005using}, 
-helping people with disabilities \cite{terbeh2013automatic}, and captioning \cite{wald2006captioning}.
-Several high quality ASR systems for English exist today, such as Siri, Alexa, and Google Assistant. However, ASR remains a challenge for low-resource languages. 
+Automatic speech recognition (ASR) involves identifying the spoken words for a given speech recording and returning the text of the spoken words.
+ASR is an important technology used across many domains such as enhancing educational systems \cite{wald2005using}, 
+helping people with disabilities \cite{terbeh2013automatic}, and automatic captioning \cite{wald2006captioning}.
+Several high-quality ASR systems for English are developed such as Siri, Alexa, and Google Assistant.
+However, creating high-quality ASR systems for low-resource languages remains a challenge.
+In this study we perform ASR for two low-resource languages: Afrikaans and isiXhosa.
 
-In this study, we perform ASR for two South African languages: Afrikaans and isiXhosa.
-Our approach involves fine-tuning well-known pre-trained models, and using seperately trained language models to boost performance.
-We propose a sequential fine-tuning approach, in which the model is first fine-tuned on one language, and then fine-tuned on the target language.
-Our sequential fine-tuning approach is compared to a simple fine-tuning approach, where one language is used to fine-tune the model.
-Our models are evaluated using the word error rate (WER).
+Our approach involves fine-tuning XLS-R for ASR.
+XLS-R is a large-scale wav2vec 2.0 model that transforms speech recordings (audio data) into cross-lingual speech features.
+Two fine-tuning strategies are compared in this study, referred to as the \emph{basic} fine-tuning strategy and the \emph{sequential} fine-tuning strategy.
+Basic fine-tuning involves fine-tuning on one language, and sequential fine-tuning involves fine-tuning on two languages sequentially.
+For our sequential fine-tuning experiments, we fine-tune on Dutch before fine-tuning on Afrikaans, and we fine-tune on isiZulu before fine-tuning on isiXhosa.
+We create several ASR models using both fine-tuning strategies and our models are evaluated using the word error rate (WER) metric.
 
-Our experimental results conclude that...
+Our results conclude that the sequential fine-tuning strategy is more effective than the basic fine-tuning strategy for both Afrikaans and isiXhosa. 
+By using sequential fine-tuning, our best Afrikaans model achieves a $0.3716$ WER on our Afrikaans test set, and our best isiXhosa model achieves a $0.4989$ WER on our isiXhosa test set.
+By using a seperately trained $n$-gram language model (LM) we achieve a $0.2796$ WER for our best Afrikaans model, and a $0.3993$ WER for our best isiXhosa model.
 
 % \selectlanguage{afrikaans}
 % \chapter*{Uittreksel}

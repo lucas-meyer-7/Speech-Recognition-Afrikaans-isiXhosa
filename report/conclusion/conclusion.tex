@@ -1,5 +1,30 @@
 \graphicspath{{conclusion/fig/}}
 
-\chapter{Summary and Conclusion} \label{chap:conclusion}
+\chapter{Conclusion} \label{chap:conclusion}
+In this study we performed automatic speech recognition (ASR) for Afrikaans and isiXhosa.
+We introduced wav2vec 2.0, which is a machine learning model used to transform audio data into feature representations for speech.
+We explained how using wav2vec 2.0 for unsupervised pre-training is challenging given our computational resources,
+and proposed a feasible approach in which we instead fine-tune a wav2vec 2.0 model that has already been pre-trained.
+We chose to fine-tune XLS-R, a large-scale wav2vec 2.0 model that has been pre-trained on $128$ languages in order to learn \emph{cross-lingual} representations.
+We briefly discussed our datasets and our selection approach which mitigates some of the common issues of ASR.
+We performed multiple fine-tuning experiments using different hyperparameters and fine-tuning strategies.
+In particular, we compared a basic fine-tuning strategy, in which one language is used for fine-tuning, 
+to a sequential fine-tuning strategy, in which one language is used to fine-tune the model and then the model is fine-tuned again using a different language.
+For the sequential fine-tuning experiments, we first fine-tuned on Dutch for our Afrikaans models, and we first fine-tuned on isiZulu for isiXhosa models.
+Our results conclude that the sequential fine-tuning strategy is more effective than the basic fine-tuning strategy for both Afrikaans and isiXhosa. 
+By using sequential fine-tuning, our best Afrikaans model achieves a $0.3716$ WER on our Afrikaans test set, and our best isiXhosa model achieves a $0.4989$ WER on our isiXhosa test set.
+By using a seperately trained $n$-gram language model (LM) we achieve a $0.2796$ WER for our best Afrikaans model, and a $0.3993$ WER for our best isiXhosa model.
+This leads us to what we believe should be addressed in future work.
 
-\hl{TODO}
+\section{Future work}
+The Afrikaans and isiXhosa datasets were used for our experiments are very small (approximately $7.5$ hours of speech data each).
+This is because Afrikaans and isiXhosa are low-resource languages.
+We recommend for future work that more labeled speech data for Afrikaans and isiXhosa should be collected and used for training and evaluating the ASR models.
+\newpage
+Additionaly, we believe that performing wav2vec 2.0 pre-training using a large corpus of unlabeled speech data may improve the accuracy of our Afrikaans and isiXhosa models.
+We believe that there are two ways this can be done. 
+The first method involves training wav2vec 2.0 from scratch using randomly initialized weights.
+The second method involves training wav2vec 2.0 initialized with the same weights of the XLS-R model, 
+which is basically fine-tuning XLS-R on unlabeled speech data using the wav2vec 2.0 objective function (\ref{par:obj}).
+We also recommend that different amounts of data for each language should be used in different experiments to see whether cross-lingual (Afrikaans and isiXhosa)
+representations results in better accuracy (after fine-tuning) compared to mono-lingual representations.

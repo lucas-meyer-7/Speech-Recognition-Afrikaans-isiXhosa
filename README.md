@@ -197,9 +197,7 @@ The following three data sources were used:
    2. **Question:** Should I use TikZ for diagrams? If not, can you recommend any applications for creating diagrams/figures that were useful to you in the past.
    3. **Question:** I have included an outline for the Experimental Setup. Can you review this as well? -->
 
-## 3. Progress Update & Questions
-
-### 3.1 Progress (20/10/2023)
+<!-- ### 3.1 Progress (20/10/2023)
 
 **Experiments (DONE)**:
  - Collected a corpus of Zulu data from FLEURS.
@@ -229,20 +227,30 @@ The following three data sources were used:
 ### 3.2 Questions for Herman (20/10/2023)
  - **Question:** I really don't like the IEEE Figure position rule. Do you think it will harm my mark if I ignore this rule?
  - **Question:** Do you think that my mark will be harmed if the sequential fine-tuning approach does not improve the accuracy over the simple fine-tuning approach?
+<!--  -->
 
-<!-- ### 4.3 Questions unrelated to project (06/10/2023)
-   1. **Question:** Can you give your own biased opinion on working straight after Masters? Can you also give your opinion on doing a PhD straight after Masters? I'm at a bit of a crossroads, since I believe in my capabilities to do either (work/research)... Finally, can you give your opinion on doing both (working while doing research/PhD)?
-   2. **Question:** I am thinking about applying for a job next year. I would like to work with Audio + ML (speech, music, etc.). 
-   Do you have any connections/recommendations for me? Trackosaurus education? -->
+## 3. Progress Update & Questions
+
+### 3.1 Progress (03/11/2023)
+TODO:
+   - Make changes based on review.
+   - Check the citations in the Bibliography.
+   - Tidy up the Github repo and add more comments in the READMEs.
+   <!-- - Fix HuggingFace repos. (seed?) -->
+
+### 3.2 Questions for Herman (03/11/2023)
+   1. **Question**: Can I put the GitHub repo link in the Abstract?
+   2. **Question**: Is using percentage (\%) for WER a personal preference?
+   3. **Question**: You mention in the review "*training* on related langauges compared to single *training*". Can I use the word "training" for the most of my motivation and use the word *fine-tuning* whenever it is more applicable?
 
 ## 4. References and Acknowledgements
 
 ### 4.1. My supervisor
 I would like to thank my supervisor, [Herman Kamper](https://www.kamperh.com/), for allowing me to do this project with him.
-He has provided me with great advice and many helpful resources. He is also the creator of this report template.
+He has provided me with great advice and many helpful resources such as the template for the report.
 
 ### 4.2. Research papers and textbooks
-Refer to the references section in the final report.
+Refer to the citations in the Bibliography of the report.
 
 ### 4.3. Other resources
  - (Docs) HuggingFace [datasets](https://huggingface.co/docs/datasets/index) and [transformers](https://huggingface.co/docs/transformers/index).
