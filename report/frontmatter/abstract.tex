@@ -1,27 +1,34 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \makeatletter\@mkboth{}{Abstract}\makeatother
-Automatic speech recognition (ASR) involves identifying the spoken words for a given speech recording and returning the text of the spoken words.
-ASR is an important technology used across many domains such as enhancing educational systems \cite{wald2005using}, 
-helping people with disabilities \cite{terbeh2013automatic}, and automatic captioning \cite{wald2006captioning}.
-Several high-quality ASR systems for English are developed such as Siri, Alexa, and Google Assistant.
-However, creating high-quality ASR systems for low-resource languages remains a challenge.
-In this study we perform ASR for two low-resource languages: Afrikaans and isiXhosa.
+% 1. Motivation
+Developing high-quality automatic speech recognition (ASR) systems for languages such as Afrikaans and isiXhosa remains a challenging task, mainly due to a limited number of available speech resources. 
+% (TODO) Impact if succesful
+% 2. Problem statement
+In this study, we investigate the use of additional data from related languages in the development of ASR systems for Afrikaans and isiXhosa.
+Specifically, we determine whether the use of Dutch data improves the performance of our Afrikaans systems
+and whether the use of isiZulu data improves the performance of our isiXhosa systems.
+We believe that while the use of Dutch and isiZulu data may improve performance, it also requires more computational resources to train our systems.
 
-Our approach involves fine-tuning XLS-R for ASR.
-XLS-R is a large-scale wav2vec 2.0 model that transforms speech recordings (audio data) into cross-lingual speech features.
-Two fine-tuning strategies are compared in this study, referred to as the \emph{basic} fine-tuning strategy and the \emph{sequential} fine-tuning strategy.
-Basic fine-tuning involves fine-tuning on one language, and sequential fine-tuning involves fine-tuning on two languages sequentially.
-For our sequential fine-tuning experiments, we fine-tune on Dutch before fine-tuning on Afrikaans, and we fine-tune on isiZulu before fine-tuning on isiXhosa.
-We create several ASR models using both fine-tuning strategies and our models are evaluated using the word error rate (WER) metric.
-
-Our results conclude that the sequential fine-tuning strategy is more effective than the basic fine-tuning strategy for both Afrikaans and isiXhosa. 
-By using sequential fine-tuning, our best Afrikaans model achieves a $0.3716$ WER on our Afrikaans test set, and our best isiXhosa model achieves a $0.4989$ WER on our isiXhosa test set.
-By using a seperately trained $n$-gram language model (LM) we achieve a $0.2796$ WER for our best Afrikaans model, and a $0.3993$ WER for our best isiXhosa model.
+% 3. Approach
+We compare two training strategies. The first strategy involves training on only the target language, and the second strategy 
+involves training on the target language and a related language.
+We train several Afrikaans and isiXhosa models using both strategies and evaluate the performance of each model on our own validation and test data.
+Additionally, we use separately trained language models to improve the performance of 
+our best models.
+% 4. Results
+We find that using additional data from a related language can slightly improve performance.
+By only training on the target language, our best Afrikaans model achieves a $28.30\%$ word error rate (WER) on our Afrikaans test data 
+and our best isiXhosa model achieves a $41.47\%$ WER on our isiXhosa test data.
+By using additional Dutch and isiZulu data, our best Afrikaans model achieves a $27.50\%$ WER on our Afrikaans test data
+and our best isiXhosa model achieves a $40.51\%$ WER on our isiXhosa test data.
+% 5. Conclusion
+We believe that using additional data from related languages could potentially provide a strategy for developing ASR systems in other under-resourced settings.
+Code, examples, and models: \href{https://github.com/lucas-meyer-7/Speech-Recognition-Afrikaans-isiXhosa}{https://github.com/lucas-meyer-7/Speech-Recognition-Afrikaans-isiXhosa}.
 
 % \selectlanguage{afrikaans}
 % \chapter*{Uittreksel}
-% \addcontentsline{toc}{chapter}{Opsomming}
+% \addcontentsline{toc}{chapter}{Opsomming}f
 % \makeatletter\@mkboth{}{Opsomming}\makeatother
 
 % \hl{TODO}: Die Afrikaanse uittreksel.

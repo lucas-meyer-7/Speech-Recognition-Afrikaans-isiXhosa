@@ -1,346 +1,275 @@
-% ************************************************************************
-% Original paper for wav2vec 2.0
-% ************************************************************************
-@misc{baevski2020wav2vec,
-      title={wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations}, 
-      author={Alexei Baevski and Henry Zhou and Abdelrahman Mohamed and Michael Auli},
-      year={2020},
-      eprint={2006.11477},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
-}
-
-
-% ************************************************************************
-% FFT reference 1
-% ************************************************************************
-@article{cochran1967fast,
-  title={What is the fast Fourier transform?},
-  author={Cochran, William T and Cooley, James W and Favin, David L and Helms, Howard D and Kaenel, Reginald A and Lang, William W and Maling, George C and Nelson, David E and Rader, Charles M and Welch, Peter D},
-  journal={Proceedings of the IEEE},
-  volume={55},
-  number={10},
-  pages={1664--1674},
-  year={1967},
-  publisher={IEEE}
-}
-
-
-% ************************************************************************
-% FFT reference 2
-% ************************************************************************
-@article{cooley1969fast,
-  title={The fast Fourier transform and its applications},
-  author={Cooley, James W and Lewis, Peter AW and Welch, Peter D},
-  journal={IEEE Transactions on Education},
-  volume={12},
-  number={1},
-  pages={27--34},
-  year={1969},
-  publisher={IEEE}
-}
-
-
-% ************************************************************************
-% Blogpost on wav2vec 2.0
-% ************************************************************************
-@online{bgn2021illustrated,
-  author = {Jonathan Bgn},
-  title = {An Illustrated Tour of Wav2vec 2.0},
-  year = 2021,
-  url = {https://jonathanbgn.com/2021/09/30/illustrated-wav2vec-2.html},
-  urldate = {2023-10-03}
-}
-
-
-% ************************************************************************
-% Jurafsky and Martin textbook
-% ************************************************************************
-@misc{jurafskyspeech,
-  title={Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition},
-  author={Jurafsky, Daniel and Martin, James H}
-}
-
-
-% ************************************************************************
-% CTC
-% ************************************************************************
-@inproceedings{graves2006connectionist,
-  title={Connectionist temporal classification: labelling unsegmented sequence data with recurrent neural networks},
-  author={Graves, Alex and Fern{\'a}ndez, Santiago and Gomez, Faustino and Schmidhuber, J{\"u}rgen},
-  booktitle={Proceedings of the 23rd international conference on Machine learning},
-  pages={369--376},
-  year={2006}
-}
-
-
-% ************************************************************************
-% Blogpost on Transformer architecture
-% ************************************************************************
-@online{alammar2018illustrated,
-  author = {Jay Alammar},
-  title = {The Illustrated Transformer},
-  year = 2018,
-  url = {https://jalammar.github.io/illustrated-transformer/},
-  urldate = {2023-10-04}
-}
-
-
-% ************************************************************************
-% Original Transformer paper
-% ************************************************************************
-@article{transformer,
-  author       = {Ashish Vaswani and
-                  Noam Shazeer and
-                  Niki Parmar and
-                  Jakob Uszkoreit and
-                  Llion Jones and
-                  Aidan N. Gomez and
-                  Lukasz Kaiser and
-                  Illia Polosukhin},
-  title        = {Attention Is All You Need},
-  journal      = {CoRR},
-  volume       = {abs/1706.03762},
-  year         = {2017},
-  url          = {http://arxiv.org/abs/1706.03762},
-  eprinttype    = {arXiv},
-  eprint       = {1706.03762},
-  timestamp    = {Sat, 23 Jan 2021 01:20:40 +0100},
-  biburl       = {https://dblp.org/rec/journals/corr/VaswaniSPUJGKP17.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-
-
-% ************************************************************************
-% Relative Positional Encoding
-% ************************************************************************
-@article{shaw2018relative,
-  author       = {Peter Shaw and
-                  Jakob Uszkoreit and
-                  Ashish Vaswani},
-  title        = {Self-Attention with Relative Position Representations},
-  journal      = {CoRR},
-  volume       = {abs/1803.02155},
-  year         = {2018},
-  url          = {http://arxiv.org/abs/1803.02155},
-  eprinttype    = {arXiv},
-  eprint       = {1803.02155},
-  timestamp    = {Mon, 13 Aug 2018 16:46:37 +0200},
-  biburl       = {https://dblp.org/rec/journals/corr/abs-1803-02155.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-
-
-% ************************************************************************
-% AlexNet
-% ************************************************************************
-@inproceedings{AlexNet,
- author = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
+@inproceedings{baevski2020wav2vec,
+ author = {Baevski, Alexei and Zhou, Yuhao and Mohamed, Abdelrahman and Auli, Michael},
  booktitle = {Advances in Neural Information Processing Systems},
- editor = {F. Pereira and C.J. Burges and L. Bottou and K.Q. Weinberger},
- pages = {},
+ title = {wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations},
+ year = {2020},
+ volume = {33},
+ pages = {12449--12460},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2020/file/92d1e1eb1cd6f9fba3227870bb6d7f07-Paper.pdf},
  publisher = {Curran Associates, Inc.},
- title = {ImageNet Classification with Deep Convolutional Neural Networks},
- url = {https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf},
- volume = {25},
- year = {2012}
 }
 
+@article{cochran1967fast,
+  author={Cochran, W.T. and Cooley, J.W. and Favin, D.L. and Helms, H.D. and Kaenel, R.A. and Lang, W.W. and Maling, G.C. and Nelson, D.E. and Rader, C.M. and Welch, P.D.},
+  journal={Proceedings of the IEEE}, 
+  title={What is the fast Fourier transform?}, 
+  year={1967},
+  volume={55},
+  pages={1664-1674},
+  url = {https://ieeexplore.ieee.org/abstract/document/1447887},
+  publisher={}
+}
 
-% **********************************************************************
-% N-gram
-% **********************************************************************
+@article{cooley1969fast,
+  author={Cooley, James W. and Lewis, Peter A. W. and Welch, Peter D.},
+  journal={Transactions on Education}, 
+  title={The Fast Fourier Transform and Its Applications}, 
+  year={1969},
+  volume={12},
+  pages={27--34},
+  url = {https://ieeexplore.ieee.org/abstract/document/4320436},
+  publisher={IEEE}
+}
+
+@inproceedings{graves2006connectionist,
+  author = {Graves, Alex and Fern\'{a}ndez, Santiago and Gomez, Faustino and Schmidhuber, J\"{u}rgen},
+  booktitle = {International Conference on Machine Learning},
+  title = {Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks},
+  year = {2006},
+  volume={12},
+  pages = {369--376},
+  url = {https://doi.org/10.1145/1143844.1143891},
+  publisher = {Association for Computing Machinery},
+}
+
+%
+% PAGE NUMBERS
+%
+@inproceedings{transformer,
+  author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+  booktitle = {Advances in Neural Information Processing Systems},
+  title = {Attention is All you Need},
+  year = {2017},
+  volume = {30},
+  pages = {1--15},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf},
+  publisher = {Curran Associates, Inc.},
+ }
+
+@inproceedings{shaw2018relative,
+  title={Self-Attention with Relative Position Representations},
+  author={Shaw, Peter and Uszkoreit, Jakob and Vaswani, Ashish},
+  booktitle={North American Chapter of the Association for Computational Linguistics},
+  year={2018},
+  volume = {1},
+  pages={464--468},
+  url = {http://aclanthology.lst.uni-saarland.de/N18-2074.pdf},
+  publisher={},
+}
+
+%
+% PAGE NUMBERS
+%
+@inproceedings{AlexNet,
+  author = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
+  booktitle = {Advances in Neural Information Processing Systems},
+  title = {ImageNet Classification with Deep Convolutional Neural Networks},
+  year = {2012},
+  volume = {25},
+  pages = {1--9},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf},
+  publisher = {Curran Associates, Inc.},
+}
+
 @article{shannon1948,
-  added-at = {2021-09-19T18:40:37.000+0200},
   author = {Shannon, Claude Elwood},
-  biburl = {https://www.bibsonomy.org/bibtex/29f88587b33c82f692b61d129eb2f2517/steschum},
-  interhash = {754130207906fcec16a53d330eeff348},
-  intrahash = {9f88587b33c82f692b61d129eb2f2517},
   journal = {The Bell System Technical Journal},
-  keywords = {imported},
-  pages = {379--423},
-  timestamp = {2021-09-19T18:41:56.000+0200},
   title = {A Mathematical Theory of Communication},
+  year = {1948},
+  volume = {27},
+  pages = {379--423},
   url = {http://plan9.bell-labs.com/cm/ms/what/shannonday/shannon1948.pdf},
-  urldate = {2003-04-22},
-  volume = 27,
-  year = 1948
+  publisher={},
 }
 
-
-% **********************************************************************
-% Kneser-Ney
-% **********************************************************************
 @article{ney1994structuring,
-  title={On structuring probabilistic dependences in stochastic language modelling},
   author={Ney, Hermann and Essen, Ute and Kneser, Reinhard},
   journal={Computer Speech \& Language},
+  title={On structuring probabilistic dependences in stochastic language modelling},
   volume={8},
-  number={1},
   pages={1--38},
   year={1994},
+  url={https://www.sciencedirect.com/science/article/pii/S0885230884710011},
   publisher={Elsevier}
 }
 
-
-% **********************************************************************
-% Pretraining GitHub page
-% **********************************************************************
-@online{vonplaten2021pretraining,
-  author = {Patrick von Platen and other contributors},
-  title = {Speech Recognition Pre-Training},
-  year = 2021,
-  url = {https://github.com/huggingface/transformers/tree/main/examples/pytorch/speech-pretraining},
-  urldate = {2023-10-11}
-}
-
-
-% **********************************************************************
-% XLS-R
-% **********************************************************************
 @article{babu2021xls,
-  title={XLS-R: Self-supervised cross-lingual speech representation learning at scale},
-  author={Babu, Arun and Wang, Changhan and Tjandra, Andros and Lakhotia, Kushal and Xu, Qiantong and Goyal, Naman and Singh, Kritika and von Platen, Patrick and Saraf, Yatharth and Pino, Juan and others},
-  journal={arXiv preprint arXiv:2111.09296},
-  year={2021}
+  author       = {Arun Babu and
+                  Changhan Wang and
+                  Andros Tjandra and
+                  Kushal Lakhotia and
+                  Qiantong Xu and
+                  Naman Goyal and
+                  Kritika Singh and
+                  Patrick von Platen and
+                  Yatharth Saraf and
+                  Juan Pino and
+                  Alexei Baevski and
+                  Alexis Conneau and
+                  Michael Auli},
+  journal      = {Preprint},
+  title        = {{XLS-R:} Self-supervised Cross-lingual Speech Representation Learning
+                  at Scale},
+  year         = {2021},
+  url          = {https://arxiv.org/abs/2111.09296},
+  publisher    = {arXiv},
 }
 
-
-% **********************************************************************
-% CTC sequence modelling
-% **********************************************************************
-@article{hannun2017sequence,
-  author = {Hannun, Awni},
-  title = {Sequence Modeling with CTC},
-  journal = {Distill},
-  year = {2017},
-  note = {https://distill.pub/2017/ctc},
-  doi = {10.23915/distill.00008}
-}
-
-
-% **********************************************************************
-% Librispeech
-% **********************************************************************
-@inproceedings{panayotov2015librispeech,
-  title={Librispeech: an asr corpus based on public domain audio books},
+@INPROCEEDINGS{panayotov2015librispeech,
   author={Panayotov, Vassil and Chen, Guoguo and Povey, Daniel and Khudanpur, Sanjeev},
-  booktitle={2015 IEEE international conference on acoustics, speech and signal processing (ICASSP)},
-  pages={5206--5210},
+  booktitle={International Conference on Acoustics, Speech and Signal Processing}, 
+  title={Librispeech: An ASR corpus based on public domain audio books}, 
   year={2015},
-  organization={IEEE}
+  volume={1},
+  pages={5206-5210},
+  url = {https://ieeexplore.ieee.org/abstract/document/7178964},
+  publisher = {IEEE},
 }
 
-
-% **********************************************************************
-% GELU
-% **********************************************************************
 @article{hendrycks2016gaussian,
-  title={Gaussian error linear units (gelus)},
-  author={Hendrycks, Dan and Gimpel, Kevin},
-  journal={arXiv preprint arXiv:1606.08415},
-  year={2016}
+  author       = {Dan Hendrycks and
+                  Kevin Gimpel},
+  title        = {Bridging Nonlinearities and Stochastic Regularizers with Gaussian
+                  Error Linear Units},
+  journal      = {Preprint},
+  year         = {2016},
+  url          = {http://arxiv.org/abs/1606.08415},
+  publisher={arXiv},
 }
 
-
-% **********************************************************************
-% Layer normalization
-% **********************************************************************
 @article{ba2016layer,
-  title={Layer normalization},
   author={Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E},
-  journal={arXiv preprint arXiv:1607.06450},
-  year={2016}
+  title={Layer normalization},
+  journal={Preprint},
+  year={2016},
+  url={https://arxiv.org/abs/1607.06450},
+  publisher={arXiv},
 }
 
-
-% **********************************************************************
-% NCHLT
-% **********************************************************************
 @inproceedings{barnard2014nchlt,
   title={The NCHLT speech corpus of the South African languages},
+  journal={International Workshop on Spoken Language Technologies for Under-Resourced Languages},
   author={Barnard, Etienne and Davel, Marelie H and van Heerden, Charl and De Wet, Febe and Badenhorst, Jaco},
   year={2014},
-  organization={Workshop Spoken Language Technologies for Under-resourced Languages (SLTU)}
+  volume={4},
+  pages={194--200},
+  url={https://pta-dspace-dmz.csir.co.za/dspace/handle/10204/7549},
+  publisher={},
 }
 
-
-% **********************************************************************
-% FLEURS
-% **********************************************************************
-@article{fleurs2022arxiv,
-  title = {FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech},
-  author = {Conneau, Alexis and Ma, Min and Khanuja, Simran and Zhang, Yu and Axelrod, Vera and Dalmia, Siddharth and Riesa, Jason and Rivera, Clara and Bapna, Ankur},
-  journal={arXiv preprint arXiv:2205.12446},
-  url = {https://arxiv.org/abs/2205.12446},
-  year = {2022}
+@INPROCEEDINGS{fleurs2022arxiv,
+  author={Conneau, Alexis and Ma, Min and Khanuja, Simran and Zhang, Yu and Axelrod, Vera and Dalmia, Siddharth and Riesa, Jason and Rivera, Clara and Bapna, Ankur},
+  booktitle={Spoken Language Technology Workshop}, 
+  title={FLEURS: FEW-Shot Learning Evaluation of Universal Representations of Speech}, 
+  year={2022},
+  volume={},
+  pages={798-805},
+  url={https://ieeexplore.ieee.org/abstract/document/10023141},
+  publisher={IEEE},
 }
 
-
-% **********************************************************************
-% WikiExtractor
-% **********************************************************************
-@misc{Wikiextractor2015,
-  author = {Giusepppe Attardi},
-  title = {WikiExtractor},
-  year = {2015},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/attardi/wikiextractor}}
-}
-
-
-% **********************************************************************
-% High-quality TTS
-% **********************************************************************
 @inproceedings{hq2017,
   title	= {Rapid development of TTS corpora for four South African languages},
   author	= {Daniel van Niekerk and Charl van Heerden and Marelie Davel and Neil Kleynhans and Oddur Kjartansson and Martin Jansche and Linne Ha},
+  booktitle	= {Interspeech},
   year	= {2017},
-  URL	= {http://dx.doi.org/10.21437/Interspeech.2017-1139},
-  booktitle	= {Proc. Interspeech 2017},
-  pages	= {2178--2182}
+  volume={1},
+  pages	= {2178--2182},
+  url	= {http://dx.doi.org/10.21437/Interspeech.2017-1139},
+  publisher={},
 }
 
-
-% **********************************************************************
-% Motivation 1
-% **********************************************************************
 @inproceedings{wald2005using,
-  title={Using automatic speech recognition to enhance education for all students: Turning a vision into reality},
   author={Wald, Mike},
-  booktitle={Proceedings Frontiers in Education 35th Annual Conference},
-  pages={S3G--S3G},
+  booktitle={Frontiers in Education},
+  title={Using automatic speech recognition to enhance education for all students: Turning a vision into reality},
   year={2005},
-  organization={IEEE}
+  volume={35},
+  pages={S3G--S3G},
+  url={https://ieeexplore.ieee.org/abstract/document/1612286},
+  publisher={IEEE},
 }
 
-
-% **********************************************************************
-% Motivation 2
-% **********************************************************************
 @inproceedings{terbeh2013automatic,
-  title={Automatic speech correction: A step to speech recognition for people with disabilities},
   author={Terbeh, Naim and Labidi, Mohamed and Zrigui, Mounir},
-  booktitle={Fourth International Conference on Information and Communication Technology and Accessibility (ICTA)},
-  pages={1--6},
+  booktitle={Fourth International Conference on Information and Communication Technology and Accessibility},
+  title={Automatic speech correction: A step to speech recognition for people with disabilities},
   year={2013},
-  organization={IEEE}
+  volume={},
+  pages={1--6},
+  url={https://ieeexplore.ieee.org/abstract/document/6815303},
+  publisher={IEEE},
 }
 
-
-% **********************************************************************
-% Motivation 3
-% **********************************************************************
-@inproceedings{wald2006captioning,
-  title={Captioning for deaf and hard of hearing people by editing automatic speech recognition in real time},
+@INPROCEEDINGS{wald2006captioning,
   author={Wald, Mike},
   booktitle={International Conference on Computers for Handicapped Persons},
-  pages={683--690},
+  title={Captioning for deaf and hard of hearing people by editing automatic speech recognition in real time},
   year={2006},
-  organization={Springer}
+  volume={},
+  pages={683--690},
+  url={https://link.springer.com/chapter/10.1007/11788713_100},
+  publisher={Springer},
+}
+,
+@ARTICLE{david1962eyes,
+  author={David, E. E. and Selfridge, O. G.},
+  journal={Proceedings of the Institute of Radio Engineers}, 
+  title={Eyes and Ears for Computers}, 
+  year={1962},
+  volume={50},
+  pages={1093-1101},
+  url={https://ieeexplore.ieee.org/abstract/document/4066820},
+  publisher={IEEE},
 }
 
+@INPROCEEDINGS{chan2015listen,
+  author={Chan, William and Jaitly, Navdeep and Le, Quoc and Vinyals, Oriol},
+  booktitle={International Conference on Acoustics, Speech and Signal Processing}, 
+  title={Listen, attend and spell: A neural network for large vocabulary conversational speech recognition}, 
+  year={2016},
+  volume={},
+  pages={4960-4964},
+  url={https://ieeexplore.ieee.org/abstract/document/7472621},
+  publisher = {IEEE},
+}
+
+@ARTICLE{hmmcite,
+  author={Rabiner, L.R.},
+  journal={Proceedings of the IEEE}, 
+  title={A tutorial on hidden Markov models and selected applications in speech recognition}, 
+  year={1989},
+  volume={77},
+  pages={257-286},
+  url={https://ieeexplore.ieee.org/abstract/document/18626},
+  publisher = {},
+}
+
+@misc{Wikiextractor2015,
+  author = {Attardi, Giusepppe},
+  title = {WikiExtractor},
+  year = {2015},
+  howpublished = {GitHub},
+  url = {https://github.com/attardi/wikiextractor}
+}
+
+@misc{msskapstadt2023progressively_repurpose,
+    author = {Lakey, Rae},
+    title = {Progressively Repurpose Cutting-Edge Models},
+    howpublished = {MSS Cape Town},
+    year = {2015}, 
+    url = {https://msskapstadt.de/progressively-repurpose-cutting-edge-models/#:~:text=Both%20isiXhosa%20and%20isiZulu%20are,South%20Africa%20as%20a%20whole},
+}
 
 @misc{wikipedia2023comparison_afrikaans_dutch,
     author = {Wikipedia contributors},
@@ -348,19 +277,7 @@
     howpublished = {Wikipedia},
     year = {2023}, 
     url = {https://en.wikipedia.org/wiki/Comparison_of_Afrikaans_and_Dutch},
-    note = {Accessed: October 27, 2023}
 }
-
-
-@misc{msskapstadt2023progressively_repurpose,
-    author = {Lakey, Rae},
-    title = {Progressively Repurpose Cutting-Edge Models},
-    howpublished = {MSS Cape Town},
-    year = {2023}, 
-    url = {https://msskapstadt.de/progressively-repurpose-cutting-edge-models/#:~:text=Both%20isiXhosa%20and%20isiZulu%20are,South%20Africa%20as%20a%20whole},
-    note = {Accessed: October 27, 2023}
-}
-
 
 @misc{wikipedia2023early_stopping,
     author = {Wikipedia contributors},
@@ -368,21 +285,7 @@
     howpublished = {Wikipedia},
     year = {2023},
     url = {https://en.wikipedia.org/wiki/Early_stopping},
-    note = {Accessed: October 27, 2023}
 }
-
-
-@article{david1962eyes,
-  title={Eyes and ears for computers},
-  author={David, EE and Selfridge, OG},
-  journal={Proceedings of the IRE},
-  volume={50},
-  number={5},
-  pages={1093--1101},
-  year={1962},
-  publisher={IEEE}
-}
-
 
 @misc{WordErrorRate,
   author = {Wikipedia contributors},
@@ -390,6 +293,57 @@
   howpublished = {Wikipedia},
   year = {2023},
   url = {https://en.wikipedia.org/wiki/Word_error_rate},
-  note = {Accessed: 2023-10-31},  % Use the current date
-  
+}
+
+@online{alammar2018illustrated,
+  author = {Alammar, Jay},
+  title = {The Illustrated Transformer},
+  howpublished = {Blogpost},
+  year = {2018},
+  url = {https://jalammar.github.io/illustrated-transformer/},
+}
+
+@misc{bgn2021illustrated,
+  author = {Bgn, Jonathan},
+  title = {An Illustrated Tour of Wav2vec 2.0},
+  howpublished = {Blogpost},
+  year = {2021},
+  url = {https://jonathanbgn.com/2021/09/30/illustrated-wav2vec-2.html},
+}
+
+@misc{vonplaten2021pretraining,
+  author = {Patrick von Platen and other contributors},
+  title = {Speech Recognition Pre-Training},
+  year = {2021},
+  howpublished = {GitHub},
+  url = {https://github.com/huggingface/transformers/tree/main/examples/pytorch/speech-pretraining},
+}
+
+@misc{hannun2017sequence,
+  author = {Hannun, Awni},
+  title = {Sequence Modeling with CTC},
+  year = {2017},
+  howpublished = {Distill},
+  url = {https://distill.pub/2017/ctc},
+}
+
+@book{jurafskyspeech,
+  title={Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition},
+  author={Jurafsky, Daniel and Martin, James H},
+  volume = {3},
+  year={2023},
+  url = {https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf},
+  publisher = {Draft},
+}
+
+@article{kamper2014capitalising,
+  title={Capitalising on North American speech resources for the development of a South African English large vocabulary speech recognition system},
+  author={Kamper, Herman and De Wet, Febe and Hain, Thomas and Niesler, Thomas},
+  journal={Computer Speech \& Language},
+  volume={28},
+  number={6},
+  pages={1255--1268},
+  year={2014},
+  publisher={Elsevier},
+  url={https://www.sciencedirect.com/science/article/abs/pii/S0885230814000369},
 }

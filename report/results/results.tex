@@ -2,10 +2,10 @@
 
 \chapter{Results} \label{chap:results}
 In this chapter, we discuss our experimental results. 
-We first discuss the results for our basic fine-tuning experiments, 
-and then we discuss the results for our sequential fine-tuning experiments.
-We do not include the results of all our experiments, only the experiments that resulted in the best WER (\ref{subsec:wer}).
-The results for all of our experiments are provided in Appendix A.
+We first discuss the results of our basic fine-tuning experiments, 
+and then we discuss the results of our sequential fine-tuning experiments.
+We do not include the results of all our models, only the best-performing Afrikaans and isiXhosa models for each training strategy.
+The results for all of our models are provided in Appendix \ref{appen:results}.
 
 \section{Basic fine-tuning results}
 For the basic fine-tuning experiments, each model is fine-tuned on one language. 
@@ -13,15 +13,14 @@ Since this study is focused on performing ASR for Afrikaans and isiXhosa,
 we only use Afrikaans and isiXhosa speech data for our basic fine-tuning experiments.
 
 \subsection{Afrikaans results}
-Table \ref{tbl:basic-af} provides the results of the best Afrikaans model using the basic fine-tuning strategy,
-with and without the use of a $5$-gram LM (Kneser-Ney smoothing). For more information about the hyperparameters and training history of this model,
-refer to the \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run2}{model repository}.
+Table \ref{tbl:basic-af} provides the results of the best Afrikaans model using basic fine-tuning,
+with and without the use of a $5$-gram LM. For more information about the hyperparameters and training history of this model,
+refer to the \href{https://huggingface.co/lucas-meyer/xls-r-asr_af-run8}{model repository}.
 Table \ref{tbl:full-basic-af} in Appendix \ref{appen:results} provides the results of all our basic fine-tuning experiments for Afrikaans ASR.
-
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
-    \caption{The WER of the best Afrikaans model using the basic fine-tuning strategy. 
+    \caption{The WER of the best Afrikaans model using basic fine-tuning. 
     The model is evaluated on the validation and test data of the Afrikaans dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_af}{\texttt{asr\_af}}).}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
@@ -29,8 +28,8 @@ Table \ref{tbl:full-basic-af} in Appendix \ref{appen:results} provides the resul
         \cmidrule(lr){2-3}
         Model                                          & Validation & Test   \\
         \midrule
-        Fine-tune on \verb|asr_af|                     & $0.3798$     & $0.3801$ \\
-        Fine-tune on \verb|asr_af| (with LM)           & $0.2908$     & $0.2874$ \\
+        Fine-tune on \verb|asr_af|                     & $37.00\%$     & $38.77\%$ \\
+        Fine-tune on \verb|asr_af| (with LM)           & $26.67\%$     & $28.30\%$ \\
         \bottomrule
     \end{tabularx}
     \label{tbl:basic-af}
@@ -39,15 +38,15 @@ Table \ref{tbl:full-basic-af} in Appendix \ref{appen:results} provides the resul
 \newpage
 
 \subsection{isiXhosa results}
-Table \ref{tbl:basic-xh} provides the results of the best isiXhosa model using the basic fine-tuning strategy,
-with and without the use of a $5$-gram LM (Kneser-Ney smoothing). For more information about the hyperparameters and training history of this model,
-refer to the \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run1}{model repository}.
+Table \ref{tbl:basic-xh} provides the results of the best isiXhosa model using basic fine-tuning,
+with and without the use of a $5$-gram LM. For more information about the hyperparameters and training history of this model,
+refer to the \href{https://huggingface.co/lucas-meyer/xls-r-asr_xh-run3}{model repository}.
 Table \ref{tbl:full-basic-xh} in Appendix \ref{appen:results} provides the results of all our basic fine-tuning experiments for isiXhosa ASR.
 
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
-    \caption{The WER of the best isiXhosa model using the basic fine-tuning strategy. 
+    \caption{The WER of the best isiXhosa model using basic fine-tuning. 
     The model is evaluated on the validation and test data of the isiXhosa dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_xh}{\texttt{asr\_xh}}).}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
@@ -55,8 +54,8 @@ Table \ref{tbl:full-basic-xh} in Appendix \ref{appen:results} provides the resul
         \cmidrule(lr){2-3}
         Model                                          & Validation & Test   \\
         \midrule
-        Fine-tune on \verb|asr_xh|                     & $0.5008$     & $0.5052$ \\
-        Fine-tune on \verb|asr_xh| (with LM)           & $0.4014$     & $0.4147$ \\
+        Fine-tune on \verb|asr_xh|                     & $50.08\%$     & $50.52\%$ \\
+        Fine-tune on \verb|asr_xh| (with LM)           & $40.14\%$     & $41.47\%$ \\
         \bottomrule
     \end{tabularx}
     \label{tbl:basic-xh}
@@ -65,21 +64,21 @@ Table \ref{tbl:full-basic-xh} in Appendix \ref{appen:results} provides the resul
 
 
 \section{Sequential fine-tuning results}
-For the basic fine-tuning experiments, each model is fine-tuned on two language in two seperate runs. 
+For the basic fine-tuning experiments, each model is fine-tuned on two languages in two separate runs. 
 We use the \href{https://huggingface.co/datasets/google/fleurs}{FLEURS} dataset to perform basic fine-tuning experiments on Dutch (\verb|FLEURS_nl|) and isiZulu (\verb|FLEURS_zu|).
 Then, we use the best Dutch and isiZulu models for further fine-tuning on Afrikaans and isiXhosa respectively.
 
 \subsection{Afrikaans results}
-Table \ref{tbl:seq-af} provides the results of the best Afrikaans model using the sequential fine-tuning strategy,
-with and without the use of a $5$-gram LM (Kneser-Ney smoothing). 
+Table \ref{tbl:seq-af} provides the results of the best Afrikaans model using sequential fine-tuning,
+with and without the use of a $5$-gram LM.
 For more information about the hyperparameters and training history of this model, 
-refer to the \href{}{model repository}.
+refer to the \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_nl-run2-asr_af-run6}{model repository}.
 Table \ref{tbl:full-seq-af} in Appendix \ref{appen:results} provides the results of all our sequential fine-tuning experiments for Afrikaans ASR.
 
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
-    \caption{The WER of the best Afrikaans model using the sequential fine-tuning strategy. 
+    \caption{The WER of the best Afrikaans model using sequential fine-tuning. 
     The model is evaluated on the validation and test data of the Afrikaans dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_af}{\texttt{asr\_af}}).}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
@@ -87,9 +86,9 @@ Table \ref{tbl:full-seq-af} in Appendix \ref{appen:results} provides the results
         \cmidrule(lr){2-3}
         Model                                             & Validation   & Test   \\
         \midrule
-        Fine-tune on \verb|FLEURS_nl|                     & $0.3671$     & $0.3716$ \\
+        Fine-tune on \verb|FLEURS_nl|                     & $35.17\%$     & $37.49\%$ \\
         and \verb|asr_af| \\
-        Fine-tune on \verb|FLEURS_nl|                     & $0.2743$     & $0.2796$ \\
+        Fine-tune on \verb|FLEURS_nl|                     & $25.97\%$     & $27.50\%$ \\
         and \verb|asr_af| (with LM) \\
         \bottomrule
     \end{tabularx}
@@ -97,16 +96,16 @@ Table \ref{tbl:full-seq-af} in Appendix \ref{appen:results} provides the results
 \end{table}
 
 \subsection{isiXhosa results}
-Table \ref{tbl:seq-xh} provides the results of the best isiXhosa model using the sequential fine-tuning strategy,
-with and without the use of a $5$-gram LM (Kneser-Ney smoothing). 
+Table \ref{tbl:seq-xh} provides the results of the best isiXhosa model using sequential fine-tuning,
+with and without the use of a $5$-gram LM.
 For more information about the hyperparameters and training history of this model, 
-refer to the \href{}{model repository}.
+refer to the \href{https://huggingface.co/lucas-meyer/seq-xls-r-fleurs_zu-run3-asr_xh-run7}{model repository}.
 Table \ref{tbl:full-seq-xh} in Appendix \ref{appen:results} provides the results of all our sequential fine-tuning experiments for isiXhosa ASR.
     
 \begin{table}[!h]
     \renewcommand{\arraystretch}{1.1}
     \centering
-    \caption{The WER of the best isiXhosa model using the sequential fine-tuning strategy. 
+    \caption{The WER of the best isiXhosa model using sequential fine-tuning. 
     The model is evaluated on the validation and test data of the isiXhosa dataset (\href{https://huggingface.co/datasets/lucas-meyer/asr_xh}{\texttt{asr\_xh}}).}
     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
         \toprule
@@ -114,19 +113,19 @@ Table \ref{tbl:full-seq-xh} in Appendix \ref{appen:results} provides the results
         \cmidrule(lr){2-3}
         Model                                             & Validation   & Test   \\
         \midrule
-        Fine-tune on \verb|FLEURS_zu|                     & $0.4945$     & $0.4989$ \\
+        Fine-tune on \verb|FLEURS_zu|                     & $50.11\%$     & $49.89\%$ \\
         and \verb|asr_xh| \\
-        Fine-tune on \verb|FLEURS_zu|                     & $0.3923$     & $0.3993$ \\
+        Fine-tune on \verb|FLEURS_zu|                     & $40.11\%$     & $40.51\%$ \\
         and \verb|asr_xh| (with LM) \\
         \bottomrule
     \end{tabularx}
     \label{tbl:seq-xh}
 \end{table}
 
-
-
 \section{Discussion of results}
-For our best Afrikaans models, with and without an LM (Table \ref{tbl:basic-af} and \ref{tbl:seq-af}), the sequential fine-strategy performed slightly better on the validation and test WER.
-For our best isiXhosa models, with and without an LM (Table \ref{tbl:basic-xh} and \ref{tbl:seq-xh}), the sequential fine-strategy performed slightly better on the validation and test WER.
-The results of several other models (n Appendix \ref{appen:results}) that used the sequential fine-tuning strategy are better than the best basic fine-tuning results.
-The advantage of the basic fine-tuning strategy is that it is computationally less expensive compared to the sequential fine-tuning strategy which involves two seperate runs.
+For our best Afrikaans models, with and without an LM (Table \ref{tbl:basic-af} and \ref{tbl:seq-af}), sequential fine-tuning performed slightly better on the validation and test WER.
+For our best isiXhosa models, with and without an LM (Table \ref{tbl:basic-xh} and \ref{tbl:seq-xh}), sequential fine-tuning also performed slightly better on the validation and test WER.
+Referring to Appendix \ref{appen:results}, several other models that used sequential fine-tuning (Table \ref{tbl:full-seq-af} and \ref{tbl:full-seq-xh}) 
+performed better than most of the models that used basic fine-tuning (Table \ref{tbl:full-basic-af} and \ref{tbl:full-basic-xh}).
+Despite our results, the disadvantage of sequential fine-tuning is that it requires more computational resources since the strategy involves training a model twice.
+That concludes our experimental results and the main findings of this study.

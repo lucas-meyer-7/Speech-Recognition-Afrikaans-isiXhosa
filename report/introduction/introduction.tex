@@ -1,33 +1,65 @@
 \graphicspath{{introduction/fig/}}
 
+% INTRO is like PRESENTATION
+
 \chapter{Introduction} \label{chap:introduction}
-The task of automatic speech recognition (ASR) is to map a given speech recording to the text of the spoken words.
-The approach for performing ASR has remained the same for several years, which involves two main steps.
-In the first step the speech recording (audio data) is transformed into a feature representation known as speech features,
-and in the second step the speech features are mapped to a sequence of characters that represent the text.
-Traditionally, supervised learning techniques such as hidden Markov models have been used to perform ASR.
-However, self-supervised learning techniques have become popular within the field of ASR and other speech related tasks.
-Self-supervised learning allows us to learn feature representations using unlabeled data, which is particularly useful in low-resource settings.
-One of these techniques is wav2vec 2.0, which is machine learning model used to learn speech features.
-Wav2vec 2.0 can be fine-tuned to variety of speech-related tasks such as ASR, automatic speech translation, and speech classification.
-The issue is that training wav2vec 2.0 to learn speech features from unlabeled data is computationally expensive. 
-Therefore, in this study we focus on fine-tuning pre-trained wav2vec 2.0 models for ASR for Afrikaans and isiXhosa. 
+% Introduce reader to the whole story - explain what I did and why people should care.
+Automatic speech recognition (ASR) is the task of identifying the spoken words for a given speech recording and returning the text of the spoken words.
+For example, given a recording of a speaker saying the sentence ``The quick brown fox jumps over the lazy dog'',
+the goal of ASR is to predict each character in the sentence and to make as few mistakes as possible.
+ASR systems are used across many domains such as education \cite{wald2005using}, 
+helping people with disabilities \cite{terbeh2013automatic}, and automatic captioning \cite{wald2006captioning}.
+These systems are typically developed for well-resourced\footnote{A well-resourced language is a language for which there are extensive speech resources available.} languages such as English, Spanish, and Mandarin.
+However, developing ASR systems for under-resourced languages is a more challenging task.
+The size and speaker diversity of the data used to train an ASR system has a significant effect on the accuracy and generalization ability of the system.
+Therefore, more data and a greater variety of speakers typically improves the performance of a particular system.
+The focus of our study is performing ASR for two under-resourced languages: Afrikaans and isiXhosa.
+Furthermore, we investigate whether the use of additional speech data from a
+related language can improve the performance of our Afrikaans and isiXhosa ASR systems.
+We believe that the use of additional data could be a potential strategy to improve the generalization ability of our systems.
+However, a disadvantage of this strategy is that our system may confuse words from the target language with words from the related language.
+The other disadvantage is that this strategy requires more computational resources since the strategy involves training a model twice.
+We use additional Dutch data because of its relation with Afrikaans \cite{wikipedia2023comparison_afrikaans_dutch}, 
+and we use additional isiZulu data because of its relation with isiXhosa \cite{msskapstadt2023progressively_repurpose}.
+Our work is related to a study by Kamper et al. \cite{kamper2014capitalising} which involves the use of North American speech resources for the development of South African English ASR systems.
 
-We use the XLS-R model as our pre-trained model, which is a large-scale wav2vec 2.0 model trained on $128$ different languages.
-Our Afrikaans and isiXhosa datasets are created by combining recordings from three different speech corpora to ensure speaker diversity.
-We compare two fine-tuning strategies: \emph{basic} fine-tuning and \emph{sequential} fine-tuning.
-Basic fine-tuning involves fine-tuning on one language, which is the typical strategy used for fine-tuning XLS-R.
-Sequential fine-tuning involves fine-tuning on two languages sequentially, specifically two related languages.
-Our assumption is that fine-tuning on a related language before fine-tuning on the target language may improve the accuracy of our ASR models.
-We use Dutch for our Afrikaans sequential fine-tuning experiments and we use isiZulu for our isiXhosa sequential fine-tuning experiments.
+% Summarize the rest of the report here.
+The general approach for performing ASR has remained the same for several years:
+transform the speech data into a feature representation, then map the features to a sequence of characters which are merged to form the predicted text.
+Traditionally, hidden Markov models \cite{hmmcite} and neural networks such as Listen, Attend and Spell (LAS) \cite{chan2015listen} have been used to perform ASR.
+In recent years, self-supervised learning techniques have become popular within the field of ASR and other speech-related tasks.
+Self-supervised learning techniques allow for learning feature representations from unlabeled data, which is particularly useful in under-resourced settings.
+One of these techniques is wav2vec 2.0 \cite{baevski2020wav2vec}, which is a neural network used to learn feature representations for speech using unlabeled speech data.
+A pre-trained wav2vec 2.0 model can be fine-tuned to a variety of speech-related tasks such as ASR, automatic speech translation, and speech classification.
+The issue is that pre-training wav2vec 2.0 with unlabeled data is too computationally expensive for the computational resources available to our study (\ref{sec:gott}).
+Therefore, our approach for developing ASR systems for Afrikaans and isiXhosa involves fine-tuning pre-trained wav2vec 2.0 models for ASR using the connectionist temporal classification (CTC) algorithm.
+% (TODO) add transfer learning?
+We use the XLS-R \cite{babu2021xls} model as our pre-trained model, which is a large-scale wav2vec 2.0 model trained on $128$ different languages.
 
-We create several models using both fine-tuning strategies, and all of the models are evaluated on our test sets using the word error rate (WER) metric.
-We found that the sequential fine-tuning approach resulted in more accurate Afrikaans and isiXhosa models overall, 
-and our most accurate models were fine-tuned using the sequential fine-tuning strategy.
-However, the generalization ability of our best models are still limited, and this is most likely due to the limited size of our datasets.
+For our experimental setup, we consider two training strategies: \emph{basic fine-tuning} and \emph{sequential fine-tuning}.
+Basic fine-tuning involves fine-tuning on one language, and sequential fine-tuning involves fine-tuning on a related language and then on the target language.
+We create our own Afrikaans and isiXhosa speech datasets by combining recordings from three different datasets. We also use Dutch and isiZulu speech data from one of the three datasets.
+We train several Afrikaans and isiXhosa ASR models using both training strategies, and we test different hyperparameter values during the training of each model.
+We evaluate the performance of each model by computing the word error rate (WER) on our validation and test data.
+We select the best Afrikaans and isiXhosa model for each strategy and add a 5-gram language model (LM) with Kneser-Ney smoothing. 
+Our LMs are separately trained on scraped Afrikaans and isiXhosa Wikipedia data.
+Using an LM for ASR typically improves performance by mitigating simple spelling mistakes that occur when decoding with CTC.
+
+% Results
+In our experimental results, we find that sequential fine-tuning results in slightly better performance for both our Afrikaans and isiXhosa models.
+% By using the basic fine-tuning strategy, our best Afrikaans model achieves a $28.74\%$ word error rate (WER) on our Afrikaans test set 
+% and our best isiXhosa model achieves a $41.47\%$ WER on our isiXhosa test set.
+By using sequential fine-tuning, our best Afrikaans model achieves a $27.50\%$ WER on our Afrikaans test data and our best isiXhosa model achieves a $40.51\%$ WER on our isiXhosa test data.
+
+% Contributions and conclusions
+Our main contribution is a comparison of training strategies for the development of ASR systems in under-resourced settings, specifically for Afrikaans and isiXhosa.
+Furthermore, since both strategies only require a single GPU for fine-tuning XLS-R on our datasets, 
+anyone with access to Google Colab can utilize our code to train their own Afrikaans or isiXhosa ASR model.
+However, the generalization ability of our best-performing models is still limited.
 We believe that in future work, pre-training on a large dataset of unlabeled speech recordings may improve the generalization ability of our models.
 
-The paper is organized as follows. We first present the background of ASR and our explored tasks in Chapter \ref{chap:background}. 
+% Outline of report
+The report is organized as follows. We first present the background of ASR and our explored tasks in Chapter \ref{chap:background}. 
 We discuss our datasets and provide an outline of our experimental setup in Chapter \ref{chap:experimental_setup}.
 Our experimental results are summarized and discussed in Chapter \ref{chap:results}.
 Finally, we conclude our study in Chapter \ref{chap:conclusion}.
