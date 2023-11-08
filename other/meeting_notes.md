@@ -1,4 +1,6 @@
-# Meeting Notes
+# ASR for Afrikaans & isiXhosa [Meeting notes]
+## Author: Lucas Meyer
+
 These are notes that I used every time I met with Herman. Contains the progress for the week and questions that I asked Herman during our meetings.
 
 ### Progress (11/08/2023)

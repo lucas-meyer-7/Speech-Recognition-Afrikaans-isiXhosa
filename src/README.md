@@ -34,4 +34,7 @@ The following files were used to load data:
 We used a Python notebook (``fine_tune.ipynb``) to train our models. Typically, we would upload the notebook to a Google Colab session and use their available GPUs to run the code (takes about 5-6 hours to train a model). Note that all of the scripts used to load data and ``utils.py
 
 ### 4. Boosting performance with a LM - ``add_LM.ipynb``
-We used a Python notebook (``add_LM.ipynb``) to train our models. Typically, we would upload the notebook to a Google Colab session and use their available GPUs to run the code (takes about 5-6 hours to train a model). Note that all of the scripts used to load data and ``utils.py
+We used a Python notebook (``add_LM.ipynb``) to add LMs to our models. We have already pre-processed the text data used to train our LMs and the code for that is in ``get_LM_data.ipynb``. The text data can be found in ``data/language_model_data/``.
+
+### 5. Testing model performance - ``test.ipynb``
+We used a Python notebook (``test.ipynb``) to test our models.
